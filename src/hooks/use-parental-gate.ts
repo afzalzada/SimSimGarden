@@ -29,36 +29,38 @@ export function useParentalGate() {
       generateProblem();
     }
   }, [isOpen, generateProblem]);
-  
+
 
   const handleSubmit = (e?: React.FormEvent<HTMLFormElement>) => {
     e?.preventDefault();
     if (parseInt(answer) === num1 + num2) {
       toast({ title: 'Success!', description: 'Gate passed. Accessing settings...' });
       setIsOpen(false);
-      setIsGatePassed(true); 
+      setIsGatePassed(true);
       router.push('/settings');
     } else {
       toast({ variant: 'destructive', title: 'Incorrect', description: 'Please try again.' });
       generateProblem();
-      setIsGatePassed(false); 
+      setIsGatePassed(false);
     }
   };
 
   const showParentalGate = () => {
-    setIsGatePassed(false); 
+    setIsGatePassed(false); // Reset gate status for a fresh check
     setIsOpen(true);
   };
-  
+
   const handleDialogOpenChange = useCallback((openStatus: boolean) => {
     setIsOpen(openStatus);
-    // Only reset isGatePassed if the dialog is being closed AND it wasn't successfully passed previously in this flow.
-    if (!openStatus && !isGatePassed) { 
-        // If the dialog is closed without passing the gate, ensure isGatePassed remains false.
-        // This prevents accessing settings if the dialog is simply dismissed.
+    // If the dialog is closed AND the gate was NOT passed during this interaction,
+    // isGatePassed should remain as it was set by showParentalGate (likely false) or a failed handleSubmit.
+    // If the gate WAS passed, isGatePassed would be true, and this condition won't reset it.
+    if (!openStatus && !isGatePassed) {
+      // No need to explicitly set isGatePassed to false here if it's already false.
+      // This state is managed by showParentalGate and handleSubmit.
     }
-  }, [setIsOpen, isGatePassed]); // isGatePassed dependency is important here
-  
+  }, [setIsOpen, isGatePassed]);
+
   const ParentalGateDialog = () => (
     <Dialog open={isOpen} onOpenChange={handleDialogOpenChange}>
       <DialogContent className="sm:max-w-md bg-background rounded-lg shadow-xl">
