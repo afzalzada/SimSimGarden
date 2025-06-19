@@ -36,12 +36,12 @@ export function useParentalGate() {
     if (parseInt(answer) === num1 + num2) {
       toast({ title: 'Success!', description: 'Gate passed. Accessing settings...' });
       setIsOpen(false);
-      setIsGatePassed(true);
+      setIsGatePassed(true); // Gate passed
       router.push('/settings');
     } else {
       toast({ variant: 'destructive', title: 'Incorrect', description: 'Please try again.' });
       generateProblem();
-      setIsGatePassed(false);
+      setIsGatePassed(false); // Gate not passed
     }
   };
 
@@ -52,14 +52,13 @@ export function useParentalGate() {
 
   const handleDialogOpenChange = useCallback((openStatus: boolean) => {
     setIsOpen(openStatus);
-    // If the dialog is closed AND the gate was NOT passed during this interaction,
-    // isGatePassed should remain as it was set by showParentalGate (likely false) or a failed handleSubmit.
-    // If the gate WAS passed, isGatePassed would be true, and this condition won't reset it.
-    if (!openStatus && !isGatePassed) {
-      // No need to explicitly set isGatePassed to false here if it's already false.
-      // This state is managed by showParentalGate and handleSubmit.
-    }
-  }, [setIsOpen, isGatePassed]);
+    // This callback primarily manages the dialog's open state.
+    // The isGatePassed state is managed by handleSubmit on success/failure,
+    // by showParentalGate on initiation, and by the SettingsPage component on unmount.
+    // If the dialog is closed without passing the gate (e.g., clicking outside),
+    // isGatePassed should already be false from the last attempt or from showParentalGate.
+  }, [setIsOpen]);
+
 
   const ParentalGateDialog = () => (
     <Dialog open={isOpen} onOpenChange={handleDialogOpenChange}>

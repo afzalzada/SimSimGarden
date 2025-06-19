@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { Menu, Settings, ShieldAlert, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetTrigger, SheetClose, SheetTitle } from '@/components/ui/sheet';
 import { useParentalGate } from '@/hooks/use-parental-gate';
 import { useState } from 'react';
 import NavItem from './NavItem';
@@ -56,6 +56,7 @@ export default function Header() {
                 </Button>
               </SheetTrigger>
               <SheetContent side="right" className="w-3/4 p-6 bg-background">
+                <SheetTitle className="sr-only">Menu</SheetTitle>
                 <div className="flex flex-col gap-6">
                   <div className="flex justify-between items-center">
                     <Link href="/" className="flex items-center gap-2" onClick={() => setIsMobileMenuOpen(false)}>
