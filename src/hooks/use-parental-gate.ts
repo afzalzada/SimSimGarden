@@ -30,42 +30,37 @@ export function useParentalGate() {
     }
   }, [isOpen, generateProblem]);
   
-  // Effect to reset gate pass status if dialog is closed without passing
-  useEffect(() => {
-    if (!isOpen && !isGatePassed) {
-      // Optional: any cleanup or state reset if dialog is closed prematurely
-    }
-  }, [isOpen, isGatePassed]);
-
 
   const handleSubmit = (e?: React.FormEvent<HTMLFormElement>) => {
     e?.preventDefault();
     if (parseInt(answer) === num1 + num2) {
       toast({ title: 'Success!', description: 'Gate passed. Accessing settings...' });
       setIsOpen(false);
-      setIsGatePassed(true); // Mark gate as passed
+      setIsGatePassed(true); 
       router.push('/settings');
     } else {
       toast({ variant: 'destructive', title: 'Incorrect', description: 'Please try again.' });
       generateProblem();
-      setIsGatePassed(false); // Ensure gate is not marked as passed
+      setIsGatePassed(false); 
     }
   };
 
   const showParentalGate = () => {
-    setIsGatePassed(false); // Reset pass status when showing gate
+    setIsGatePassed(false); 
     setIsOpen(true);
   };
-
-  const handleDialogOpeChange = useCallback((openStatus: boolean) => {
+  
+  const handleDialogOpenChange = useCallback((openStatus: boolean) => {
     setIsOpen(openStatus);
-    if (!openStatus) {
-      setIsGatePassed(false);
+    // Only reset isGatePassed if the dialog is being closed AND it wasn't successfully passed previously in this flow.
+    if (!openStatus && !isGatePassed) { 
+        // If the dialog is closed without passing the gate, ensure isGatePassed remains false.
+        // This prevents accessing settings if the dialog is simply dismissed.
     }
-  }, [setIsOpen, setIsGatePassed]);
+  }, [setIsOpen, isGatePassed]); // isGatePassed dependency is important here
   
   const ParentalGateDialog = () => (
-    <Dialog open={isOpen} onOpenChange={handleDialogOpeChange}>
+    <Dialog open={isOpen} onOpenChange={handleDialogOpenChange}>
       <DialogContent className="sm:max-w-md bg-background rounded-lg shadow-xl">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2 font-headline text-2xl text-primary">
