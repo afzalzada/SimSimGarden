@@ -1,5 +1,5 @@
+
 import type { Game } from '@/lib/types';
-import { Puzzle, HelpCircle, Brain } from 'lucide-react';
 
 export const gameTypes: Game[] = [
   {
@@ -8,7 +8,7 @@ export const gameTypes: Game[] = [
     description: 'Test your knowledge about Islamic principles, history, and prophets.',
     type: 'quiz',
     href: '/games/quiz/general-knowledge-1',
-    icon: <HelpCircle className="w-10 h-10 text-primary" />,
+    icon: 'HelpCircle',
     ageGroup: '9-16',
     imageAiHint: 'quiz question mark',
   },
@@ -18,7 +18,7 @@ export const gameTypes: Game[] = [
     description: 'Piece together beautiful images related to stories of the Prophets.',
     type: 'puzzle',
     href: '/games/puzzle/prophet-noah-ark',
-    icon: <Puzzle className="w-10 h-10 text-primary" />,
+    icon: 'Puzzle',
     ageGroup: '4-8',
     imageAiHint: 'jigsaw puzzle kids',
   },
@@ -28,7 +28,7 @@ export const gameTypes: Game[] = [
     description: 'Match pairs of cards related to good manners and Islamic ethics.',
     type: 'memory-match',
     href: '/games/memory-match/good-deeds-1',
-    icon: <Brain className="w-10 h-10 text-primary" />,
+    icon: 'Brain',
     ageGroup: '4-8',
     imageAiHint: 'memory game cards',
   },
@@ -38,7 +38,7 @@ export const gameTypes: Game[] = [
     description: 'A more challenging quiz on Islamic jurisprudence for older youngsters.',
     type: 'quiz',
     href: '/games/quiz/fiqh-basics-1',
-    icon: <HelpCircle className="w-10 h-10 text-primary" />,
+    icon: 'HelpCircle',
     ageGroup: '9-16',
     imageAiHint: 'islamic law book',
   },

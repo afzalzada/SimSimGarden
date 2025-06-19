@@ -1,3 +1,4 @@
+
 export interface Story {
   id: string;
   title: string;
@@ -39,13 +40,15 @@ export interface QuranVerse {
   imageAiHint?: string;
 }
 
+export type LucideIconName = 'HelpCircle' | 'Puzzle' | 'Brain';
+
 export interface Game {
   id: string;
   title: string;
   description: string;
   type: 'quiz' | 'puzzle' | 'memory-match';
   href: string;
-  icon?: React.ReactNode; // e.g. from lucide-react
+  icon?: LucideIconName; 
   ageGroup: '4-8' | '9-16';
   imageAiHint?: string;
 }
