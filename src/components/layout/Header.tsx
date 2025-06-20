@@ -12,13 +12,13 @@ import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { usePathname, useRouter } from 'next/navigation';
 
 const navLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/stories', label: 'Stories' },
-  { href: '/duas', label: 'Duas' },
-  { href: '/quran', label: 'Quran' },
-  { href: '/games', label: 'Games' },
-  { href: '/aalim', label: 'Aalim AI' },
-  { href: '/rewards', label: 'Rewards' },
+  { href: '/', label: 'HOME' },
+  { href: '/stories', label: 'STORIES' },
+  { href: '/duas', label: 'DUAS' },
+  { href: '/quran', label: 'QURAN' },
+  { href: '/games', label: 'GAMES' },
+  { href: '/aalim', label: 'AALIM AI' },
+  { href: '/rewards', label: 'REWARDS' },
 ];
 
 export default function Header() {
@@ -45,9 +45,8 @@ export default function Header() {
         <div className="container flex h-16 max-w-screen-2xl items-center justify-between">
           <Link href="/" className="flex items-center gap-2 mr-auto md:mr-6" aria-label="Noor Kids Home">
              <svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="50" cy="50" r="48" fill="hsl(var(--primary))"/>
-              <path d="M50 25C50 25 65 35 65 50C65 65 50 75 50 75C50 75 35 65 35 50C35 35 50 25 50 25Z" fill="hsl(var(--primary-foreground))"/>
-              <circle cx="50" cy="50" r="10" fill="hsl(var(--accent))"/>
+              <rect width="100" height="100" rx="20" fill="hsl(var(--primary))"/>
+              <path d="M50 15L61.2265 38.7735L85 42.3607L67.5 59.2265L72.4531 83.6393L50 71.2265L27.5469 83.6393L32.5 59.2265L15 42.3607L38.7735 38.7735L50 15Z" fill="hsl(var(--accent))"/>
             </svg>
             <span className="font-headline font-bold text-xl text-primary">Noor Kids</span>
           </Link>
@@ -80,15 +79,14 @@ export default function Header() {
               </SheetTrigger>
               <SheetContent side="right" className="w-3/4 p-6 bg-background">
                 <SheetHeader className="mb-4">
-                  <SheetTitle className="sr-only">Menu</SheetTitle> {/* Accessibility fix */}
+                  <SheetTitle className="sr-only">Menu</SheetTitle>
                 </SheetHeader>
                 <div className="flex flex-col gap-6">
                   <div className="flex justify-between items-center">
                     <Link href="/" className="flex items-center gap-2" onClick={() => setIsMobileMenuOpen(false)}>
                        <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="50" cy="50" r="48" fill="hsl(var(--primary))"/>
-                        <path d="M50 25C50 25 65 35 65 50C65 65 50 75 50 75C50 75 35 65 35 50C35 35 50 25 50 25Z" fill="hsl(var(--primary-foreground))"/>
-                        <circle cx="50" cy="50" r="10" fill="hsl(var(--accent))"/>
+                        <rect width="100" height="100" rx="20" fill="hsl(var(--primary))"/>
+                        <path d="M50 15L61.2265 38.7735L85 42.3607L67.5 59.2265L72.4531 83.6393L50 71.2265L27.5469 83.6393L32.5 59.2265L15 42.3607L38.7735 38.7735L50 15Z" fill="hsl(var(--accent))"/>
                       </svg>
                       <span className="font-headline font-bold text-lg text-primary">Noor Kids</span>
                     </Link>
