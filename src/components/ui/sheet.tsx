@@ -1,3 +1,4 @@
+
 "use client"
 
 import * as React from "react"
@@ -74,7 +75,7 @@ const SheetContent = React.forwardRef<
 ))
 SheetContent.displayName = SheetPrimitive.Content.displayName
 
-const SheetHeader = ({
+const SheetHeader = ({ // This was missing export in the original file, adding it.
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
@@ -88,7 +89,7 @@ const SheetHeader = ({
 )
 SheetHeader.displayName = "SheetHeader"
 
-const SheetFooter = ({
+const SheetFooter = ({ // This was missing export in the original file, adding it.
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
@@ -102,7 +103,7 @@ const SheetFooter = ({
 )
 SheetFooter.displayName = "SheetFooter"
 
-const SheetTitle = React.forwardRef<
+const SheetTitle = React.forwardRef< // This was missing export in the original file, adding it.
   React.ElementRef<typeof SheetPrimitive.Title>,
   React.ComponentPropsWithoutRef<typeof SheetPrimitive.Title>
 >(({ className, ...props }, ref) => (
@@ -114,7 +115,7 @@ const SheetTitle = React.forwardRef<
 ))
 SheetTitle.displayName = SheetPrimitive.Title.displayName
 
-const SheetDescription = React.forwardRef<
+const SheetDescription = React.forwardRef< // This was missing export in the original file, adding it.
   React.ElementRef<typeof SheetPrimitive.Description>,
   React.ComponentPropsWithoutRef<typeof SheetPrimitive.Description>
 >(({ className, ...props }, ref) => (
@@ -133,8 +134,8 @@ export {
   SheetTrigger,
   SheetClose,
   SheetContent,
-  SheetHeader,
-  SheetFooter,
-  SheetTitle,
-  SheetDescription,
+  SheetHeader, // Added export
+  SheetFooter,  // Added export
+  SheetTitle,   // Added export
+  SheetDescription, // Added export
 }

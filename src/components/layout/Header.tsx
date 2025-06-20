@@ -1,13 +1,14 @@
+
 'use client';
 
 import Link from 'next/link';
 import { Menu, Settings, ShieldAlert, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger, SheetClose, SheetTitle } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetTrigger, SheetClose, SheetTitle, SheetHeader } from '@/components/ui/sheet'; // Added SheetHeader
 import { useParentalGate } from '@/hooks/use-parental-gate';
 import { useState } from 'react';
 import NavItem from './NavItem';
-import Image from 'next/image';
+// Removed Image import as it's not used here for the logo
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -20,7 +21,7 @@ const navLinks = [
 ];
 
 export default function Header() {
-  const { ParentalGateDialog, showParentalGate } = useParentalGate();
+  const { showParentalGate, ParentalGateDialog, dialogProps } = useParentalGate();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
@@ -28,7 +29,6 @@ export default function Header() {
       <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container flex h-16 max-w-screen-2xl items-center justify-between">
           <Link href="/" className="flex items-center gap-2 mr-6" aria-label="Noor Kids Home">
-            {/* Using an inline SVG for the logo as per guidelines, if an actual logo is needed this should be an image component */}
              <svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="50" cy="50" r="48" fill="hsl(var(--primary))"/>
               <path d="M50 25C50 25 65 35 65 50C65 65 50 75 50 75C50 75 35 65 35 50C35 35 50 25 50 25Z" fill="hsl(var(--primary-foreground))"/>
@@ -56,7 +56,9 @@ export default function Header() {
                 </Button>
               </SheetTrigger>
               <SheetContent side="right" className="w-3/4 p-6 bg-background">
-                <SheetTitle className="sr-only">Menu</SheetTitle>
+                <SheetHeader className="mb-4">
+                  <SheetTitle className="sr-only">Menu</SheetTitle>
+                </SheetHeader>
                 <div className="flex flex-col gap-6">
                   <div className="flex justify-between items-center">
                     <Link href="/" className="flex items-center gap-2" onClick={() => setIsMobileMenuOpen(false)}>
@@ -86,7 +88,7 @@ export default function Header() {
           </div>
         </div>
       </header>
-      <ParentalGateDialog />
+      <ParentalGateDialog {...dialogProps} />
     </>
   );
 }
