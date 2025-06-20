@@ -29,6 +29,16 @@ export default function SingleDuaPage() {
   const [isCompleted, setIsCompleted] = useState(false);
   
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const duaRef = useRef<Dua | null>(null); // Ref to hold current dua for event handlers
+  const isRecordingRef = useRef(isRecording); // Ref to hold current isRecording state
+
+  useEffect(() => {
+    duaRef.current = dua;
+  }, [dua]);
+
+  useEffect(() => {
+    isRecordingRef.current = isRecording;
+  }, [isRecording]);
 
   useEffect(() => {
     if (params.id) {
@@ -45,13 +55,25 @@ export default function SingleDuaPage() {
                     setPlaybackProgress((audioRef.current.currentTime / audioRef.current.duration) * 100);
                 }
             };
-            audioRef.current.onended = () => {
+            const currentAudio = audioRef.current; // Capture for cleanup
+            const onEndedListener = () => {
                 setIsPlaying(false);
                 setPlaybackProgress(100);
-                 if (dua && getLessonProgress(dua.id) !== 'Completed' && !isRecording) { // Only mark as practiced if not already completed and not in recording phase
-                    updateLessonProgress(dua.id, 'Practiced');
+                 // Use refs for dua and isRecording to get latest values in event handler
+                 if (duaRef.current && getLessonProgress(duaRef.current.id) !== 'Completed' && !isRecordingRef.current) { 
+                    updateLessonProgress(duaRef.current.id, 'Practiced');
                     toast({ title: "Practice Complete!", description: "You listened to the Dua." });
                  }
+            };
+            currentAudio.addEventListener('ended', onEndedListener);
+
+            // Cleanup function
+            return () => {
+                if (currentAudio) {
+                    currentAudio.removeEventListener('ended', onEndedListener);
+                    currentAudio.pause();
+                }
+                audioRef.current = null; // Also nullify here on full unmount or ID change
             };
         }
         const progress = getLessonProgress(foundDua.id);
@@ -64,18 +86,18 @@ export default function SingleDuaPage() {
       }
       setIsLoading(false);
     }
-     return () => { // Cleanup audio element
+     return () => { // General cleanup for component unmount if audio was initialized
         if (audioRef.current) {
             audioRef.current.pause();
             audioRef.current = null;
         }
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [params.id, router, getLessonProgress, updateLessonProgress, isRecording, toast]); // Removed `dua` from deps to avoid re-running when `dua` state changes due to setDua itself
+  }, [params.id, router, getLessonProgress, updateLessonProgress, toast]);
 
   const togglePlay = () => {
     if (!audioRef.current) {
-        toast({variant: "destructive", title: "Audio Error", description: "Audio for this dua is not available."});
+        toast({variant: "destructive", title: "Audio Error", description: "Audio for this dua is not available. Ensure MP3 files are in public/audio."});
         return;
     }
     if (isPlaying) {
@@ -87,15 +109,15 @@ export default function SingleDuaPage() {
   };
 
   const toggleRecord = () => {
-    setIsRecording(!isRecording);
-    if (!isRecording) {
+    setIsRecording(!isRecording); // This will update isRecordingRef via its own useEffect
+    if (!isRecordingRef.current) { // Check the ref's next state (which is the current !isRecording)
       // Simulate recording started
       toast({ title: 'Recording Started', description: 'Repeat the dua clearly. (This is a simulation)' });
       setTimeout(() => { // Simulate recording finished
-        setIsRecording(false);
+        setIsRecording(false); // This will again update isRecordingRef
         toast({ title: 'Recording Finished', description: 'Good job practicing! (Simulation)' });
-        if (dua && getLessonProgress(dua.id) !== 'Completed') {
-            updateLessonProgress(dua.id, 'Practiced'); // Or more specific like 'Recorded'
+        if (duaRef.current && getLessonProgress(duaRef.current.id) !== 'Completed') {
+            updateLessonProgress(duaRef.current.id, 'Practiced'); // Or more specific like 'Recorded'
         }
       }, 3000);
     }
@@ -149,8 +171,8 @@ export default function SingleDuaPage() {
             <Image 
                 src={`https://placehold.co/600x240.png`} 
                 alt={dua.title} 
-                layout="fill" 
-                objectFit="cover"
+                fill
+                style={{objectFit: 'cover'}}
                 data-ai-hint={dua.imageAiHint || 'dua illustration child'}
             />
         </div>
@@ -201,3 +223,5 @@ export default function SingleDuaPage() {
     </AppLayout>
   );
 }
+
+    
