@@ -1,7 +1,8 @@
+
 'use client';
 
 import type { Puzzle } from '@/lib/types';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { CheckCircle, Gift, PuzzleIcon, RotateCcw } from 'lucide-react';
@@ -13,17 +14,14 @@ interface JigsawPuzzleProps {
   onPuzzleComplete: () => void;
 }
 
-// This is a simplified placeholder for a Jigsaw Puzzle.
-// A real implementation would involve complex logic for piece generation, dragging, snapping, etc.
 export default function JigsawPuzzle({ puzzle, onPuzzleComplete }: JigsawPuzzleProps) {
   const [isSolved, setIsSolved] = useState(false);
   const [showHint, setShowHint] = useState(false);
   const { addPoints } = useUserProgress();
 
-  // Simulate solving the puzzle
   const solvePuzzle = () => {
     setIsSolved(true);
-    addPoints(puzzle.pieces / 2); // Example: 0.5 points per piece
+    addPoints(Math.max(5, Math.floor(puzzle.pieces / 2))); // Award points, min 5
     onPuzzleComplete();
   };
   
@@ -48,7 +46,7 @@ export default function JigsawPuzzle({ puzzle, onPuzzleComplete }: JigsawPuzzleP
             layout="fill" 
             objectFit="contain" 
             className={`${isSolved ? 'opacity-100' : 'opacity-30 blur-sm'}`}
-            data-ai-hint={puzzle.imageAiHint || 'puzzle image kids'}
+            data-ai-hint={puzzle.imageAiHint || 'puzzle picture game'}
           />
           {!isSolved && (
             <div className="absolute inset-0 flex flex-col items-center justify-center p-4">
@@ -60,7 +58,7 @@ export default function JigsawPuzzle({ puzzle, onPuzzleComplete }: JigsawPuzzleP
                 </Button>
                 {showHint && 
                     <div className="w-1/2 aspect-[3/2] relative border border-dashed border-primary rounded overflow-hidden">
-                        <Image src={puzzle.imageUrl} alt="Hint" layout="fill" objectFit="contain" data-ai-hint={puzzle.imageAiHint || 'puzzle hint kids'}/>
+                        <Image src={puzzle.imageUrl} alt="Hint" layout="fill" objectFit="contain" data-ai-hint={puzzle.imageAiHint || 'puzzle hint image'}/>
                     </div>
                 }
             </div>
@@ -79,7 +77,7 @@ export default function JigsawPuzzle({ puzzle, onPuzzleComplete }: JigsawPuzzleP
         ) : (
           <div className="space-y-3">
             <p className="text-xl font-semibold text-green-600 flex items-center justify-center gap-2">
-                <Gift className="w-6 h-6"/> Puzzle Solved! You earned {puzzle.pieces / 2} points!
+                <Gift className="w-6 h-6"/> Puzzle Solved! You earned {Math.max(5, Math.floor(puzzle.pieces / 2))} points!
             </p>
             <Button onClick={restartPuzzle} variant="outline" className="w-full sm:w-auto">
                 <RotateCcw className="mr-2 h-4 w-4"/> Play Again

@@ -23,7 +23,7 @@ export default function QuranVerseCard({ verse }: QuranVerseCardProps) {
                 alt={`${verse.surahName} ${verse.verseNumber}`} 
                 layout="fill" 
                 objectFit="cover"
-                data-ai-hint={verse.imageAiHint || 'quran calligraphy beautiful'}
+                data-ai-hint={verse.imageAiHint || 'quran calligraphy art'}
             />
         </div>
         <p className="font-['Noto_Naskh_Arabic'] text-lg text-foreground mt-1 truncate_arabic" lang="ar" dir="rtl" style={{maxHeight: '3em', overflow: 'hidden', textOverflow: 'ellipsis', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical'}}>

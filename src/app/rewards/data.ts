@@ -17,7 +17,7 @@ export const dummyRewards: Reward[] = [
     type: 'badge',
     iconUrl: 'https://placehold.co/100x100.png',
     imageAiHint: 'badge praying hands',
-    pointsRequired: 15, // 3 duas * 5 points
+    pointsRequired: 15,
   },
   {
     id: 'badge-quran-reflecter',
@@ -26,7 +26,7 @@ export const dummyRewards: Reward[] = [
     type: 'badge',
     iconUrl: 'https://placehold.co/100x100.png',
     imageAiHint: 'badge quran open',
-    pointsRequired: 21, // 3 verses * 7 points
+    pointsRequired: 21, 
   },
   {
     id: 'badge-quiz-whiz',
@@ -35,7 +35,7 @@ export const dummyRewards: Reward[] = [
     type: 'badge',
     iconUrl: 'https://placehold.co/100x100.png',
     imageAiHint: 'badge brain lightbulb',
-    pointsRequired: 10, // A quiz gives max 10 points
+    pointsRequired: 10, 
   },
   {
     id: 'virtual-prayer-mat',
@@ -53,7 +53,6 @@ export const dummyRewards: Reward[] = [
     type: 'badge',
     iconUrl: 'https://placehold.co/100x100.png',
     imageAiHint: 'star gold shiny',
-    // No points required, awarded by AI
   },
   {
     id: 'badge-puzzle-master',
@@ -98,7 +97,7 @@ export const dummyRewards: Reward[] = [
     type: 'badge',
     iconUrl: 'https://placehold.co/100x100.png',
     imageAiHint: 'badge open book',
-    pointsRequired: 100,
+    pointsRequired: 100, 
   },
   {
     id: 'avatar-smile-face',
@@ -134,7 +133,7 @@ export const dummyRewards: Reward[] = [
     type: 'badge',
     iconUrl: 'https://placehold.co/100x100.png',
     imageAiHint: 'badge calendar star',
-    pointsRequired: 0, // Awarded by system logic
+    pointsRequired: 0, 
   },
   {
     id: 'virtual-eid-balloon',
@@ -145,4 +144,35 @@ export const dummyRewards: Reward[] = [
     imageAiHint: 'eid balloon colorful',
     pointsRequired: 15,
   },
+  // Adding more rewards to approach 50
+  { id: 'badge-story-maven', title: 'Story Maven Badge', description: 'Completed 10 stories.', type: 'badge', iconUrl: 'https://placehold.co/100x100.png', imageAiHint: 'badge library books', pointsRequired: 100 },
+  { id: 'badge-dua-devotee', title: 'Dua Devotee Badge', description: 'Learned 10 Duas.', type: 'badge', iconUrl: 'https://placehold.co/100x100.png', imageAiHint: 'badge heart prayer', pointsRequired: 50 },
+  { id: 'badge-quran-scholar', title: 'Quran Scholar Badge', description: 'Reflected on 10 Quranic verses.', type: 'badge', iconUrl: 'https://placehold.co/100x100.png', imageAiHint: 'badge scroll wisdom', pointsRequired: 70 },
+  { id: 'badge-quiz-mastermind', title: 'Quiz Mastermind Badge', description: 'Aced 5 quizzes.', type: 'badge', iconUrl: 'https://placehold.co/100x100.png', imageAiHint: 'badge trophy quiz', pointsRequired: 50 },
+  { id: 'virtual-quran-stand', title: 'Ornate Quran Stand', description: 'A beautiful virtual Quran stand.', type: 'virtual_item', iconUrl: 'https://placehold.co/100x100.png', imageAiHint: 'quran stand ornate', pointsRequired: 80 },
+  { id: 'badge-puzzle-prodigy', title: 'Puzzle Prodigy Badge', description: 'Completed 10 puzzles.', type: 'badge', iconUrl: 'https://placehold.co/100x100.png', imageAiHint: 'badge brain puzzle', pointsRequired: 60 },
+  { id: 'wallpaper-islamic-pattern', title: 'Geometric Pattern Wallpaper', description: 'An intricate Islamic geometric pattern.', type: 'wallpaper', iconUrl: 'https://placehold.co/100x100.png', imageAiHint: 'islamic pattern blue', pointsRequired: 90 },
+  { id: 'badge-memory-genius', title: 'Memory Genius Badge', description: 'Won 10 memory match games.', type: 'badge', iconUrl: 'https://placehold.co/100x100.png', imageAiHint: 'badge medal memory', pointsRequired: 70 },
+  { id: 'virtual-calligraphy-art', title: 'Bismillah Calligraphy Art', description: 'Stunning "Bismillah" calligraphy.', type: 'virtual_item', iconUrl: 'https://placehold.co/100x100.png', imageAiHint: 'calligraphy bismillah gold', pointsRequired: 120 },
+  { id: 'avatar-prophets-cloak', title: 'Prophet\'s Cloak (Style)', description: 'A dignified cloak for your avatar.', type: 'avatar_accessory', iconUrl: 'https://placehold.co/100x100.png', imageAiHint: 'avatar cloak wise', pointsRequired: 150 },
+  { id: 'badge-aalim-companion', title: 'Aalim\'s Best Friend', description: 'Consistent high-quality interaction with Aalim.', type: 'badge', iconUrl: 'https://placehold.co/100x100.png', imageAiHint: 'badge robot friend', awardedByAI: true },
+  { id: 'badge-five-pillars-expert', title: 'Five Pillars Expert', description: 'Mastered content on all Five Pillars.', type: 'badge', iconUrl: 'https://placehold.co/100x100.png', imageAiHint: 'badge pillars islam', pointsRequired: 200 },
+  { id: 'wallpaper-night-sky-crescent', title: 'Crescent Moon Wallpaper', description: 'A beautiful night sky with a crescent moon.', type: 'wallpaper', iconUrl: 'https://placehold.co/100x100.png', imageAiHint: 'crescent moon stars', pointsRequired: 30 },
+  { id: 'virtual-mini-kaaba', title: 'Mini Kaaba Model', description: 'A small virtual model of the Kaaba.', type: 'virtual_item', iconUrl: 'https://placehold.co/100x100.png', imageAiHint: 'kaaba model small', pointsRequired: 200 },
+  { id: 'badge-good-deeds-champion', title: 'Good Deeds Champion', description: 'Recognized for consistent positive choices in stories/games.', type: 'badge', iconUrl: 'https://placehold.co/100x100.png', imageAiHint: 'badge heart gold', pointsRequired: 130 },
+  { id: 'avatar-scholarly-glasses', title: 'Scholarly Glasses', description: 'Wise-looking glasses for your avatar.', type: 'avatar_accessory', iconUrl: 'https://placehold.co/100x100.png', imageAiHint: 'avatar glasses smart', pointsRequired: 25 },
+  { id: 'badge-fasting-friend', title: 'Fasting Friend Badge', description: 'Learned about Ramadan and fasting.', type: 'badge', iconUrl: 'https://placehold.co/100x100.png', imageAiHint: 'badge date fruit', pointsRequired: 45 },
+  { id: 'wallpaper-madinah-mosque', title: 'Masjid Nabawi Wallpaper', description: 'A beautiful image of Masjid Nabawi.', type: 'wallpaper', iconUrl: 'https://placehold.co/100x100.png', imageAiHint: 'madinah mosque green', pointsRequired: 110 },
+  { id: 'badge-hajj-hopeful', title: 'Hajj Hopeful Badge', description: 'Learned about the Hajj pilgrimage.', type: 'badge', iconUrl: 'https://placehold.co/100x100.png', imageAiHint: 'badge kaaba pilgrim', pointsRequired: 55 },
+  { id: 'virtual-salah-guide-animation', title: 'Salah Guide Animation', description: 'An animated guide to performing Salah.', type: 'virtual_item', iconUrl: 'https://placehold.co/100x100.png', imageAiHint: 'animation prayer steps', pointsRequired: 140 },
+  { id: 'badge-arabic-alphabet-ace', title: 'Arabic Alphabet Ace', description: 'Mastered the Arabic alphabet game.', type: 'badge', iconUrl: 'https://placehold.co/100x100.png', imageAiHint: 'badge arabic letters', pointsRequired: 40 },
+  { id: 'avatar-topi-cap', title: 'Prayer Cap (Topi)', description: 'A traditional prayer cap for your avatar.', type: 'avatar_accessory', iconUrl: 'https://placehold.co/100x100.png', imageAiHint: 'avatar prayer cap', pointsRequired: 30 },
+  { id: 'badge-wudu-wonder', title: 'Wudu Wonder Badge', description: 'Learned the steps of Wudu perfectly.', type: 'badge', iconUrl: 'https://placehold.co/100x100.png', imageAiHint: 'badge water drop clean', pointsRequired: 35 },
+  { id: 'wallpaper-islamic-quotes', title: 'Inspirational Quote Wallpaper', description: 'Beautiful calligraphy of an Islamic quote.', type: 'wallpaper', iconUrl: 'https://placehold.co/100x100.png', imageAiHint: 'calligraphy quote inspiring', pointsRequired: 65 },
+  { id: 'badge-community-helper', title: 'Community Helper Badge', description: 'Demonstrated helping others in scenarios.', type: 'badge', iconUrl: 'https://placehold.co/100x100.png', imageAiHint: 'badge helping hands group', pointsRequired: 85 },
+  { id: 'virtual-eid-lantern', title: 'Festive Eid Lantern', description: 'A colorful virtual Eid lantern.', type: 'virtual_item', iconUrl: 'https://placehold.co/100x100.png', imageAiHint: 'eid lantern glowing', pointsRequired: 70 },
+  { id: 'badge-peacemaker-award', title: 'Peacemaker Award', description: 'Consistently chose peaceful resolutions.', type: 'badge', iconUrl: 'https://placehold.co/100x100.png', imageAiHint: 'badge dove olive', pointsRequired: 95 },
+  { id: 'avatar-kindness-aura', title: 'Kindness Aura Effect', description: 'A gentle glowing aura for your avatar.', type: 'avatar_accessory', iconUrl: 'https://placehold.co/100x100.png', imageAiHint: 'avatar aura light', pointsRequired: 100 },
+  { id: 'badge-truthfulness-token', title: 'Truthfulness Token', description: 'Always chose honesty.', type: 'badge', iconUrl: 'https://placehold.co/100x100.png', imageAiHint: 'badge medal true', pointsRequired: 75 },
+  { id: 'wallpaper-starry-night-dhikr', title: 'Dhikr Stars Wallpaper', description: 'Starry night sky reminding of Dhikr.', type: 'wallpaper', iconUrl: 'https://placehold.co/100x100.png', imageAiHint: 'stars night sky', pointsRequired: 50 },
 ];

@@ -1,3 +1,4 @@
+
 'use client';
 
 import type { MemoryMatchGame, MemoryMatchCard } from '@/lib/types';
@@ -15,7 +16,7 @@ interface MemoryMatchGameProps {
 }
 
 interface BoardCard extends MemoryMatchCard {
-  uniqueId: number; // To differentiate between two identical cards on the board
+  uniqueId: number; 
   isFlipped: boolean;
   isMatched: boolean;
 }
@@ -26,7 +27,7 @@ export default function MemoryMatchGameComponent({ game, onGameComplete }: Memor
   const [matchedPairs, setMatchedPairs] = useState(0);
   const [moves, setMoves] = useState(0);
   const [isGameWon, setIsGameWon] = useState(false);
-  const [isProcessing, setIsProcessing] = useState(false); // To prevent rapid clicks
+  const [isProcessing, setIsProcessing] = useState(false);
   const { addPoints } = useUserProgress();
 
   const initializeBoard = useCallback(() => {
@@ -49,7 +50,7 @@ export default function MemoryMatchGameComponent({ game, onGameComplete }: Memor
     if (flippedCards.length === 2) {
       setIsProcessing(true);
       const [firstCard, secondCard] = flippedCards;
-      if (firstCard.id === secondCard.id) { // Matched
+      if (firstCard.id === secondCard.id) { 
         setBoard(prevBoard =>
           prevBoard.map(card =>
             card.id === firstCard.id ? { ...card, isMatched: true, isFlipped: true } : card
@@ -58,7 +59,7 @@ export default function MemoryMatchGameComponent({ game, onGameComplete }: Memor
         setMatchedPairs(prev => prev + 1);
         setFlippedCards([]);
         setIsProcessing(false);
-      } else { // Not a match
+      } else { 
         setTimeout(() => {
           setBoard(prevBoard =>
             prevBoard.map(card =>
@@ -76,16 +77,16 @@ export default function MemoryMatchGameComponent({ game, onGameComplete }: Memor
   }, [flippedCards]);
 
   useEffect(() => {
-    if (game.cards.length > 0 && matchedPairs === game.cards.length) {
+    if (game.cards.length > 0 && matchedPairs === game.cards.length && !isGameWon) { // ensure it only runs once
       setIsGameWon(true);
-      const pointsEarned = Math.max(1, 10 - Math.floor(moves / game.cards.length)); // Max 10 points, min 1
+      const pointsEarned = Math.max(1, 10 - Math.floor(moves / (game.cards.length * 0.5))); // Base points + efficiency
       addPoints(pointsEarned);
       onGameComplete();
     }
-  }, [matchedPairs, game.cards.length, onGameComplete, addPoints, moves]);
+  }, [matchedPairs, game.cards.length, onGameComplete, addPoints, moves, isGameWon]);
 
   const handleCardClick = (clickedCard: BoardCard) => {
-    if (isProcessing || clickedCard.isFlipped || flippedCards.length === 2) return;
+    if (isProcessing || clickedCard.isFlipped || flippedCards.length === 2 || isGameWon) return;
 
     setBoard(prevBoard =>
       prevBoard.map(card =>
@@ -98,7 +99,7 @@ export default function MemoryMatchGameComponent({ game, onGameComplete }: Memor
   const CardComponent = ({ card }: { card: BoardCard }) => (
     <button
       onClick={() => handleCardClick(card)}
-      disabled={card.isFlipped || isProcessing}
+      disabled={card.isFlipped || isProcessing || isGameWon}
       aria-pressed={card.isFlipped}
       className={cn(
         "aspect-square rounded-lg shadow-md flex items-center justify-center p-2 transition-all duration-300 transform",
@@ -110,7 +111,7 @@ export default function MemoryMatchGameComponent({ game, onGameComplete }: Memor
       <div className={cn("transition-opacity duration-150", card.isFlipped ? "opacity-100" : "opacity-0")} style={{ transform: card.isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)' }}>
         {card.type === 'text' && <span className="text-sm sm:text-base font-semibold text-accent-foreground text-center">{card.content}</span>}
         {card.type === 'image' && (
-          <Image src={card.content} alt="Memory card" width={80} height={80} objectFit="contain" data-ai-hint={card.imageAiHint || 'icon symbol'}/>
+          <Image src={`https://placehold.co/80x80.png`} alt={card.content || "Memory card"} width={80} height={80} objectFit="contain" data-ai-hint={card.imageAiHint || 'icon symbol match'}/>
         )}
       </div>
        {!card.isFlipped && <HelpCircle className="w-8 h-8 sm:w-12 sm:h-12 text-primary-foreground"/>}
@@ -131,7 +132,7 @@ export default function MemoryMatchGameComponent({ game, onGameComplete }: Memor
           </p>
           <div className="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 rounded-md" role="alert">
             <p className="font-bold flex items-center justify-center">
-              <Gift className="mr-2"/>Congratulations! You earned {Math.max(1, 10 - Math.floor(moves / game.cards.length))} points!
+              <Gift className="mr-2"/>Congratulations! You earned {Math.max(1, 10 - Math.floor(moves / (game.cards.length * 0.5)))} points!
             </p>
           </div>
           <Button onClick={initializeBoard} className="w-full sm:w-auto" variant="outline">
@@ -142,7 +143,7 @@ export default function MemoryMatchGameComponent({ game, onGameComplete }: Memor
     );
   }
   
-  const gridSize = game.cards.length <= 6 ? 'grid-cols-3 sm:grid-cols-4' : 'grid-cols-4 sm:grid-cols-5';
+  const gridSize = game.cards.length <= 4 ? 'grid-cols-2 sm:grid-cols-3' : game.cards.length <= 6 ? 'grid-cols-3 sm:grid-cols-4' : 'grid-cols-4 sm:grid-cols-5';
 
 
   return (
@@ -170,4 +171,3 @@ export default function MemoryMatchGameComponent({ game, onGameComplete }: Memor
     </ShadCard>
   );
 }
-

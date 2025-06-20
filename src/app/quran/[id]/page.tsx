@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
@@ -6,7 +7,7 @@ import AppLayout from '@/components/layout/AppLayout';
 import { dummyQuranVerses } from '../data';
 import type { QuranVerse } from '@/lib/types';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowLeft, PlayCircle, Volume2, BookOpen, CheckCircle, Gift } from 'lucide-react';
 import { useUserProgress } from '@/contexts/UserProgressContext';
 import LoadingSpinner from '@/components/shared/LoadingSpinner';
@@ -66,7 +67,8 @@ export default function SingleQuranVersePage() {
             audioRef.current = null;
         }
     };
-  }, [params.id, router, getLessonProgress, updateLessonProgress, verse, toast]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [params.id, router, getLessonProgress, updateLessonProgress, toast]); // Removed `verse` from deps
 
   const togglePlay = () => {
      if (!audioRef.current) {

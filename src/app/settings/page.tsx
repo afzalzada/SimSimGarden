@@ -1,9 +1,10 @@
+
 'use client';
 
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useEffect, useState, Suspense } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import AppLayout from '@/components/layout/AppLayout';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useParentalGate } from '@/hooks/use-parental-gate';
 import { Bell, Palette, UserCircle, ShieldCheck } from 'lucide-react';
@@ -11,64 +12,56 @@ import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
 import LoadingSpinner from '@/components/shared/LoadingSpinner';
 
-export default function SettingsPage() {
+function SettingsContent() {
   const router = useRouter();
-  const { isGatePassed, showParentalGate, setIsGatePassed } = useParentalGate();
+  const searchParams = useSearchParams();
+  const { showParentalGate } = useParentalGate(); 
+  
+  const [isVerified, setIsVerified] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // This check ensures that if the user navigates directly or refreshes,
-    // they are prompted with the gate if it wasn't passed in the current session.
-    // A more robust solution might use session storage or a similar mechanism
-    // to remember the gate was passed for a short period.
-    if (!isGatePassed) {
+    // Check if the gate was passed in this session via URL parameter
+    if (searchParams.get('gate_passed_once') === 'true') {
+      setIsVerified(true);
+    } else {
+      // If not passed via URL, show the gate immediately
+      // The dialog itself will navigate with the param on success
       showParentalGate();
-      // Redirect to home if gate is not passed. The gate dialog will handle actual redirection to settings on success.
-      // Or, keep them on a loading state until gate is resolved.
-      // For now, if not passed, we rely on the dialog to manage flow.
-      // If the dialog is closed without passing, they remain on this "locked" page.
-      // A better UX would be to redirect away if they close the dialog without passing.
     }
-    // Simulate loading settings
-    const timer = setTimeout(() => setIsLoading(false), 500);
+    const timer = setTimeout(() => setIsLoading(false), 300); // Shorter delay, main check is param
     return () => clearTimeout(timer);
-  }, [isGatePassed, showParentalGate, router]);
-  
-  // Cleanup isGatePassed when component unmounts or user navigates away
-  useEffect(() => {
-    return () => {
-      setIsGatePassed(false);
-    };
-  }, [setIsGatePassed]);
+  }, [searchParams, showParentalGate]);
 
 
-  if (isLoading && !isGatePassed) {
+  if (isLoading) {
     return (
       <AppLayout>
         <div className="flex flex-col items-center justify-center min-h-[60vh]">
           <LoadingSpinner size={48} />
-          <p className="mt-4 text-muted-foreground">Verifying access...</p>
+          <p className="mt-4 text-muted-foreground">Loading settings...</p>
         </div>
       </AppLayout>
     );
   }
   
-  if (!isGatePassed && !isLoading) {
-     // This state can occur if the dialog was closed without passing.
-     // Prompt again or provide a way to go back.
+  if (!isVerified) {
+    // This state is reached if the URL param isn't there, and the dialog should be active.
+    // Or if the dialog was closed without passing.
     return (
       <AppLayout>
         <div className="flex flex-col items-center justify-center min-h-[60vh] text-center">
           <ShieldCheck className="w-16 h-16 text-destructive mb-4" />
-          <h1 className="text-2xl font-bold text-destructive mb-2">Access Denied</h1>
-          <p className="text-muted-foreground mb-4">Parental verification is required to access settings.</p>
+          <h1 className="text-2xl font-bold text-destructive mb-2">Parental Verification Required</h1>
+          <p className="text-muted-foreground mb-4">Please complete the verification to access settings.</p>
           <Button onClick={showParentalGate}>Verify Parent</Button>
+           <Button variant="link" onClick={() => router.push('/')} className="mt-4">Back to Home</Button>
         </div>
       </AppLayout>
     );
   }
 
-
+  // Gate is passed, show actual settings
   return (
     <AppLayout>
       <div className="max-w-2xl mx-auto">
@@ -121,5 +114,14 @@ export default function SettingsPage() {
         </div>
       </div>
     </AppLayout>
+  );
+}
+
+// Wrap with Suspense because useSearchParams() needs it
+export default function SettingsPage() {
+  return (
+    <Suspense fallback={<AppLayout><div className="flex justify-center items-center h-screen"><LoadingSpinner size={48} /><p className="ml-2">Loading...</p></div></AppLayout>}>
+      <SettingsContent />
+    </Suspense>
   );
 }

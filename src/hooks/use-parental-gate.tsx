@@ -14,17 +14,15 @@ export function useParentalGate() {
   const [num1, setNum1] = useState(0);
   const [num2, setNum2] = useState(0);
   const [answer, setAnswer] = useState('');
-  const [isGatePassed, setIsGatePassed] = useState(false);
   const router = useRouter();
   const { toast } = useToast();
 
   const generateProblem = useCallback(() => {
-    setNum1(Math.floor(Math.random() * 9) + 1); // Numbers from 1-9 for simplicity
+    setNum1(Math.floor(Math.random() * 9) + 1);
     setNum2(Math.floor(Math.random() * 9) + 1);
     setAnswer('');
   }, []);
 
-  // Effect to generate a problem when the dialog is opened
   useEffect(() => {
     if (isOpen) {
       generateProblem();
@@ -37,28 +35,20 @@ export function useParentalGate() {
     if (parseInt(answer) === num1 + num2) {
       toast({ title: 'Success!', description: 'Gate passed. Accessing settings...' });
       setIsOpen(false);
-      setIsGatePassed(true); 
-      router.push('/settings');
+      router.push('/settings?gate_passed_once=true');
     } else {
       toast({ variant: 'destructive', title: 'Incorrect', description: 'Please try again.' });
-      generateProblem(); // Generate new problem on incorrect answer
-      setIsGatePassed(false); 
+      generateProblem();
     }
   };
 
   const showParentalGate = useCallback(() => {
-    setIsGatePassed(false); // Reset gate status for a fresh check
-    generateProblem();    // Ensure a new problem is ready
-    setIsOpen(true);      // Then open the dialog
-  }, [setIsGatePassed, setIsOpen, generateProblem]);
-
+    generateProblem();
+    setIsOpen(true);
+  }, [generateProblem]);
+  
   const handleDialogOpenChange = useCallback((openStatus: boolean) => {
     setIsOpen(openStatus);
-    // If the dialog is being closed (openStatus is false) and the gate was NOT passed via submit,
-    // `isGatePassed` should remain `false`.
-    // `isGatePassed` is explicitly set to `true` only on successful `handleSubmit`.
-    // `showParentalGate` and `SettingsPage` cleanup handle setting it to `false`.
-    // Thus, no explicit setIsGatePassed(false) call is needed here.
   }, [setIsOpen]);
 
 
@@ -98,5 +88,5 @@ export function useParentalGate() {
     </Dialog>
   );
 
-  return { ParentalGateDialog, showParentalGate, isGatePassed, setIsGatePassed };
+  return { ParentalGateDialog, showParentalGate };
 }

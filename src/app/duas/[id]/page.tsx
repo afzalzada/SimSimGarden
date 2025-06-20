@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
@@ -6,7 +7,7 @@ import AppLayout from '@/components/layout/AppLayout';
 import { dummyDuas } from '../data';
 import type { Dua } from '@/lib/types';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowLeft, PlayCircle, Mic, Volume2, CheckCircle, Gift } from 'lucide-react';
 import { useUserProgress } from '@/contexts/UserProgressContext';
 import LoadingSpinner from '@/components/shared/LoadingSpinner';
@@ -69,7 +70,8 @@ export default function SingleDuaPage() {
             audioRef.current = null;
         }
     };
-  }, [params.id, router, getLessonProgress, updateLessonProgress, dua, isRecording, toast]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [params.id, router, getLessonProgress, updateLessonProgress, isRecording, toast]); // Removed `dua` from deps to avoid re-running when `dua` state changes due to setDua itself
 
   const togglePlay = () => {
     if (!audioRef.current) {

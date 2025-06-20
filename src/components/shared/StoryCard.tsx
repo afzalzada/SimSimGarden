@@ -19,7 +19,7 @@ export default function StoryCard({ story }: StoryCardProps) {
             alt={story.title} 
             layout="fill" 
             objectFit="cover"
-            data-ai-hint={story.imageAiHint || 'storybook illustration kids'}
+            data-ai-hint={story.imageAiHint || 'storybook illustration character'}
           />
         </div>
       </CardHeader>

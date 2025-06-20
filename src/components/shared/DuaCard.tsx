@@ -23,7 +23,7 @@ export default function DuaCard({ dua }: DuaCardProps) {
                 alt={dua.title} 
                 layout="fill" 
                 objectFit="cover"
-                data-ai-hint={dua.imageAiHint || 'islamic symbol child'}
+                data-ai-hint={dua.imageAiHint || 'islamic symbol illustration'}
             />
         </div>
         <p className="text-2xl font-['Noto_Naskh_Arabic'] text-foreground my-2" lang="ar" dir="rtl">{dua.arabic}</p>
