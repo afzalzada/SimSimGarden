@@ -19,11 +19,12 @@ export function useParentalGate() {
   const { toast } = useToast();
 
   const generateProblem = useCallback(() => {
-    setNum1(Math.floor(Math.random() * 10) + 1);
-    setNum2(Math.floor(Math.random() * 10) + 1);
+    setNum1(Math.floor(Math.random() * 9) + 1); // Numbers from 1-9 for simplicity
+    setNum2(Math.floor(Math.random() * 9) + 1);
     setAnswer('');
   }, []);
 
+  // Effect to generate a problem when the dialog is opened
   useEffect(() => {
     if (isOpen) {
       generateProblem();
@@ -36,27 +37,28 @@ export function useParentalGate() {
     if (parseInt(answer) === num1 + num2) {
       toast({ title: 'Success!', description: 'Gate passed. Accessing settings...' });
       setIsOpen(false);
-      setIsGatePassed(true); // Gate passed
+      setIsGatePassed(true); 
       router.push('/settings');
     } else {
       toast({ variant: 'destructive', title: 'Incorrect', description: 'Please try again.' });
-      generateProblem();
-      setIsGatePassed(false); // Gate not passed
+      generateProblem(); // Generate new problem on incorrect answer
+      setIsGatePassed(false); 
     }
   };
 
-  const showParentalGate = () => {
+  const showParentalGate = useCallback(() => {
     setIsGatePassed(false); // Reset gate status for a fresh check
-    setIsOpen(true);
-  };
+    generateProblem();    // Ensure a new problem is ready
+    setIsOpen(true);      // Then open the dialog
+  }, [setIsGatePassed, setIsOpen, generateProblem]);
 
   const handleDialogOpenChange = useCallback((openStatus: boolean) => {
     setIsOpen(openStatus);
-    // This callback primarily manages the dialog's open state.
-    // The isGatePassed state is managed by handleSubmit on success/failure,
-    // by showParentalGate on initiation, and by the SettingsPage component on unmount.
-    // If the dialog is closed without passing the gate (e.g., clicking outside),
-    // isGatePassed should already be false from the last attempt or from showParentalGate.
+    // If the dialog is being closed (openStatus is false) and the gate was NOT passed via submit,
+    // `isGatePassed` should remain `false`.
+    // `isGatePassed` is explicitly set to `true` only on successful `handleSubmit`.
+    // `showParentalGate` and `SettingsPage` cleanup handle setting it to `false`.
+    // Thus, no explicit setIsGatePassed(false) call is needed here.
   }, [setIsOpen]);
 
 
