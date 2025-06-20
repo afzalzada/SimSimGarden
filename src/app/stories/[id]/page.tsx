@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -8,10 +9,23 @@ import type { Story, StoryContentNode } from '@/lib/types';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import Image from 'next/image';
-import { ArrowLeft, CheckCircle, Gift } from 'lucide-react';
+import { CheckCircle, Gift } from 'lucide-react';
 import Link from 'next/link';
 import { useUserProgress } from '@/contexts/UserProgressContext';
 import LoadingSpinner from '@/components/shared/LoadingSpinner';
+
+// Helper component for ArrowRight to avoid re-definition on every render
+const ArrowLeftIcon = ({ className }: { className?: string }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className={className || "w-6 h-6"}>
+    <path fillRule="evenodd" d="M11.03 3.97a.75.75 0 010 1.06l-6.22 6.22H21a.75.75 0 010 1.5H4.81l6.22 6.22a.75.75 0 11-1.06 1.06l-7.5-7.5a.75.75 0 010-1.06l7.5-7.5a.75.75 0 011.06 0z" clipRule="evenodd" />
+  </svg>
+);
+
+const ArrowRightIcon = ({ className }: { className?: string }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className={className || "w-6 h-6"}>
+    <path fillRule="evenodd" d="M12.97 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06l6.22-6.22H3a.75.75 0 010-1.5h16.19l-6.22-6.22a.75.75 0 010-1.06z" clipRule="evenodd" />
+  </svg>
+);
 
 export default function SingleStoryPage() {
   const params = useParams();
@@ -43,8 +57,13 @@ export default function SingleStoryPage() {
   }, [params.id, router, getLessonProgress]);
 
   useEffect(() => {
-    if (story && !isCompleted && getLessonProgress(story.id) !== 'Completed') {
+    if (story && !isCompleted) {
+      const currentProgress = getLessonProgress(story.id);
+      // Only update if progress is not already 'In Progress' or 'Completed'
+      // This prevents the loop by not calling updateLessonProgress unnecessarily
+      if (currentProgress !== 'Completed' && currentProgress !== 'In Progress') {
         updateLessonProgress(story.id, 'In Progress');
+      }
     }
   }, [story, currentNodeIndex, updateLessonProgress, isCompleted, getLessonProgress]);
 
@@ -95,7 +114,7 @@ export default function SingleStoryPage() {
             </div>
             <div className="flex gap-4 justify-center">
                 <Button onClick={() => router.push('/stories')} variant="outline">
-                    <ArrowLeft className="mr-2 h-4 w-4" /> Back to Stories
+                    <ArrowLeftIcon className="mr-2 h-4 w-4" /> Back to Stories
                 </Button>
                 <Link href="/rewards">
                     <Button>View My Rewards</Button>
@@ -110,7 +129,7 @@ export default function SingleStoryPage() {
   return (
     <AppLayout>
       <Button onClick={() => router.push('/stories')} variant="outline" className="mb-6">
-        <ArrowLeft className="mr-2 h-4 w-4" /> Back to Stories
+        <ArrowLeftIcon className="mr-2 h-4 w-4" /> Back to Stories
       </Button>
       <Card className="shadow-xl rounded-xl overflow-hidden bg-card/90 backdrop-blur-md">
         <CardHeader className="bg-primary/10 p-6">
@@ -165,10 +184,3 @@ export default function SingleStoryPage() {
     </AppLayout>
   );
 }
-
-// Helper component for ArrowRight to avoid hydration issues if it were dynamic
-const ArrowRightIcon = ({ className }: { className?: string }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className={className || "w-6 h-6"}>
-    <path fillRule="evenodd" d="M12.97 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06l6.22-6.22H3a.75.75 0 010-1.5h16.19l-6.22-6.22a.75.75 0 010-1.06z" clipRule="evenodd" />
-  </svg>
-);
