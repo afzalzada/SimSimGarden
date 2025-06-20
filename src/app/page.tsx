@@ -15,7 +15,7 @@ const features = [
     icon: <BookOpenText className="w-12 h-12 text-primary mb-4" />,
     image: 'https://placehold.co/600x400.png',
     aiHint: 'storybook kids magic',
-    bgColor: 'bg-primary/10',
+    bgColor: 'bg-primary/5', // Original was primary/10
   },
   {
     title: 'Interactive Duas',
@@ -33,7 +33,7 @@ const features = [
     icon: <BookMarked className="w-12 h-12 text-primary mb-4" />,
     image: 'https://placehold.co/600x400.png',
     aiHint: 'quran open serene',
-    bgColor: 'bg-accent/10',
+    bgColor: 'bg-accent/5', // Original was accent/10
   },
   {
     title: 'Fun Islamic Games',
@@ -42,7 +42,7 @@ const features = [
     icon: <Gamepad2 className="w-12 h-12 text-primary mb-4" />,
     image: 'https://placehold.co/600x400.png',
     aiHint: 'kids playing fun',
-    bgColor: 'bg-primary/15', // Slightly different shade
+    bgColor: 'bg-primary/10', // Original was primary/15
   },
   {
     title: 'Chat with Aalim AI',
@@ -51,7 +51,7 @@ const features = [
     icon: <Bot className="w-12 h-12 text-primary mb-4" />,
     image: 'https://placehold.co/600x400.png',
     aiHint: 'friendly robot teacher',
-    bgColor: 'bg-secondary/15', // Slightly different shade
+    bgColor: 'bg-secondary/15',
   },
   {
     title: 'Points & Rewards',
@@ -60,14 +60,14 @@ const features = [
     icon: <Trophy className="w-12 h-12 text-primary mb-4" />,
     image: 'https://placehold.co/600x400.png',
     aiHint: 'trophy stars celebration',
-    bgColor: 'bg-accent/15', // Slightly different shade
+    bgColor: 'bg-accent/10', // Original was accent/15
   },
 ];
 
 export default function HomePage() {
   return (
     <AppLayout>
-      <section className="text-center py-10 bg-gradient-to-br from-primary/10 via-background to-accent/10 rounded-xl shadow-sm">
+      <section className="text-center py-10 bg-gradient-to-br from-primary/5 via-background to-accent/5 rounded-xl shadow-sm">
         <h1 className="font-headline text-5xl font-bold text-primary mb-4 animate-shine bg-clip-text text-transparent bg-[linear-gradient(110deg,hsl(var(--primary)),45%,hsl(var(--accent)),55%,hsl(var(--primary)))] bg-[length:250%_100%]" >
           Welcome to Noor Kids!
         </h1>
@@ -85,9 +85,15 @@ export default function HomePage() {
         <h2 className="font-headline text-3xl font-semibold text-center text-primary mb-10">Explore Our Features</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature) => (
-            <Card key={feature.title} className={cn("backdrop-blur-sm shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-xl overflow-hidden flex flex-col group", feature.bgColor || "bg-card/80")}>
+            <Card 
+              key={feature.title} 
+              className={cn(
+                "backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 rounded-xl overflow-hidden flex flex-col group hover:scale-105 hover:animate-subtle-scale-hover", 
+                feature.bgColor || "bg-card/80"
+              )}
+            >
               <CardHeader className="items-center text-center p-6">
-                <div className="p-3 rounded-full bg-primary/20 mb-4 transition-transform group-hover:scale-110"> {/* Made icon background slightly darker for better pop on colored cards */}
+                <div className="p-3 rounded-full bg-primary/15 mb-4 transition-transform group-hover:scale-110">
                   {feature.icon}
                 </div>
                 <CardTitle className="font-headline text-2xl text-primary group-hover:text-accent transition-colors">

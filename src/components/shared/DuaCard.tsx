@@ -14,12 +14,15 @@ interface DuaCardProps {
 
 export default function DuaCard({ dua, bgColor = "bg-card/80" }: DuaCardProps) {
   return (
-    <Card className={cn("flex flex-col h-full overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 backdrop-blur-sm", bgColor)}>
+    <Card className={cn(
+        "flex flex-col h-full overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 backdrop-blur-sm group hover:scale-105 hover:animate-subtle-scale-hover", 
+        bgColor
+      )}>
       <CardHeader className="p-6 items-center text-center">
-         <div className="p-3 rounded-full bg-primary/10 mb-2">
+         <div className="p-3 rounded-full bg-primary/10 mb-2 transition-transform group-hover:scale-110">
             <Sparkles className="w-8 h-8 text-primary" />
          </div>
-        <CardTitle className="font-headline text-xl text-primary">{dua.title}</CardTitle>
+        <CardTitle className="font-headline text-xl text-primary group-hover:text-accent transition-colors">{dua.title}</CardTitle>
         <div className="relative w-full h-32 rounded-lg overflow-hidden my-2 shadow-inner">
             <Image 
                 src={`https://placehold.co/300x150.png`} 
@@ -27,6 +30,7 @@ export default function DuaCard({ dua, bgColor = "bg-card/80" }: DuaCardProps) {
                 layout="fill" 
                 objectFit="cover"
                 data-ai-hint={dua.imageAiHint || 'islamic symbol illustration'}
+                className="transition-transform group-hover:scale-105 duration-300"
             />
         </div>
         <p className="text-2xl font-['Noto_Naskh_Arabic'] text-foreground my-2" lang="ar" dir="rtl">{dua.arabic}</p>
@@ -40,7 +44,7 @@ export default function DuaCard({ dua, bgColor = "bg-card/80" }: DuaCardProps) {
       </CardContent>
       <CardFooter className="p-6 pt-0">
         <Link href={`/duas/${dua.id}`} className="w-full">
-          <Button variant="default" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg">
+          <Button variant="default" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg group-hover:bg-accent group-hover:text-accent-foreground transition-colors">
             Learn Dua <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
         </Link>

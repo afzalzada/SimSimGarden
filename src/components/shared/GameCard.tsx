@@ -40,12 +40,15 @@ export default function GameCard({ game, bgColor = "bg-card/80" }: GameCardProps
   const IconComponent = game.icon && iconComponents[game.icon] ? iconComponents[game.icon] : Gamepad2Icon;
 
   return (
-    <Card className={cn("flex flex-col h-full overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 backdrop-blur-sm", bgColor)}>
+    <Card className={cn(
+        "flex flex-col h-full overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 backdrop-blur-sm group hover:scale-105 hover:animate-subtle-scale-hover", 
+        bgColor
+      )}>
       <CardHeader className="p-6 items-center text-center">
-        <div className="p-3 rounded-full bg-primary/10 mb-3">
+        <div className="p-3 rounded-full bg-primary/10 mb-3 transition-transform group-hover:scale-110">
           <IconComponent className="w-10 h-10 text-primary" />
         </div>
-        <CardTitle className="font-headline text-xl text-primary">{game.title}</CardTitle>
+        <CardTitle className="font-headline text-xl text-primary group-hover:text-accent transition-colors">{game.title}</CardTitle>
          <div className="relative w-full h-40 rounded-lg overflow-hidden my-2 shadow-inner">
             <Image 
                 src={`https://placehold.co/300x200.png`} 
@@ -53,6 +56,7 @@ export default function GameCard({ game, bgColor = "bg-card/80" }: GameCardProps
                 layout="fill" 
                 objectFit="cover"
                 data-ai-hint={game.imageAiHint || 'game fun illustration'}
+                className="transition-transform group-hover:scale-105 duration-300"
             />
         </div>
       </CardHeader>
@@ -65,7 +69,7 @@ export default function GameCard({ game, bgColor = "bg-card/80" }: GameCardProps
       </CardContent>
       <CardFooter className="p-6 pt-0">
         <Link href={game.href} className="w-full">
-          <Button variant="default" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg">
+          <Button variant="default" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg group-hover:bg-accent group-hover:text-accent-foreground transition-colors">
             Play Game <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
         </Link>

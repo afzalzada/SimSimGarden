@@ -1,46 +1,47 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    /* Base Colors */
-    --background: 200 80% 92%; /* Light, slightly saturated Sky Blue */
-    --foreground: 220 25% 20%; /* Dark Cool Gray for text */
+    /* Base Colors - Kid-Friendly Palette */
+    --background: 200 100% 96%; /* Very Light Sky Blue */
+    --foreground: 220 25% 25%; /* Dark Cool Gray for text, good contrast */
 
-    /* Muted Tones */
-    --muted: 200 60% 85%; /* Softer Sky Blue */
-    --muted-foreground: 210 20% 45%; /* Blue-Gray for less emphasis text */
+    /* Muted Tones - Soft and Gentle */
+    --muted: 200 70% 90%; /* Softer Sky Blue */
+    --muted-foreground: 210 25% 50%; /* Muted Blue-Gray for less emphasis text */
 
-    /* Card & Popover - slightly off-background for depth */
-    --card: 200 70% 95%; /* Very Light Sky Blue, almost white but with a hint of color */
+    /* Card & Popover - Slightly off-background for depth, light and airy */
+    --card: 0 0% 100%; /* White for cards */
     --card-foreground: 220 25% 20%; /* Dark Cool Gray for card text */
-    --popover: 0 0% 100%; /* White for popovers, can be adjusted */
-    --popover-foreground: 220 25% 20%; /* Dark Cool Gray for popover text */
+    --popover: 0 0% 100%; 
+    --popover-foreground: 220 25% 20%;
 
-    /* Borders & Inputs */
-    --border: 190 60% 75%; /* Softened Turquoise/Blue border */
-    --input: 200 70% 98%; /* Very light blue for input backgrounds */
+    /* Borders & Inputs - Clean and subtle */
+    --border: 190 50% 80%; /* Softened Turquoise/Blue border */
+    --input: 0 0% 98%; /* Very light gray for input backgrounds */
 
     /* Primary & Accent Colors - Vibrant and Kid-Friendly */
-    --primary: 175 70% 45%; /* Strong Turquoise */
+    --primary: 175 75% 48%; /* Bright Turquoise - made slightly brighter */
     --primary-foreground: 0 0% 100%; /* White for text on primary */
 
-    --secondary: 45 100% 55%; /* Bright Yellow */
-    --secondary-foreground: 45 100% 15%; /* Dark Brown/Yellow for contrast on secondary */
+    --secondary: 45 100% 58%; /* Vivid Yellow */
+    --secondary-foreground: 45 100% 10%; /* Dark Brown/Yellow for contrast */
 
-    --accent: 300 80% 60%; /* Vivid Purple */
+    --accent: 300 85% 62%; /* Rich Purple - made slightly richer */
     --accent-foreground: 0 0% 100%; /* White for text on accent */
 
     /* Destructive State */
-    --destructive: 0 85% 55%; /* Strong Red */
+    --destructive: 0 85% 60%; /* Strong Bright Red */
     --destructive-foreground: 0 0% 100%; /* White */
 
     /* Other UI Elements */
-    --ring: 175 70% 55%; /* Turquoise for focus rings, slightly lighter */
-    --radius: 0.8rem; /* More rounded corners for a softer feel */
+    --ring: 175 70% 55%; /* Turquoise for focus rings */
+    --radius: 0.8rem; /* Rounded corners for a softer feel */
 
-    /* Chart Colors - A vibrant palette */
+    /* Chart Colors - A vibrant and distinct palette */
     --chart-1: 175 70% 45%; /* Turquoise (matches primary) */
     --chart-2: 300 80% 60%; /* Purple (matches accent) */
     --chart-3: 45 100% 55%; /* Yellow (matches secondary) */
@@ -56,25 +57,25 @@
     --muted: 220 20% 18%; /* Darker Navy */
     --muted-foreground: 200 25% 70%; /* Soft Bluish Gray */
 
-    --card: 220 25% 15%; /* Slightly lighter than background for cards */
+    --card: 220 25% 15%; 
     --card-foreground: 200 30% 90%;
 
     --popover: 220 28% 12%; 
     --popover-foreground: 200 30% 90%;
 
-    --border: 220 20% 25%; /* Darker Navy Border */
+    --border: 220 20% 25%; 
     --input: 220 20% 22%;
 
-    --primary: 175 65% 55%; /* Slightly lighter Turquoise */
-    --primary-foreground: 175 100% 10%; /* Very Dark Turquoise/Black */
+    --primary: 175 65% 55%; 
+    --primary-foreground: 175 100% 10%; 
 
-    --secondary: 45 90% 60%; /* Bright Yellow */
-    --secondary-foreground: 45 100% 10%; /* Dark Brown/Yellow */
+    --secondary: 45 90% 60%; 
+    --secondary-foreground: 45 100% 10%; 
 
-    --accent: 300 75% 65%; /* Lighter Purple */
-    --accent-foreground: 300 100% 10%; /* Very Dark Purple/Black */
+    --accent: 300 75% 65%; 
+    --accent-foreground: 300 100% 10%; 
 
-    --destructive: 0 70% 60%; /* Bright Red */
+    --destructive: 0 70% 60%; 
     --destructive-foreground: 0 0% 100%;
 
     --ring: 175 65% 55%;
@@ -95,4 +96,9 @@
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
+}
+
+/* Add this for Arabic font if needed, apply to specific elements */
+.font-arabic {
+  font-family: 'Noto Naskh Arabic', serif; /* Example Arabic font */
 }

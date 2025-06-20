@@ -1,3 +1,4 @@
+
 import type {Config} from 'tailwindcss';
 
 export default {
@@ -17,8 +18,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        body: ['PT Sans', 'sans-serif'],
-        headline: ['PT Sans', 'sans-serif'],
+        body: ['Nunito', 'sans-serif'],
+        headline: ['Nunito', 'sans-serif'], // Using Nunito for headlines as well for consistency
         code: ['monospace'],
       },
       colors: {
@@ -90,8 +91,8 @@ export default {
           "to": { backgroundPosition: "-200% 0" }
         },
         "pulse-subtle": {
-          "0%, 100%": { opacity: "1" },
-          "50%": { opacity: ".7" }
+          "0%, 100%": { opacity: "1", transform: "scale(1)" },
+          "50%": { opacity: ".8", transform: "scale(1.02)" }
         },
         'tada': {
           '0%': { transform: 'scale(1)' },
@@ -106,6 +107,10 @@ export default {
           '50%': { transform: 'scale(1.15) rotate(3deg)', opacity: '0.8', boxShadow: '0 0 25px 8px hsl(var(--accent))', filter: 'brightness(150%)' },
           '75%': { transform: 'scale(1.05) rotate(-3deg)', filter: 'brightness(120%)' },
           '100%': { transform: 'scale(1) rotate(0)', opacity: '1', boxShadow: 'none', filter: 'brightness(100%)' },
+        },
+        'subtle-scale': {
+          '0%, 100%': { transform: 'scale(1)' },
+          '50%': { transform: 'scale(1.03)' },
         }
       },
       animation: {
@@ -115,6 +120,7 @@ export default {
         "pulse-subtle": "pulse-subtle 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
         'tada': 'tada 1s ease-in-out',
         'reward-unlock': 'reward-unlock 0.8s ease-out',
+        'subtle-scale-hover': 'subtle-scale 0.3s ease-in-out',
       },
     },
   },

@@ -14,7 +14,10 @@ interface StoryCardProps {
 
 export default function StoryCard({ story, bgColor = "bg-card/80" }: StoryCardProps) {
   return (
-    <Card className={cn("flex flex-col h-full overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 backdrop-blur-sm", bgColor)}>
+    <Card className={cn(
+        "flex flex-col h-full overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 backdrop-blur-sm group hover:scale-105 hover:animate-subtle-scale-hover", 
+        bgColor
+      )}>
       <CardHeader className="p-0">
         <div className="relative w-full h-48">
           <Image 
@@ -23,11 +26,12 @@ export default function StoryCard({ story, bgColor = "bg-card/80" }: StoryCardPr
             layout="fill" 
             objectFit="cover"
             data-ai-hint={story.imageAiHint || 'storybook illustration character'}
+            className="transition-transform group-hover:scale-110 duration-300"
           />
         </div>
       </CardHeader>
       <CardContent className="p-6 flex-grow">
-        <CardTitle className="font-headline text-xl mb-2 text-primary">{story.title}</CardTitle>
+        <CardTitle className="font-headline text-xl mb-2 text-primary group-hover:text-accent transition-colors">{story.title}</CardTitle>
         <CardDescription className="text-muted-foreground text-sm mb-3">{story.description}</CardDescription>
         <div className="flex items-center text-xs text-muted-foreground mb-3">
           <Users className="w-4 h-4 mr-1 text-accent" />
@@ -39,7 +43,7 @@ export default function StoryCard({ story, bgColor = "bg-card/80" }: StoryCardPr
       </CardContent>
       <CardFooter className="p-6 pt-0">
         <Link href={`/stories/${story.id}`} className="w-full">
-          <Button variant="default" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg">
+          <Button variant="default" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg group-hover:bg-accent group-hover:text-accent-foreground transition-colors">
             Read Story <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
         </Link>
