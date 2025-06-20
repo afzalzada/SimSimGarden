@@ -4,7 +4,12 @@ import GameCard from '@/components/shared/GameCard';
 import { gameTypes } from './data';
 import { Gamepad2 } from 'lucide-react';
 
-const cardBgColors = ['bg-card/70', 'bg-primary/5', 'bg-secondary/5', 'bg-accent/5'];
+const cardBgColors = [
+  'bg-gradient-to-br from-accent/10 via-background to-primary/5',
+  'bg-gradient-to-tl from-primary/10 via-background to-secondary/5',
+  'bg-gradient-to-r from-secondary/10 via-background to-accent/5',
+  'bg-gradient-to-b from-accent/5 via-background to-primary/10'
+];
 
 export default function GamesPage() {
   return (

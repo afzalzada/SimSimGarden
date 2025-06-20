@@ -4,7 +4,12 @@ import QuranVerseCard from '@/components/shared/QuranVerseCard';
 import { dummyQuranVerses } from './data';
 import { BookMarked } from 'lucide-react';
 
-const cardBgColors = ['bg-accent/5', 'bg-card/70', 'bg-primary/5', 'bg-secondary/5'];
+const cardBgColors = [
+  'bg-gradient-to-br from-secondary/10 via-background to-accent/5',
+  'bg-gradient-to-tl from-accent/10 via-background to-primary/5',
+  'bg-gradient-to-r from-primary/10 via-background to-secondary/5',
+  'bg-gradient-to-b from-secondary/5 via-background to-primary/10'
+];
 
 export default function QuranPage() {
   return (

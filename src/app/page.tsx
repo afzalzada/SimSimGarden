@@ -15,7 +15,7 @@ const features = [
     icon: <BookOpenText className="w-12 h-12 text-primary mb-4" />,
     image: 'https://placehold.co/600x400.png',
     aiHint: 'storybook kids magic',
-    bgColor: 'bg-primary/5', // Original was primary/10
+    bgColor: 'bg-gradient-to-br from-primary/10 via-background to-secondary/5',
   },
   {
     title: 'Interactive Duas',
@@ -24,7 +24,7 @@ const features = [
     icon: <Sparkles className="w-12 h-12 text-primary mb-4" />,
     image: 'https://placehold.co/600x400.png',
     aiHint: 'hands praying light',
-    bgColor: 'bg-secondary/10',
+    bgColor: 'bg-gradient-to-tl from-secondary/10 via-background to-accent/5',
   },
   {
     title: 'Quran Verses',
@@ -33,7 +33,7 @@ const features = [
     icon: <BookMarked className="w-12 h-12 text-primary mb-4" />,
     image: 'https://placehold.co/600x400.png',
     aiHint: 'quran open serene',
-    bgColor: 'bg-accent/5', // Original was accent/10
+    bgColor: 'bg-gradient-to-r from-accent/10 via-background to-primary/5',
   },
   {
     title: 'Fun Islamic Games',
@@ -42,7 +42,7 @@ const features = [
     icon: <Gamepad2 className="w-12 h-12 text-primary mb-4" />,
     image: 'https://placehold.co/600x400.png',
     aiHint: 'kids playing fun',
-    bgColor: 'bg-primary/10', // Original was primary/15
+    bgColor: 'bg-gradient-to-bl from-primary/5 via-background to-accent/10',
   },
   {
     title: 'Chat with Aalim AI',
@@ -51,7 +51,7 @@ const features = [
     icon: <Bot className="w-12 h-12 text-primary mb-4" />,
     image: 'https://placehold.co/600x400.png',
     aiHint: 'friendly robot teacher',
-    bgColor: 'bg-secondary/15',
+    bgColor: 'bg-gradient-to-tr from-secondary/5 via-background to-primary/10',
   },
   {
     title: 'Points & Rewards',
@@ -60,7 +60,7 @@ const features = [
     icon: <Trophy className="w-12 h-12 text-primary mb-4" />,
     image: 'https://placehold.co/600x400.png',
     aiHint: 'trophy stars celebration',
-    bgColor: 'bg-accent/10', // Original was accent/15
+    bgColor: 'bg-gradient-to-l from-accent/5 via-background to-secondary/10',
   },
 ];
 

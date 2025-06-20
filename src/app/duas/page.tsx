@@ -4,7 +4,12 @@ import DuaCard from '@/components/shared/DuaCard';
 import { dummyDuas } from './data';
 import { Sparkles } from 'lucide-react';
 
-const cardBgColors = ['bg-secondary/5', 'bg-accent/5', 'bg-card/70', 'bg-primary/5'];
+const cardBgColors = [
+  'bg-gradient-to-br from-primary/10 via-background to-secondary/5',
+  'bg-gradient-to-tl from-secondary/10 via-background to-accent/5',
+  'bg-gradient-to-r from-accent/10 via-background to-primary/5',
+  'bg-gradient-to-b from-primary/5 via-background to-accent/10'
+];
 
 
 export default function DuasPage() {
