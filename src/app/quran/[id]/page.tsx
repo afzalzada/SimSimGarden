@@ -42,11 +42,13 @@ export default function SingleQuranVersePage() {
                     setPlaybackProgress((audioRef.current.currentTime / audioRef.current.duration) * 100);
                 }
             };
-            audioRef.current.onended = () => {
+            const currentAudio = audioRef.current;
+            const currentVerseForListener = foundVerse;
+            currentAudio.onended = () => { // Changed from audioRef.current.onended to currentAudio.onended
                 setIsPlaying(false);
                 setPlaybackProgress(100);
-                 if (verse && getLessonProgress(verse.id) !== 'Completed') {
-                    updateLessonProgress(verse.id, 'Listened');
+                 if (currentVerseForListener && getLessonProgress(currentVerseForListener.id) !== 'Completed') {
+                    updateLessonProgress(currentVerseForListener.id, 'Listened');
                     toast({ title: "Recitation Complete!", description: "You listened to the verse." });
                  }
             };
@@ -57,7 +59,7 @@ export default function SingleQuranVersePage() {
         }
 
       } else {
-        router.push('/quran'); // Verse not found
+        router.push('/quran'); 
       }
       setIsLoading(false);
     }
@@ -68,7 +70,7 @@ export default function SingleQuranVersePage() {
         }
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [params.id, router, getLessonProgress, updateLessonProgress, toast]); // Removed `verse` from deps
+  }, [params.id, router, getLessonProgress, updateLessonProgress, toast]);
 
   const togglePlay = () => {
      if (!audioRef.current) {
@@ -85,7 +87,7 @@ export default function SingleQuranVersePage() {
   
   const markAsReflected = () => {
     if (verse && !isCompleted) {
-        addPoints(7); // Award 7 points for reflecting on a verse
+        addPoints(7); 
         markLessonCompleted(verse.id);
         setIsCompleted(true);
         toast({ title: "Verse Reflected Upon!", description: `You've learned about "${verse.surahName} ${verse.verseNumber}" and earned 7 points!`, className: "bg-green-500 text-white" });
