@@ -5,86 +5,87 @@
 
 @layer base {
   :root {
-    /* Base Colors - Kid-Friendly Palette */
-    --background: 200 100% 96%; /* Very Light Sky Blue */
-    --foreground: 220 25% 25%; /* Dark Cool Gray for text, good contrast */
+    /* Base Colors - Cheerful & Bright Palette */
+    --background: 200 100% 96%; /* Very Light Sky Blue - calming backdrop */
+    --foreground: 220 40% 15%; /* Dark Cool Gray/Almost Black - for text contrast */
 
-    /* Muted Tones - Soft and Gentle */
+    /* Muted Tones - Soft and supportive */
     --muted: 200 70% 90%; /* Softer Sky Blue */
-    --muted-foreground: 210 25% 50%; /* Muted Blue-Gray for less emphasis text */
+    --muted-foreground: 210 30% 45%; /* Muted Blue-Gray for less emphasis text */
 
-    /* Card & Popover - Slightly off-background for depth, light and airy */
-    --card: 0 0% 100%; /* White for cards */
-    --card-foreground: 220 25% 20%; /* Dark Cool Gray for card text */
+    /* Card & Popover - Clean and bright */
+    --card: 0 0% 100%; /* White for cards to make colors pop */
+    --card-foreground: 220 40% 15%; /* Dark text on cards */
     --popover: 0 0% 100%; 
-    --popover-foreground: 220 25% 20%;
+    --popover-foreground: 220 40% 15%;
 
-    /* Borders & Inputs - Clean and subtle */
-    --border: 190 50% 80%; /* Softened Turquoise/Blue border */
-    --input: 0 0% 98%; /* Very light gray for input backgrounds */
+    /* Borders & Inputs - Clear and defined */
+    --border: 145 50% 70%; /* Lighter Green border, from primary */
+    --input: 200 50% 95%; /* Very light blue for input backgrounds */
 
-    /* Primary & Accent Colors - Vibrant and Kid-Friendly */
-    --primary: 175 75% 48%; /* Bright Turquoise - made slightly brighter */
-    --primary-foreground: 0 0% 100%; /* White for text on primary */
+    /* Primary, Secondary & Accent Colors - Main color scheme */
+    --primary: 145 60% 45%; /* Vibrant Green */
+    --primary-foreground: 0 0% 100%; /* White for text on primary green */
 
-    --secondary: 45 100% 58%; /* Vivid Yellow */
-    --secondary-foreground: 45 100% 10%; /* Dark Brown/Yellow for contrast */
+    --secondary: 30 100% 55%; /* Warm Orange */
+    --secondary-foreground: 30 100% 5%; /* Very Dark Orange/Brown for contrast */
 
-    --accent: 300 85% 62%; /* Rich Purple - made slightly richer */
-    --accent-foreground: 0 0% 100%; /* White for text on accent */
+    --accent: 50 100% 55%; /* Sunny Yellow */
+    --accent-foreground: 50 100% 10%; /* Dark Brown/Yellow for text on accent yellow */
 
     /* Destructive State */
     --destructive: 0 85% 60%; /* Strong Bright Red */
     --destructive-foreground: 0 0% 100%; /* White */
 
     /* Other UI Elements */
-    --ring: 175 70% 55%; /* Turquoise for focus rings */
-    --radius: 0.8rem; /* Rounded corners for a softer feel */
+    --ring: 145 60% 55%; /* Brighter Green for focus rings */
+    --radius: 0.8rem; /* Rounded corners for a softer feel - existing value */
 
-    /* Chart Colors - A vibrant and distinct palette */
-    --chart-1: 175 70% 45%; /* Turquoise (matches primary) */
-    --chart-2: 300 80% 60%; /* Purple (matches accent) */
-    --chart-3: 45 100% 55%; /* Yellow (matches secondary) */
-    --chart-4: 25 100% 60%; /* Bright Orange */
-    --chart-5: 210 90% 55%; /* Strong Sky Blue */
+    /* Chart Colors - A vibrant and distinct palette matching the theme */
+    --chart-1: 145 60% 45%; /* Vibrant Green (matches primary) */
+    --chart-2: 30 100% 55%; /* Warm Orange (matches secondary) */
+    --chart-3: 50 100% 55%; /* Sunny Yellow (matches accent) */
+    --chart-4: 250 70% 60%; /* Bright Purple/Violet (complementary) */
+    --chart-5: 190 80% 50%; /* Bright Cyan/Aqua (complementary) */
   }
 
   .dark {
-    /* Dark Theme - Keeping it colorful and contrasted */
-    --background: 220 25% 10%; /* Dark Navy Blue */
-    --foreground: 200 30% 90%; /* Light Bluish Gray */
+    /* Dark Theme - Adapted for the new color scheme */
+    --background: 220 30% 12%; /* Dark, slightly desaturated blue */
+    --foreground: 200 50% 92%; /* Light, slightly bluish white */
 
-    --muted: 220 20% 18%; /* Darker Navy */
-    --muted-foreground: 200 25% 70%; /* Soft Bluish Gray */
+    --muted: 220 20% 25%; /* Darker blue-gray */
+    --muted-foreground: 210 30% 70%; /* Soft Bluish Gray */
 
-    --card: 220 25% 15%; 
-    --card-foreground: 200 30% 90%;
+    --card: 220 25% 18%; 
+    --card-foreground: 200 50% 90%;
 
-    --popover: 220 28% 12%; 
-    --popover-foreground: 200 30% 90%;
+    --popover: 220 25% 18%; 
+    --popover-foreground: 200 50% 90%;
 
-    --border: 220 20% 25%; 
-    --input: 220 20% 22%;
+    --border: 145 40% 35%; /* Darker Green border */
+    --input: 220 20% 28%; /* Darker input background */
 
-    --primary: 175 65% 55%; 
-    --primary-foreground: 175 100% 10%; 
+    --primary: 145 55% 55%; /* Slightly lighter/brighter Green */
+    --primary-foreground: 145 100% 10%; /* Dark Green for text on primary */
 
-    --secondary: 45 90% 60%; 
-    --secondary-foreground: 45 100% 10%; 
+    --secondary: 30 95% 60%; /* Slightly lighter/brighter Orange */
+    --secondary-foreground: 30 100% 10%; /* Dark Orange/Brown */
 
-    --accent: 300 75% 65%; 
-    --accent-foreground: 300 100% 10%; 
+    --accent: 50 95% 60%; /* Slightly lighter/brighter Yellow */
+    --accent-foreground: 50 100% 15%; /* Dark Brown/Yellow */
 
-    --destructive: 0 70% 60%; 
+    --destructive: 0 75% 65%; /* Slightly lighter Red */
     --destructive-foreground: 0 0% 100%;
 
-    --ring: 175 65% 55%;
+    --ring: 145 55% 60%; /* Green for focus rings */
 
-    --chart-1: 175 65% 55%;
-    --chart-2: 300 75% 65%;
-    --chart-3: 45 90% 60%;
-    --chart-4: 25 90% 65%;
-    --chart-5: 210 80% 60%;
+    /* Dark Chart Colors */
+    --chart-1: 145 55% 55%; /* Green */
+    --chart-2: 30 95% 60%;  /* Orange */
+    --chart-3: 50 95% 60%;  /* Yellow */
+    --chart-4: 250 65% 70%; /* Purple/Violet */
+    --chart-5: 190 75% 60%; /* Cyan/Aqua */
   }
 }
 
