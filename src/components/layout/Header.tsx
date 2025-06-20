@@ -43,12 +43,12 @@ export default function Header() {
     <>
       <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container flex h-16 max-w-screen-2xl items-center justify-between">
-          <Link href="/" className="flex items-center gap-2 mr-auto md:mr-6" aria-label="Noor Kids Home">
+          <Link href="/" className="flex items-center gap-2 mr-auto md:mr-6" aria-label="Little Muslim Stars Home">
              <svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect width="100" height="100" rx="20" fill="hsl(var(--primary))"/>
               <path d="M50 15L61.2265 38.7735L85 42.3607L67.5 59.2265L72.4531 83.6393L50 71.2265L27.5469 83.6393L32.5 59.2265L15 42.3607L38.7735 38.7735L50 15Z" fill="hsl(var(--accent))"/>
             </svg>
-            <span className="font-headline font-bold text-xl text-primary">Noor Kids</span>
+            <span className="font-headline font-bold text-xl text-primary">Little Muslim Stars</span>
           </Link>
           
           <nav className="hidden md:flex flex-grow justify-center">
@@ -88,7 +88,7 @@ export default function Header() {
                         <rect width="100" height="100" rx="20" fill="hsl(var(--primary))"/>
                         <path d="M50 15L61.2265 38.7735L85 42.3607L67.5 59.2265L72.4531 83.6393L50 71.2265L27.5469 83.6393L32.5 59.2265L15 42.3607L38.7735 38.7735L50 15Z" fill="hsl(var(--accent))"/>
                       </svg>
-                      <span className="font-headline font-bold text-lg text-primary">Noor Kids</span>
+                      <span className="font-headline font-bold text-lg text-primary">Little Muslim Stars</span>
                     </Link>
                     <SheetClose asChild>
                        <Button variant="ghost" size="icon" aria-label="Close Menu">

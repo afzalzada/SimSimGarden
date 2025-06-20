@@ -5,8 +5,8 @@ import { Toaster } from "@/components/ui/toaster";
 import { UserProgressProvider } from '@/contexts/UserProgressContext';
 
 export const metadata: Metadata = {
-  title: 'Noor Kids',
-  description: 'Learn Islamic morality and ethics with Noor Kids!',
+  title: 'Little Muslim Stars',
+  description: 'Learn Islamic morality and ethics with Little Muslim Stars!',
 };
 
 export default function RootLayout({
