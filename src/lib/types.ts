@@ -40,13 +40,13 @@ export interface QuranVerse {
   imageAiHint?: string;
 }
 
-export type LucideIconName = 'HelpCircle' | 'Puzzle' | 'Brain';
+export type LucideIconName = 'HelpCircle' | 'Puzzle' | 'Brain' | 'BookOpen' | 'Sparkles' | 'Users' | 'Smile';
 
 export interface Game {
   id: string;
   title: string;
   description: string;
-  type: 'quiz' | 'puzzle' | 'memory-match';
+  type: 'quiz' | 'puzzle' | 'memory-match' | 'adventure' | 'coloring';
   href: string;
   icon?: LucideIconName; 
   ageGroup: '4-8' | '9-16';
@@ -97,7 +97,7 @@ export interface Reward {
   id: string;
   title: string;
   description: string;
-  type: 'badge' | 'virtual_item';
+  type: 'badge' | 'virtual_item' | 'wallpaper' | 'avatar_accessory';
   iconUrl?: string; // URL for badge icon or item image
   pointsRequired?: number;
   imageAiHint?: string;

@@ -56,8 +56,6 @@ export default function SingleDuaPage() {
         const progress = getLessonProgress(foundDua.id);
         if (progress === 'Completed') {
             setIsCompleted(true);
-        } else if (progress === 'Practiced' || progress === 'In Progress') {
-            // Can set specific UI based on this
         }
 
       } else {
@@ -145,13 +143,13 @@ export default function SingleDuaPage() {
       <Card className="shadow-xl rounded-xl overflow-hidden bg-card/90 backdrop-blur-md">
         <CardHeader className="bg-primary/10 p-6 text-center">
           <CardTitle className="font-headline text-4xl text-primary">{dua.title}</CardTitle>
-           <div className="relative w-full h-40 rounded-lg overflow-hidden my-4">
+           <div className="relative w-full h-40 rounded-lg overflow-hidden my-4 shadow-inner">
             <Image 
                 src={`https://placehold.co/600x240.png`} 
                 alt={dua.title} 
                 layout="fill" 
                 objectFit="cover"
-                data-ai-hint={dua.imageAiHint || 'islamic calligraphy dua'}
+                data-ai-hint={dua.imageAiHint || 'dua illustration child'}
             />
         </div>
           <p className="font-['Noto_Naskh_Arabic'] text-4xl md:text-5xl text-foreground mt-2" lang="ar" dir="rtl">

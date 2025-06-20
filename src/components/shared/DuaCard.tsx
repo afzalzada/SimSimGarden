@@ -17,13 +17,13 @@ export default function DuaCard({ dua }: DuaCardProps) {
             <Sparkles className="w-8 h-8 text-primary" />
          </div>
         <CardTitle className="font-headline text-xl text-primary">{dua.title}</CardTitle>
-        <div className="relative w-full h-32 rounded-lg overflow-hidden my-2">
+        <div className="relative w-full h-32 rounded-lg overflow-hidden my-2 shadow-inner">
             <Image 
                 src={`https://placehold.co/300x150.png`} 
                 alt={dua.title} 
                 layout="fill" 
                 objectFit="cover"
-                data-ai-hint={dua.imageAiHint || 'islamic symbol dua'}
+                data-ai-hint={dua.imageAiHint || 'islamic symbol child'}
             />
         </div>
         <p className="text-2xl font-['Noto_Naskh_Arabic'] text-foreground my-2" lang="ar" dir="rtl">{dua.arabic}</p>

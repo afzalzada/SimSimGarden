@@ -129,7 +129,7 @@ export default function SingleStoryPage() {
                 width={600} 
                 height={400} 
                 className="w-full h-auto object-cover"
-                data-ai-hint={currentNode.aiHint || 'story illustration'} 
+                data-ai-hint={currentNode.aiHint || 'story illustration child'} 
               />
             </div>
           )}
@@ -156,7 +156,7 @@ export default function SingleStoryPage() {
             <div className="mt-8 text-right">
                 <Button onClick={handleNext} size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg shadow-md">
                     {currentNodeIndex === story.content.length - 1 ? 'Finish Story' : 'Next'} 
-                    <ArrowRight className="ml-2 h-5 w-5"/>
+                    <ArrowRightIcon className="ml-2 h-5 w-5"/>
                 </Button>
             </div>
            )}
@@ -167,7 +167,7 @@ export default function SingleStoryPage() {
 }
 
 // Helper component for ArrowRight to avoid hydration issues if it were dynamic
-const ArrowRight = ({ className }: { className?: string }) => (
+const ArrowRightIcon = ({ className }: { className?: string }) => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className={className || "w-6 h-6"}>
     <path fillRule="evenodd" d="M12.97 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06l6.22-6.22H3a.75.75 0 010-1.5h16.19l-6.22-6.22a.75.75 0 010-1.06z" clipRule="evenodd" />
   </svg>

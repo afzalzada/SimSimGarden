@@ -125,13 +125,13 @@ export default function SingleQuranVersePage() {
       <Card className="shadow-xl rounded-xl overflow-hidden bg-card/90 backdrop-blur-md">
         <CardHeader className="bg-primary/10 p-6 text-center">
           <CardTitle className="font-headline text-4xl text-primary">{verse.surahName} ({verse.verseNumber})</CardTitle>
-          <div className="relative w-full h-40 rounded-lg overflow-hidden my-4">
+          <div className="relative w-full h-40 rounded-lg overflow-hidden my-4 shadow-inner">
             <Image 
                 src={`https://placehold.co/600x240.png`} 
                 alt={`${verse.surahName} ${verse.verseNumber}`} 
                 layout="fill" 
                 objectFit="cover"
-                data-ai-hint={verse.imageAiHint || 'holy quran beautiful'}
+                data-ai-hint={verse.imageAiHint || 'quran page beautiful'}
             />
           </div>
           <p className="font-['Noto_Naskh_Arabic'] text-3xl md:text-4xl text-foreground mt-2 leading-relaxed" lang="ar" dir="rtl">

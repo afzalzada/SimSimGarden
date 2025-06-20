@@ -48,7 +48,7 @@ export default function JigsawPuzzle({ puzzle, onPuzzleComplete }: JigsawPuzzleP
             layout="fill" 
             objectFit="contain" 
             className={`${isSolved ? 'opacity-100' : 'opacity-30 blur-sm'}`}
-            data-ai-hint={puzzle.imageAiHint || 'puzzle image content'}
+            data-ai-hint={puzzle.imageAiHint || 'puzzle image kids'}
           />
           {!isSolved && (
             <div className="absolute inset-0 flex flex-col items-center justify-center p-4">
@@ -60,7 +60,7 @@ export default function JigsawPuzzle({ puzzle, onPuzzleComplete }: JigsawPuzzleP
                 </Button>
                 {showHint && 
                     <div className="w-1/2 aspect-[3/2] relative border border-dashed border-primary rounded overflow-hidden">
-                        <Image src={puzzle.imageUrl} alt="Hint" layout="fill" objectFit="contain" data-ai-hint={puzzle.imageAiHint || 'puzzle image hint'}/>
+                        <Image src={puzzle.imageUrl} alt="Hint" layout="fill" objectFit="contain" data-ai-hint={puzzle.imageAiHint || 'puzzle hint kids'}/>
                     </div>
                 }
             </div>

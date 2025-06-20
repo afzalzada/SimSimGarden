@@ -12,7 +12,7 @@ const features = [
     href: '/stories',
     icon: <BookOpenText className="w-12 h-12 text-primary mb-4" />,
     image: 'https://placehold.co/600x400.png',
-    aiHint: 'islamic story kids',
+    aiHint: 'storybook kids magic',
   },
   {
     title: 'Interactive Duas',
@@ -20,7 +20,7 @@ const features = [
     href: '/duas',
     icon: <Sparkles className="w-12 h-12 text-primary mb-4" />,
     image: 'https://placehold.co/600x400.png',
-    aiHint: 'dua hands praying',
+    aiHint: 'hands praying light',
   },
   {
     title: 'Quran Verses',
@@ -28,7 +28,7 @@ const features = [
     href: '/quran',
     icon: <BookMarked className="w-12 h-12 text-primary mb-4" />,
     image: 'https://placehold.co/600x400.png',
-    aiHint: 'quran book open',
+    aiHint: 'quran open serene',
   },
   {
     title: 'Fun Islamic Games',
@@ -36,7 +36,7 @@ const features = [
     href: '/games',
     icon: <Gamepad2 className="w-12 h-12 text-primary mb-4" />,
     image: 'https://placehold.co/600x400.png',
-    aiHint: 'kids playing games',
+    aiHint: 'kids playing fun',
   },
   {
     title: 'Chat with Aalim AI',
@@ -44,7 +44,7 @@ const features = [
     href: '/aalim',
     icon: <Bot className="w-12 h-12 text-primary mb-4" />,
     image: 'https://placehold.co/600x400.png',
-    aiHint: 'friendly robot ai',
+    aiHint: 'friendly robot teacher',
   },
   {
     title: 'Points & Rewards',
@@ -52,7 +52,7 @@ const features = [
     href: '/rewards',
     icon: <Trophy className="w-12 h-12 text-primary mb-4" />,
     image: 'https://placehold.co/600x400.png',
-    aiHint: 'trophy award celebration',
+    aiHint: 'trophy stars celebration',
   },
 ];
 

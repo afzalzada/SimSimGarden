@@ -17,13 +17,13 @@ export default function QuranVerseCard({ verse }: QuranVerseCardProps) {
             <BookMarked className="w-8 h-8 text-primary" />
          </div>
         <CardTitle className="font-headline text-xl text-primary">{verse.surahName} ({verse.verseNumber})</CardTitle>
-        <div className="relative w-full h-32 rounded-lg overflow-hidden my-2">
+        <div className="relative w-full h-32 rounded-lg overflow-hidden my-2 shadow-inner">
             <Image 
                 src={`https://placehold.co/300x150.png`} 
                 alt={`${verse.surahName} ${verse.verseNumber}`} 
                 layout="fill" 
                 objectFit="cover"
-                data-ai-hint={verse.imageAiHint || 'quran calligraphy verse'}
+                data-ai-hint={verse.imageAiHint || 'quran calligraphy beautiful'}
             />
         </div>
         <p className="font-['Noto_Naskh_Arabic'] text-lg text-foreground mt-1 truncate_arabic" lang="ar" dir="rtl" style={{maxHeight: '3em', overflow: 'hidden', textOverflow: 'ellipsis', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical'}}>

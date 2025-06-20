@@ -1,6 +1,6 @@
 import type { Reward } from '@/lib/types';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Award, Star, ShoppingBag } from 'lucide-react';
+import { Award, Star, ShoppingBag, ImageIcon } from 'lucide-react'; // Added ImageIcon as a fallback
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
 
@@ -10,7 +10,11 @@ interface RewardItemProps {
 }
 
 export default function RewardItem({ reward, isUnlocked }: RewardItemProps) {
-  const Icon = reward.type === 'badge' ? Award : ShoppingBag;
+  let IconComponent = Award; // Default
+  if (reward.type === 'virtual_item') IconComponent = ShoppingBag;
+  if (reward.type === 'wallpaper') IconComponent = ImageIcon; // Specific for wallpaper
+  if (reward.type === 'avatar_accessory') IconComponent = Star; // Or a custom one
+
   return (
     <Card className={cn(
         "text-center shadow-lg rounded-xl overflow-hidden transition-all duration-300",
@@ -18,18 +22,18 @@ export default function RewardItem({ reward, isUnlocked }: RewardItemProps) {
       )}>
       <CardHeader className="p-4 items-center">
         {reward.iconUrl ? (
-          <div className="relative w-20 h-20 mx-auto mb-3 rounded-full overflow-hidden border-2 border-primary/20">
+          <div className="relative w-20 h-20 mx-auto mb-3 rounded-full overflow-hidden border-2 border-primary/20 shadow-inner">
             <Image 
                 src={reward.iconUrl} 
                 alt={reward.title} 
                 layout="fill" 
                 objectFit="cover" 
-                data-ai-hint={reward.imageAiHint || (reward.type === 'badge' ? 'badge icon' : 'item icon')}
+                data-ai-hint={reward.imageAiHint || (reward.type === 'badge' ? 'badge icon shiny' : 'item icon cool')}
             />
           </div>
         ) : (
           <div className={cn("p-4 rounded-full mx-auto mb-3", isUnlocked ? "bg-accent text-accent-foreground" : "bg-muted-foreground/30 text-muted-foreground")}>
-            <Icon className="w-10 h-10" />
+            <IconComponent className="w-10 h-10" />
           </div>
         )}
         <CardTitle className={cn("font-headline text-lg", isUnlocked ? "text-accent-foreground" : "text-foreground")}>{reward.title}</CardTitle>
