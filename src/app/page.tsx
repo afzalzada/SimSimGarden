@@ -1,4 +1,6 @@
 
+'use client';
+
 import AppLayout from '@/components/layout/AppLayout';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -6,17 +8,19 @@ import Link from 'next/link';
 import { BookOpenText, Sparkles, BookMarked, Gamepad2, Bot, Trophy, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
+import { useUserProgress } from '@/contexts/UserProgressContext'; // Import useUserProgress
 
 const cardGradientBgs = [
-  'bg-gradient-to-br from-[hsl(var(--primary)/0.5)] via-[hsl(var(--primary)/0.2)] to-[hsl(var(--card)/0.1)]',
-  'bg-gradient-to-tl from-[hsl(var(--secondary)/0.5)] via-[hsl(var(--secondary)/0.2)] to-[hsl(var(--card)/0.1)]',
-  'bg-gradient-to-r from-[hsl(var(--accent)/0.5)] via-[hsl(var(--accent)/0.2)] to-[hsl(var(--card)/0.1)]',
-  'bg-gradient-to-b from-[hsl(var(--chart-4)/0.5)] via-[hsl(var(--chart-4)/0.2)] to-[hsl(var(--card)/0.1)]',
-  'bg-gradient-to-tr from-[hsl(var(--chart-5)/0.5)] via-[hsl(var(--chart-5)/0.2)] to-[hsl(var(--card)/0.1)]',
-  'bg-gradient-to-bl from-[hsl(var(--destructive)/0.4)] via-[hsl(var(--destructive)/0.15)] to-[hsl(var(--card)/0.1)]',
-  'bg-gradient-to-br from-[hsl(var(--primary)/0.3)] via-[hsl(var(--secondary)/0.15)] to-[hsl(var(--card)/0.1)]',
-  'bg-gradient-to-tl from-[hsl(var(--accent)/0.3)] via-[hsl(var(--chart-4)/0.15)] to-[hsl(var(--card)/0.1)]',
+  'bg-gradient-to-br from-[hsl(var(--primary)/0.5)] via-[hsl(var(--primary)/0.2)] to-[hsl(var(--card)/0.1)] backdrop-blur-md',
+  'bg-gradient-to-tl from-[hsl(var(--secondary)/0.5)] via-[hsl(var(--secondary)/0.2)] to-[hsl(var(--card)/0.1)] backdrop-blur-md',
+  'bg-gradient-to-r from-[hsl(var(--accent)/0.5)] via-[hsl(var(--accent)/0.2)] to-[hsl(var(--card)/0.1)] backdrop-blur-md',
+  'bg-gradient-to-b from-[hsl(var(--chart-4)/0.5)] via-[hsl(var(--chart-4)/0.2)] to-[hsl(var(--card)/0.1)] backdrop-blur-md',
+  'bg-gradient-to-tr from-[hsl(var(--chart-5)/0.5)] via-[hsl(var(--chart-5)/0.2)] to-[hsl(var(--card)/0.1)] backdrop-blur-md',
+  'bg-gradient-to-bl from-[hsl(var(--destructive)/0.4)] via-[hsl(var(--destructive)/0.15)] to-[hsl(var(--card)/0.1)] backdrop-blur-md',
+  'bg-gradient-to-br from-[hsl(var(--primary)/0.3)] via-[hsl(var(--secondary)/0.15)] to-[hsl(var(--card)/0.1)] backdrop-blur-md',
+  'bg-gradient-to-tl from-[hsl(var(--accent)/0.3)] via-[hsl(var(--chart-4)/0.15)] to-[hsl(var(--card)/0.1)] backdrop-blur-md',
 ];
+
 
 const features = [
   {
@@ -76,12 +80,20 @@ const features = [
 ];
 
 export default function HomePage() {
+  const { isLoggedIn, userName } = useUserProgress(); // Get user state
+
   return (
     <AppLayout>
       <section className="text-center py-10 bg-gradient-to-br from-primary/5 via-background to-accent/5 rounded-xl shadow-sm">
-        <h1 className="font-headline text-5xl font-bold text-primary mb-4 animate-shine bg-clip-text text-transparent bg-[linear-gradient(110deg,hsl(var(--primary)),45%,hsl(var(--accent)),55%,hsl(var(--primary)))] bg-[length:250%_100%]" >
-          Welcome to Little Muslim Stars!
-        </h1>
+        {isLoggedIn && userName ? (
+          <h1 className="font-headline text-5xl font-bold text-primary mb-4 animate-shine bg-clip-text text-transparent bg-[linear-gradient(110deg,hsl(var(--primary)),45%,hsl(var(--accent)),55%,hsl(var(--primary)))] bg-[length:250%_100%]" >
+            Salaam and welcome dear {userName}!
+          </h1>
+        ) : (
+          <h1 className="font-headline text-5xl font-bold text-primary mb-4 animate-shine bg-clip-text text-transparent bg-[linear-gradient(110deg,hsl(var(--primary)),45%,hsl(var(--accent)),55%,hsl(var(--primary)))] bg-[length:250%_100%]" >
+            Welcome to Little Muslim Stars!
+          </h1>
+        )}
         <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
           Embark on a fun and enriching journey to learn about Islamic morality and ethics.
         </p>
@@ -95,12 +107,12 @@ export default function HomePage() {
       <section className="py-12">
         <h2 className="font-headline text-3xl font-semibold text-center text-primary mb-10">Explore Our Features</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {features.map((feature) => (
+          {features.map((feature, index) => (
             <Card 
               key={feature.title} 
               className={cn(
-                "backdrop-blur-md shadow-lg hover:shadow-xl transition-all duration-300 rounded-xl overflow-hidden flex flex-col group hover:scale-105 hover:animate-subtle-scale-hover", 
-                feature.bgColor
+                "shadow-lg hover:shadow-xl transition-all duration-300 rounded-xl overflow-hidden flex flex-col group hover:scale-105 hover:animate-subtle-scale-hover", 
+                feature.bgColor || cardGradientBgs[index % cardGradientBgs.length]
               )}
             >
               <CardHeader className="items-center text-center p-6">

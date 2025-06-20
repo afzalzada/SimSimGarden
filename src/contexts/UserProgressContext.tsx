@@ -1,3 +1,4 @@
+
 'use client';
 
 import type { ReactNode } from 'react';
@@ -8,10 +9,14 @@ interface UserProgressContextType {
   addPoints: (amount: number) => void;
   completedLessons: string[];
   markLessonCompleted: (lessonId: string) => void;
-  getLessonProgress: (lessonId: string) => string; // e.g., "Not Started", "In Progress", "Completed"
+  getLessonProgress: (lessonId: string) => string;
   updateLessonProgress: (lessonId: string, progress: string) => void;
   userPrizes: string[];
   awardPrize: (prize: string) => void;
+  userName: string | null;
+  isLoggedIn: boolean;
+  login: (name: string) => void;
+  logout: () => void;
 }
 
 const UserProgressContext = createContext<UserProgressContextType | undefined>(undefined);
@@ -21,6 +26,8 @@ export const UserProgressProvider = ({ children }: { children: ReactNode }) => {
   const [completedLessons, setCompletedLessons] = useState<string[]>([]);
   const [lessonProgressMap, setLessonProgressMap] = useState<Record<string, string>>({});
   const [userPrizes, setUserPrizes] = useState<string[]>([]);
+  const [userName, setUserName] = useState<string | null>(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const addPoints = useCallback((amount: number) => {
     setPoints((prevPoints) => prevPoints + amount);
@@ -43,6 +50,23 @@ export const UserProgressProvider = ({ children }: { children: ReactNode }) => {
     setUserPrizes((prevPrizes) => [...prevPrizes, prize]);
   }, []);
 
+  const login = useCallback((name: string) => {
+    setUserName(name);
+    setIsLoggedIn(true);
+    // In a real app, you'd fetch user progress here
+  }, []);
+
+  const logout = useCallback(() => {
+    setUserName(null);
+    setIsLoggedIn(false);
+    // In a real app, you might save progress before logging out
+    // For this simulation, progress tied to context will reset on logout/refresh without backend.
+    setPoints(0);
+    setCompletedLessons([]);
+    setLessonProgressMap({});
+    setUserPrizes([]);
+  }, []);
+
   return (
     <UserProgressContext.Provider value={{ 
         points, 
@@ -52,7 +76,11 @@ export const UserProgressProvider = ({ children }: { children: ReactNode }) => {
         getLessonProgress,
         updateLessonProgress,
         userPrizes,
-        awardPrize
+        awardPrize,
+        userName,
+        isLoggedIn,
+        login,
+        logout
       }}>
       {children}
     </UserProgressContext.Provider>
