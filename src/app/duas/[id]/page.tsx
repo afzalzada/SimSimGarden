@@ -31,8 +31,9 @@ export default function SingleDuaPage() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
-    if (params.id) {
-      const foundDua = dummyDuas.find((d) => d.id === params.id);
+    const duaId = params.id as string; // Cast params.id to string if you are sure it exists
+    if (duaId) {
+      const foundDua = dummyDuas.find((d) => d.id === duaId);
       if (foundDua) {
         setDua(foundDua);
         if (foundDua.audioUrl) {

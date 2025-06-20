@@ -30,8 +30,9 @@ export default function SingleQuranVersePage() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
-    if (params.id) {
-      const foundVerse = dummyQuranVerses.find((v) => v.id === params.id);
+    const verseId = params.id as string; // Cast params.id to string
+    if (verseId) {
+      const foundVerse = dummyQuranVerses.find((v) => v.id === verseId);
       if (foundVerse) {
         setVerse(foundVerse);
          if (foundVerse.audioUrl) {
