@@ -24,7 +24,7 @@ const features = [
     description: 'Interactive tales of Prophets and Sahaba.',
     href: '/stories',
     icon: <BookOpenText className="w-12 h-12 text-primary mb-4" />,
-    image: 'https://placehold.co/600x400.png',
+    image: '/assets/images/features/home-feature-islamic-stories.png',
     aiHint: 'storybook kids magic',
     bgColor: cardGradientBgs[0],
   },
@@ -33,7 +33,7 @@ const features = [
     description: 'Learn daily supplications with audio and meaning.',
     href: '/duas',
     icon: <Sparkles className="w-12 h-12 text-primary mb-4" />,
-    image: 'https://placehold.co/600x400.png',
+    image: '/assets/images/features/home-feature-interactive-duas.png',
     aiHint: 'hands praying light',
     bgColor: cardGradientBgs[1],
   },
@@ -42,7 +42,7 @@ const features = [
     description: 'Explore curated verses with recitation and tafsir.',
     href: '/quran',
     icon: <BookMarked className="w-12 h-12 text-primary mb-4" />,
-    image: 'https://placehold.co/600x400.png',
+    image: '/assets/images/features/home-feature-quran-verses.png',
     aiHint: 'quran open serene',
     bgColor: cardGradientBgs[2],
   },
@@ -51,7 +51,7 @@ const features = [
     description: 'Reinforce teachings with quizzes and puzzles.',
     href: '/games',
     icon: <Gamepad2 className="w-12 h-12 text-primary mb-4" />,
-    image: 'https://placehold.co/600x400.png',
+    image: '/assets/images/features/home-feature-fun-islamic-games.png',
     aiHint: 'kids playing fun',
     bgColor: cardGradientBgs[3],
   },
@@ -60,7 +60,7 @@ const features = [
     description: 'Your personal AI tutor for Islamic ethics.',
     href: '/aalim',
     icon: <Bot className="w-12 h-12 text-primary mb-4" />,
-    image: 'https://placehold.co/600x400.png',
+    image: '/assets/images/features/home-feature-chat-with-aalim-ai.png',
     aiHint: 'friendly robot teacher',
     bgColor: cardGradientBgs[4],
   },
@@ -69,7 +69,7 @@ const features = [
     description: 'Track your progress and earn badges.',
     href: '/rewards',
     icon: <Trophy className="w-12 h-12 text-primary mb-4" />,
-    image: 'https://placehold.co/600x400.png',
+    image: '/assets/images/features/home-feature-points-rewards.png',
     aiHint: 'trophy stars celebration',
     bgColor: cardGradientBgs[5],
   },
@@ -80,7 +80,7 @@ export default function HomePage() {
     <AppLayout>
       <section className="text-center py-10 bg-gradient-to-br from-primary/5 via-background to-accent/5 rounded-xl shadow-sm">
         <h1 className="font-headline text-5xl font-bold text-primary mb-4 animate-shine bg-clip-text text-transparent bg-[linear-gradient(110deg,hsl(var(--primary)),45%,hsl(var(--accent)),55%,hsl(var(--primary)))] bg-[length:250%_100%]" >
-          Welcome to Noor Kids!
+          Welcome to Little Muslim Stars!
         </h1>
         <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
           Embark on a fun and enriching journey to learn about Islamic morality and ethics.

@@ -13,6 +13,7 @@ interface QuranVerseCardProps {
 }
 
 export default function QuranVerseCard({ verse, bgColor }: QuranVerseCardProps) {
+  const imagePath = verse.imagePath || `/assets/images/quran/verse-${verse.id}-card.png`;
   return (
     <Card className={cn(
         "flex flex-col h-full overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 backdrop-blur-md group hover:scale-105 hover:animate-subtle-scale-hover", 
@@ -25,7 +26,7 @@ export default function QuranVerseCard({ verse, bgColor }: QuranVerseCardProps) 
         <CardTitle className="font-headline text-xl text-primary group-hover:text-accent transition-colors">{verse.surahName} ({verse.verseNumber})</CardTitle>
         <div className="relative w-full h-32 rounded-lg overflow-hidden my-2 shadow-inner">
             <Image 
-                src={`https://placehold.co/300x150.png`} 
+                src={imagePath}
                 alt={`${verse.surahName} ${verse.verseNumber}`} 
                 layout="fill" 
                 objectFit="cover"

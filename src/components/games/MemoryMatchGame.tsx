@@ -110,8 +110,11 @@ export default function MemoryMatchGameComponent({ game, onGameComplete }: Memor
     >
       <div className={cn("transition-opacity duration-150", card.isFlipped ? "opacity-100" : "opacity-0")} style={{ transform: card.isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)' }}>
         {card.type === 'text' && <span className="text-sm sm:text-base font-semibold text-accent-foreground text-center">{card.content}</span>}
-        {card.type === 'image' && (
-          <Image src={`https://placehold.co/80x80.png`} alt={card.content || "Memory card"} width={80} height={80} objectFit="contain" data-ai-hint={card.imageAiHint || 'icon symbol match'}/>
+        {card.type === 'image' && card.imagePath && (
+          <Image src={card.imagePath} alt={card.content || "Memory card"} width={80} height={80} style={{objectFit:"contain"}} data-ai-hint={card.imageAiHint || 'icon symbol match'}/>
+        )}
+         {card.type === 'image' && !card.imagePath && ( // Fallback for older data or missing imagePath
+          <Image src={`/assets/images/games/memory/memory-${card.id}.png`} alt={card.content || "Memory card"} width={80} height={80} style={{objectFit:"contain"}} data-ai-hint={card.imageAiHint || 'icon symbol match'}/>
         )}
       </div>
        {!card.isFlipped && <HelpCircle className="w-8 h-8 sm:w-12 sm:h-12 text-primary-foreground"/>}

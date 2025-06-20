@@ -4,7 +4,7 @@ export interface Story {
   title: string;
   description: string;
   moral: string;
-  thumbnailUrl: string;
+  thumbnailUrl: string; // Will be updated to local path
   content: StoryContentNode[];
   ageGroup: '4-8' | '9-16';
   imageAiHint?: string;
@@ -12,7 +12,7 @@ export interface Story {
 
 export type StoryContentNode = 
   | { type: 'paragraph'; text: string }
-  | { type: 'image'; url: string; alt: string; aiHint?: string; }
+  | { type: 'image'; url: string; alt: string; aiHint?: string; } // url will be updated
   | { type: 'decision'; prompt: string; choices: { text: string; nextNodeIndex: number }[] };
 
 export interface Dua {
@@ -21,26 +21,31 @@ export interface Dua {
   arabic: string;
   translation: string;
   transliteration: string;
-  audioUrl?: string; // Optional: for audio recitation
+  audioUrl?: string; 
   explanation: string;
   ageGroup: '4-8' | '9-16';
   imageAiHint?: string;
+  imagePath?: string; // For card image
+  mainImagePath?: string; // For detail page image
 }
 
 export interface QuranVerse {
   id: string;
   surahName: string;
-  verseNumber: string; // e.g., "2:255"
+  verseNumber: string; 
   arabic: string;
   translation: string;
-  transliteration?: string; // Optional
-  tafsir: string; // Simplified explanation
-  audioUrl?: string; // Optional: for recitation
+  transliteration?: string; 
+  tafsir: string; 
+  audioUrl?: string; 
   ageGroup: '4-8' | '9-16';
   imageAiHint?: string;
+  imagePath?: string; // For card image
+  mainImagePath?: string; // For detail page image
 }
 
-export type LucideIconName = 'HelpCircle' | 'Puzzle' | 'Brain' | 'BookOpen' | 'Sparkles' | 'Users' | 'Smile';
+export type LucideIconName = 'HelpCircle' | 'Puzzle' | 'Brain' | 'BookOpen' | 'Sparkles' | 'Users' | 'Smile' | 'SpellCheck';
+
 
 export interface Game {
   id: string;
@@ -51,6 +56,7 @@ export interface Game {
   icon?: LucideIconName; 
   ageGroup: '4-8' | '9-16';
   imageAiHint?: string;
+  imagePath?: string; // For GameCard image
 }
 
 export interface QuizQuestion {
@@ -58,7 +64,7 @@ export interface QuizQuestion {
   questionText: string;
   options: { id: string; text: string }[];
   correctOptionId: string;
-  explanation?: string; // Explanation for the correct answer
+  explanation?: string; 
 }
 
 export interface Quiz {
@@ -66,31 +72,34 @@ export interface Quiz {
   title: string;
   description: string;
   questions: QuizQuestion[];
-  imageAiHint?: string;
+  imageAiHint?: string; 
+  // No direct top-level image for Quiz list, specific quizzes might have concept hints
 }
 
 export interface Puzzle {
   id: string;
   title: string;
   description: string;
-  imageUrl: string; // Image for the puzzle
-  pieces: number; // Number of pieces, for complexity
+  imageUrl: string; // Will be updated to local path
+  pieces: number; 
   imageAiHint?: string;
 }
 
 export interface MemoryMatchCard {
   id: string;
-  content: string; // Could be text or an image URL path
+  content: string; 
   type: 'text' | 'image';
   imageAiHint?: string;
+  imagePath?: string; // Will be local path if type is 'image'
 }
 
 export interface MemoryMatchGame {
   id: string;
   title: string;
   description: string;
-  cards: MemoryMatchCard[]; // Will be duplicated to create pairs
-  imageAiHint?: string;
+  cards: MemoryMatchCard[]; 
+  imageAiHint?: string; 
+  // No direct top-level image for MemoryMatchGame list, specific games might have concept hints
 }
 
 export interface Reward {
@@ -98,9 +107,10 @@ export interface Reward {
   title: string;
   description: string;
   type: 'badge' | 'virtual_item' | 'wallpaper' | 'avatar_accessory';
-  iconUrl?: string; // URL for badge icon or item image
+  iconUrl?: string; // Will be updated to local path
   pointsRequired?: number;
   imageAiHint?: string;
+  awardedByAI?: boolean; // For Aalim's special rewards
 }
 
 export interface AalimMessage {

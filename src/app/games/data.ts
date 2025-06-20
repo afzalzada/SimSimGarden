@@ -11,6 +11,7 @@ export const gameTypes: Game[] = [
     icon: 'HelpCircle',
     ageGroup: '9-16',
     imageAiHint: 'quiz question mark',
+    imagePath: '/assets/images/games/cards/game-islamic-quiz-card.png',
   },
   {
     id: 'prophets-puzzle',
@@ -21,6 +22,7 @@ export const gameTypes: Game[] = [
     icon: 'Puzzle',
     ageGroup: '4-8',
     imageAiHint: 'jigsaw puzzle kids',
+    imagePath: '/assets/images/games/cards/game-prophets-puzzle-card.png',
   },
   {
     id: 'ethics-memory-match',
@@ -31,6 +33,7 @@ export const gameTypes: Game[] = [
     icon: 'Brain',
     ageGroup: '4-8',
     imageAiHint: 'memory game cards',
+    imagePath: '/assets/images/games/cards/game-ethics-memory-match-card.png',
   },
    {
     id: 'advanced-fiqh-quiz',
@@ -41,6 +44,7 @@ export const gameTypes: Game[] = [
     icon: 'HelpCircle',
     ageGroup: '9-16',
     imageAiHint: 'islamic law book',
+    imagePath: '/assets/images/games/cards/game-advanced-fiqh-quiz-card.png',
   },
   {
     id: 'arabic-alphabet-match',
@@ -48,9 +52,10 @@ export const gameTypes: Game[] = [
     description: 'Match Arabic letters! A fun way to start learning the alphabet.',
     type: 'memory-match',
     href: '/games/memory-match/arabic-letters-1',
-    icon: 'SpellCheck', // We'll need to add SpellCheck or use an existing one like 'BookOpen'
+    icon: 'SpellCheck',
     ageGroup: '4-8',
     imageAiHint: 'arabic letters colorful',
+    imagePath: '/assets/images/games/cards/game-arabic-alphabet-match-card.png',
   },
   {
     id: 'mosque-builder-puzzle',
@@ -61,26 +66,29 @@ export const gameTypes: Game[] = [
     icon: 'Puzzle',
     ageGroup: '9-16',
     imageAiHint: 'mosque building blocks',
+    imagePath: '/assets/images/games/cards/game-mosque-builder-puzzle-card.png',
   },
   {
     id: 'halal-haram-sort',
     title: 'Halal & Haram Sort',
     description: 'Learn about Halal and Haram concepts by sorting items. (Conceptual)',
-    type: 'quiz', // Could be a custom game type later
-    href: '/games/quiz/halal-haram-1', // Placeholder href
+    type: 'quiz', 
+    href: '/games/quiz/halal-haram-1', 
     icon: 'HelpCircle',
     ageGroup: '9-16',
     imageAiHint: 'food choices ethics',
+    imagePath: '/assets/images/games/cards/game-halal-haram-sort-card.png',
   },
   {
     id: 'good-deeds-adventure',
     title: 'Good Deeds Adventure',
     description: 'Embark on an adventure where you make choices based on Islamic ethics. (Conceptual)',
-    type: 'adventure', // New conceptual type
-    href: '/games/adventure/kindness-journey-1', // Placeholder href
+    type: 'adventure', 
+    href: '/games/adventure/kindness-journey-1', 
     icon: 'Sparkles',
     ageGroup: '4-8',
     imageAiHint: 'path choices kids',
+    imagePath: '/assets/images/games/cards/game-good-deeds-adventure-card.png',
   },
   {
     id: 'ramadan-facts-quiz',
@@ -91,6 +99,7 @@ export const gameTypes: Game[] = [
     icon: 'HelpCircle',
     ageGroup: '4-8',
     imageAiHint: 'ramadan moon lantern',
+    imagePath: '/assets/images/games/cards/game-ramadan-facts-quiz-card.png',
   },
   {
     id: 'prayer-times-puzzle',
@@ -101,6 +110,7 @@ export const gameTypes: Game[] = [
     icon: 'Puzzle',
     ageGroup: '4-8',
     imageAiHint: 'prayer times clock',
+    imagePath: '/assets/images/games/cards/game-prayer-times-puzzle-card.png',
   },
   {
     id: 'wudu-steps-match',
@@ -111,6 +121,7 @@ export const gameTypes: Game[] = [
     icon: 'Brain',
     ageGroup: '4-8',
     imageAiHint: 'water hands cleaning',
+    imagePath: '/assets/images/games/cards/game-wudu-steps-match-card.png',
   },
   {
     id: 'pillars-of-islam-quiz',
@@ -121,5 +132,6 @@ export const gameTypes: Game[] = [
     icon: 'HelpCircle',
     ageGroup: '9-16',
     imageAiHint: 'five pillars symbols',
+    imagePath: '/assets/images/games/cards/game-pillars-of-islam-quiz-card.png',
   },
 ];

@@ -1,3 +1,4 @@
+
 import type { MemoryMatchGame, MemoryMatchCard } from '@/lib/types';
 
 const goodDeedsCards: MemoryMatchCard[] = [
@@ -23,30 +24,30 @@ const prophetNamesCards: MemoryMatchCard[] = [
 ];
 
 const arabicLettersCards: MemoryMatchCard[] = [
-    {id: 'alif', content: 'ا', type: 'text', imageAiHint: 'arabic letter alif'},
-    {id: 'ba', content: 'ب', type: 'text', imageAiHint: 'arabic letter ba'},
-    {id: 'ta', content: 'ت', type: 'text', imageAiHint: 'arabic letter ta'},
-    {id: 'tha', content: 'ث', type: 'text', imageAiHint: 'arabic letter tha'},
-    {id: 'jim', content: 'ج', type: 'text', imageAiHint: 'arabic letter jim'},
-    {id: 'ha', content: 'ح', type: 'text', imageAiHint: 'arabic letter ha'},
+    {id: 'alif', content: 'ا', type: 'text', imageAiHint: 'arabic letter alif', imagePath: '/assets/images/games/memory/memory-alif.png'},
+    {id: 'ba', content: 'ب', type: 'text', imageAiHint: 'arabic letter ba', imagePath: '/assets/images/games/memory/memory-ba.png'},
+    {id: 'ta', content: 'ت', type: 'text', imageAiHint: 'arabic letter ta', imagePath: '/assets/images/games/memory/memory-ta.png'},
+    {id: 'tha', content: 'ث', type: 'text', imageAiHint: 'arabic letter tha', imagePath: '/assets/images/games/memory/memory-tha.png'},
+    {id: 'jim', content: 'ج', type: 'text', imageAiHint: 'arabic letter jim', imagePath: '/assets/images/games/memory/memory-jim.png'},
+    {id: 'ha', content: 'ح', type: 'text', imageAiHint: 'arabic letter ha', imagePath: '/assets/images/games/memory/memory-ha.png'},
 ];
 
 const halalFoodsCards: MemoryMatchCard[] = [
-    {id: 'apple', content: 'Apple', type: 'text', imageAiHint: 'apple fruit red'},
-    {id: 'banana', content: 'Banana', type: 'text', imageAiHint: 'banana fruit yellow'},
-    {id: 'dates', content: 'Dates', type: 'text', imageAiHint: 'dates fruit brown'},
-    {id: 'fish', content: 'Fish', type: 'text', imageAiHint: 'fish food meal'},
-    {id: 'chicken', content: 'Chicken (Halal)', type: 'text', imageAiHint: 'chicken meat halal'},
-    {id: 'milk', content: 'Milk', type: 'text', imageAiHint: 'milk glass white'},
+    {id: 'apple', content: 'Apple', type: 'image', imageAiHint: 'apple fruit red', imagePath: '/assets/images/games/memory/memory-apple.png'},
+    {id: 'banana', content: 'Banana', type: 'image', imageAiHint: 'banana fruit yellow', imagePath: '/assets/images/games/memory/memory-banana.png'},
+    {id: 'dates', content: 'Dates', type: 'image', imageAiHint: 'dates fruit brown', imagePath: '/assets/images/games/memory/memory-dates.png'},
+    {id: 'fish', content: 'Fish', type: 'image', imageAiHint: 'fish food meal', imagePath: '/assets/images/games/memory/memory-fish.png'},
+    {id: 'chicken', content: 'Chicken (Halal)', type: 'image', imageAiHint: 'chicken meat halal', imagePath: '/assets/images/games/memory/memory-chicken.png'},
+    {id: 'milk', content: 'Milk', type: 'image', imageAiHint: 'milk glass white', imagePath: '/assets/images/games/memory/memory-milk.png'},
 ];
 
 const mosqueObjectsCards: MemoryMatchCard[] = [
-    {id: 'prayerrug', content: 'Prayer Rug', type: 'text', imageAiHint: 'prayer rug colorful'},
-    {id: 'minaret', content: 'Minaret', type: 'text', imageAiHint: 'mosque minaret tower'},
-    {id: 'dome', content: 'Dome', type: 'text', imageAiHint: 'mosque dome sky'},
-    {id: 'quranstand', content: 'Quran Stand', type: 'text', imageAiHint: 'quran stand wood'},
-    {id: 'tasbih', content: 'Tasbih Beads', type: 'text', imageAiHint: 'tasbih beads prayer'},
-    {id: 'mihrab', content: 'Mihrab Niche', type: 'text', imageAiHint: 'mosque mihrab ornate'},
+    {id: 'prayerrug', content: 'Prayer Rug', type: 'image', imageAiHint: 'prayer rug colorful', imagePath: '/assets/images/games/memory/memory-prayerrug.png'},
+    {id: 'minaret', content: 'Minaret', type: 'image', imageAiHint: 'mosque minaret tower', imagePath: '/assets/images/games/memory/memory-minaret.png'},
+    {id: 'dome', content: 'Dome', type: 'image', imageAiHint: 'mosque dome sky', imagePath: '/assets/images/games/memory/memory-dome.png'},
+    {id: 'quranstand', content: 'Quran Stand', type: 'image', imageAiHint: 'quran stand wood', imagePath: '/assets/images/games/memory/memory-quranstand.png'},
+    {id: 'tasbih', content: 'Tasbih Beads', type: 'image', imageAiHint: 'tasbih beads prayer', imagePath: '/assets/images/games/memory/memory-tasbih.png'},
+    {id: 'mihrab', content: 'Mihrab Niche', type: 'image', imageAiHint: 'mosque mihrab ornate', imagePath: '/assets/images/games/memory/memory-mihrab.png'},
 ];
 
 
@@ -55,35 +56,35 @@ export const dummyMemoryMatchGames: MemoryMatchGame[] = [
     id: 'good-deeds-1',
     title: 'Good Deeds Match',
     description: 'Match pairs of good deeds in Islam.',
-    cards: goodDeedsCards,
-    imageAiHint: 'helping hands children',
+    cards: goodDeedsCards, // Text based, no main game image needed here
+    imageAiHint: 'helping hands children', // Hint for overall game concept, not a direct image in data
   },
   {
     id: 'prophets-match',
     title: 'Prophets Name Match',
     description: 'Match the names of the Prophets.',
-    cards: prophetNamesCards,
+    cards: prophetNamesCards, // Text based
     imageAiHint: 'scroll ancient names',
   },
   {
     id: 'arabic-letters-1',
     title: 'Arabic Letters Fun',
     description: 'Match the Arabic letters. A fun start to learning!',
-    cards: arabicLettersCards,
+    cards: arabicLettersCards, // Uses images per card
     imageAiHint: 'arabic alphabet colorful',
   },
   {
     id: 'halal-foods-match',
     title: 'Halal Foods Match',
     description: 'Match pictures or names of Halal foods.',
-    cards: halalFoodsCards,
+    cards: halalFoodsCards, // Uses images per card
     imageAiHint: 'healthy food variety',
   },
   {
     id: 'mosque-items-match',
     title: 'Inside the Mosque Match',
     description: 'Match items commonly found in a mosque.',
-    cards: mosqueObjectsCards,
+    cards: mosqueObjectsCards, // Uses images per card
     imageAiHint: 'mosque items collection',
   }
 ];

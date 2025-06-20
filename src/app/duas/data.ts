@@ -1,3 +1,4 @@
+
 import type { Dua } from '@/lib/types';
 
 export const dummyDuas: Dua[] = [
@@ -11,6 +12,8 @@ export const dummyDuas: Dua[] = [
     explanation: 'Recite this dua before starting your meal to seek blessings from Allah.',
     ageGroup: '4-8',
     imageAiHint: 'food plate kids',
+    imagePath: '/assets/images/duas/dua-before-eating-card.png',
+    mainImagePath: '/assets/images/duas/dua-before-eating-main.png',
   },
   {
     id: 'dua-after-eating',
@@ -22,6 +25,8 @@ export const dummyDuas: Dua[] = [
     explanation: 'Thank Allah for the food and drink He has provided after finishing your meal.',
     ageGroup: '4-8',
     imageAiHint: 'empty plate thankful',
+    imagePath: '/assets/images/duas/dua-after-eating-card.png',
+    mainImagePath: '/assets/images/duas/dua-after-eating-main.png',
   },
   {
     id: 'dua-before-sleeping',
@@ -33,6 +38,8 @@ export const dummyDuas: Dua[] = [
     explanation: 'Recite this dua before going to sleep, entrusting yourself to Allah.',
     ageGroup: '9-16',
     imageAiHint: 'moon stars child',
+    imagePath: '/assets/images/duas/dua-before-sleeping-card.png',
+    mainImagePath: '/assets/images/duas/dua-before-sleeping-main.png',
   },
   {
     id: 'dua-waking-up',
@@ -44,6 +51,8 @@ export const dummyDuas: Dua[] = [
     explanation: 'Thank Allah for giving you another day when you wake up.',
     ageGroup: '9-16',
     imageAiHint: 'sunshine window child',
+    imagePath: '/assets/images/duas/dua-waking-up-card.png',
+    mainImagePath: '/assets/images/duas/dua-waking-up-main.png',
   },
   {
     id: 'dua-entering-home',
@@ -55,6 +64,8 @@ export const dummyDuas: Dua[] = [
     explanation: 'Recite this dua when entering your home to invite blessings and protection.',
     ageGroup: '4-8',
     imageAiHint: 'door open welcome',
+    imagePath: '/assets/images/duas/dua-entering-home-card.png',
+    mainImagePath: '/assets/images/duas/dua-entering-home-main.png',
   },
   {
     id: 'dua-leaving-home',
@@ -66,6 +77,8 @@ export const dummyDuas: Dua[] = [
     explanation: 'Recite this dua when leaving your home for Allah\'s protection and guidance.',
     ageGroup: '4-8',
     imageAiHint: 'child waving goodbye',
+    imagePath: '/assets/images/duas/dua-leaving-home-card.png',
+    mainImagePath: '/assets/images/duas/dua-leaving-home-main.png',
   },
   {
     id: 'dua-entering-toilet',
@@ -77,6 +90,8 @@ export const dummyDuas: Dua[] = [
     explanation: 'Seek Allah\'s protection from evil before entering the toilet.',
     ageGroup: '4-8',
     imageAiHint: 'closed door bathroom',
+    imagePath: '/assets/images/duas/dua-entering-toilet-card.png',
+    mainImagePath: '/assets/images/duas/dua-entering-toilet-main.png',
   },
   {
     id: 'dua-leaving-toilet',
@@ -88,6 +103,8 @@ export const dummyDuas: Dua[] = [
     explanation: 'Ask for Allah\'s forgiveness after leaving the toilet.',
     ageGroup: '4-8',
     imageAiHint: 'washing hands clean',
+    imagePath: '/assets/images/duas/dua-leaving-toilet-card.png',
+    mainImagePath: '/assets/images/duas/dua-leaving-toilet-main.png',
   },
   {
     id: 'dua-wearing-clothes',
@@ -99,6 +116,8 @@ export const dummyDuas: Dua[] = [
     explanation: 'Thank Allah for the clothes He has provided.',
     ageGroup: '4-8',
     imageAiHint: 'child dressing smiling',
+    imagePath: '/assets/images/duas/dua-wearing-clothes-card.png',
+    mainImagePath: '/assets/images/duas/dua-wearing-clothes-main.png',
   },
   {
     id: 'dua-for-parents',
@@ -110,6 +129,8 @@ export const dummyDuas: Dua[] = [
     explanation: 'A beautiful Quranic dua to pray for mercy for your parents.',
     ageGroup: '4-8',
     imageAiHint: 'family hug parents',
+    imagePath: '/assets/images/duas/dua-for-parents-card.png',
+    mainImagePath: '/assets/images/duas/dua-for-parents-main.png',
   },
   {
     id: 'dua-seeking-knowledge',
@@ -121,6 +142,8 @@ export const dummyDuas: Dua[] = [
     explanation: 'Ask Allah to increase your knowledge and understanding.',
     ageGroup: '9-16',
     imageAiHint: 'child reading book',
+    imagePath: '/assets/images/duas/dua-seeking-knowledge-card.png',
+    mainImagePath: '/assets/images/duas/dua-seeking-knowledge-main.png',
   },
   {
     id: 'dua-before-studying',
@@ -132,6 +155,8 @@ export const dummyDuas: Dua[] = [
     explanation: 'Recite this dua before starting your studies for focus and benefit.',
     ageGroup: '9-16',
     imageAiHint: 'student desk books',
+    imagePath: '/assets/images/duas/dua-before-studying-card.png',
+    mainImagePath: '/assets/images/duas/dua-before-studying-main.png',
   },
   {
     id: 'dua-sneezing',
@@ -143,6 +168,8 @@ export const dummyDuas: Dua[] = [
     explanation: 'Say this when you sneeze. If someone else says it, reply with "YarhamukAllah" (May Allah have mercy on you).',
     ageGroup: '4-8',
     imageAiHint: 'child sneezing tissue',
+    imagePath: '/assets/images/duas/dua-sneezing-card.png',
+    mainImagePath: '/assets/images/duas/dua-sneezing-main.png',
   },
   {
     id: 'dua-visiting-sick',
@@ -154,5 +181,7 @@ export const dummyDuas: Dua[] = [
     explanation: 'Console and pray for a sick person with this dua.',
     ageGroup: '9-16',
     imageAiHint: 'child visiting friend',
+    imagePath: '/assets/images/duas/dua-visiting-sick-card.png',
+    mainImagePath: '/assets/images/duas/dua-visiting-sick-main.png',
   },
 ];

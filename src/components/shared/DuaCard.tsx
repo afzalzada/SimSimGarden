@@ -13,6 +13,7 @@ interface DuaCardProps {
 }
 
 export default function DuaCard({ dua, bgColor }: DuaCardProps) {
+  const imagePath = dua.imagePath || `/assets/images/duas/dua-${dua.id}-card.png`;
   return (
     <Card className={cn(
         "flex flex-col h-full overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 backdrop-blur-md group hover:scale-105 hover:animate-subtle-scale-hover", 
@@ -25,7 +26,7 @@ export default function DuaCard({ dua, bgColor }: DuaCardProps) {
         <CardTitle className="font-headline text-xl text-primary group-hover:text-accent transition-colors">{dua.title}</CardTitle>
         <div className="relative w-full h-32 rounded-lg overflow-hidden my-2 shadow-inner">
             <Image 
-                src={`https://placehold.co/300x150.png`} 
+                src={imagePath}
                 alt={dua.title} 
                 layout="fill" 
                 objectFit="cover"

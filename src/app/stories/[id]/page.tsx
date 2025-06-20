@@ -14,7 +14,6 @@ import Link from 'next/link';
 import { useUserProgress } from '@/contexts/UserProgressContext';
 import LoadingSpinner from '@/components/shared/LoadingSpinner';
 
-// Helper component for ArrowRight to avoid re-definition on every render
 const ArrowLeftIcon = ({ className }: { className?: string }) => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className={className || "w-6 h-6"}>
     <path fillRule="evenodd" d="M11.03 3.97a.75.75 0 010 1.06l-6.22 6.22H21a.75.75 0 010 1.5H4.81l6.22 6.22a.75.75 0 11-1.06 1.06l-7.5-7.5a.75.75 0 010-1.06l7.5-7.5a.75.75 0 011.06 0z" clipRule="evenodd" />
@@ -45,22 +44,20 @@ export default function SingleStoryPage() {
         const progress = getLessonProgress(foundStory.id);
         if (progress === 'Completed') {
           setIsCompleted(true);
-          setCurrentNodeIndex(foundStory.content.length); // Go to "end" state
+          setCurrentNodeIndex(foundStory.content.length); 
         } else if (progress === 'In Progress') {
-          // Potentially load last saved node index if implemented
+          // Future: Potentially load last saved node index if implemented
         }
       } else {
-        router.push('/stories'); // Story not found
+        router.push('/stories'); 
       }
       setIsLoading(false);
     }
   }, [params.id, router, getLessonProgress]);
 
   useEffect(() => {
-    if (story && !isCompleted) {
+    if (story && !isCompleted && currentNodeIndex < story.content.length) { // Ensure not to update if story is finished
       const currentProgress = getLessonProgress(story.id);
-      // Only update if progress is not already 'In Progress' or 'Completed'
-      // This prevents the loop by not calling updateLessonProgress unnecessarily
       if (currentProgress !== 'Completed' && currentProgress !== 'In Progress') {
         updateLessonProgress(story.id, 'In Progress');
       }
@@ -72,7 +69,6 @@ export default function SingleStoryPage() {
     if (story && nextNodeIndex < story.content.length) {
       setCurrentNodeIndex(nextNodeIndex);
     } else {
-      // Reached end of story through choices or last node
       completeStory();
     }
   };
@@ -87,9 +83,10 @@ export default function SingleStoryPage() {
   
   const completeStory = () => {
     if (story && !isCompleted) {
-        addPoints(10); // Award 10 points for completing a story
+        addPoints(10); 
         markLessonCompleted(story.id);
         setIsCompleted(true);
+        setCurrentNodeIndex(story.content.length); // Explicitly move to "completed" state for rendering
     }
   }
 
@@ -124,7 +121,6 @@ export default function SingleStoryPage() {
       </AppLayout>
     )
   }
-
 
   return (
     <AppLayout>

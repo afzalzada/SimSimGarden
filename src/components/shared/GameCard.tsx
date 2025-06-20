@@ -37,6 +37,7 @@ const Gamepad2Icon = ({ className }: { className?: string }) => (
 
 export default function GameCard({ game, bgColor }: GameCardProps) {
   const IconComponent = game.icon && iconComponents[game.icon] ? iconComponents[game.icon] : Gamepad2Icon;
+  const imagePath = game.imagePath || `/assets/images/games/cards/game-${game.id}-card.png`;
 
   return (
     <Card className={cn(
@@ -50,7 +51,7 @@ export default function GameCard({ game, bgColor }: GameCardProps) {
         <CardTitle className="font-headline text-xl text-primary group-hover:text-accent transition-colors">{game.title}</CardTitle>
          <div className="relative w-full h-40 rounded-lg overflow-hidden my-2 shadow-inner">
             <Image 
-                src={`https://placehold.co/300x200.png`} 
+                src={imagePath}
                 alt={game.title} 
                 layout="fill" 
                 objectFit="cover"

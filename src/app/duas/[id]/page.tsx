@@ -148,6 +148,9 @@ export default function SingleDuaPage() {
     )
   }
 
+  const imagePath = dua.imagePath || `/assets/images/duas/dua-${dua.id}-main.png`;
+
+
   return (
     <AppLayout>
       <Button onClick={() => router.push('/duas')} variant="outline" className="mb-6">
@@ -158,7 +161,7 @@ export default function SingleDuaPage() {
           <CardTitle className="font-headline text-4xl text-primary">{dua.title}</CardTitle>
            <div className="relative w-full h-40 rounded-lg overflow-hidden my-4 shadow-inner">
             <Image 
-                src={`https://placehold.co/600x240.png`} 
+                src={imagePath} 
                 alt={dua.title} 
                 layout="fill"
                 objectFit="cover"
@@ -212,4 +215,3 @@ export default function SingleDuaPage() {
     </AppLayout>
   );
 }
-    

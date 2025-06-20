@@ -44,7 +44,7 @@ export default function SingleQuranVersePage() {
             };
             const currentAudio = audioRef.current;
             const currentVerseForListener = foundVerse;
-            currentAudio.onended = () => { // Changed from audioRef.current.onended to currentAudio.onended
+            currentAudio.onended = () => { 
                 setIsPlaying(false);
                 setPlaybackProgress(100);
                  if (currentVerseForListener && getLessonProgress(currentVerseForListener.id) !== 'Completed') {
@@ -121,6 +121,8 @@ export default function SingleQuranVersePage() {
     )
   }
 
+  const imagePath = verse.mainImagePath || `/assets/images/quran/verse-${verse.id}-main.png`;
+
   return (
     <AppLayout>
       <Button onClick={() => router.push('/quran')} variant="outline" className="mb-6">
@@ -131,7 +133,7 @@ export default function SingleQuranVersePage() {
           <CardTitle className="font-headline text-4xl text-primary">{verse.surahName} ({verse.verseNumber})</CardTitle>
           <div className="relative w-full h-40 rounded-lg overflow-hidden my-4 shadow-inner">
             <Image 
-                src={`https://placehold.co/600x240.png`} 
+                src={imagePath} 
                 alt={`${verse.surahName} ${verse.verseNumber}`} 
                 layout="fill" 
                 objectFit="cover"

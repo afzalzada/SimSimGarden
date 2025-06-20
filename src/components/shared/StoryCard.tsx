@@ -13,6 +13,7 @@ interface StoryCardProps {
 }
 
 export default function StoryCard({ story, bgColor }: StoryCardProps) {
+  const imagePath = story.thumbnailUrl || `/assets/images/stories/${story.id}-thumbnail.png`;
   return (
     <Card className={cn(
         "flex flex-col h-full overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 backdrop-blur-md group hover:scale-105 hover:animate-subtle-scale-hover", 
@@ -21,7 +22,7 @@ export default function StoryCard({ story, bgColor }: StoryCardProps) {
       <CardHeader className="p-0">
         <div className="relative w-full h-48">
           <Image 
-            src={story.thumbnailUrl} 
+            src={imagePath} 
             alt={story.title} 
             layout="fill" 
             objectFit="cover"

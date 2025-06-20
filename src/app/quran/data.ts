@@ -1,3 +1,4 @@
+
 import type { QuranVerse } from '@/lib/types';
 
 export const dummyQuranVerses: QuranVerse[] = [
@@ -11,6 +12,8 @@ export const dummyQuranVerses: QuranVerse[] = [
     audioUrl: '/audio/ayatul_kursi.mp3',
     ageGroup: '9-16',
     imageAiHint: 'throne light heaven',
+    imagePath: '/assets/images/quran/verse-ayatul-kursi-card.png',
+    mainImagePath: '/assets/images/quran/verse-ayatul-kursi-main.png',
   },
   {
     id: 'surah-al-fatihah',
@@ -22,6 +25,8 @@ export const dummyQuranVerses: QuranVerse[] = [
     audioUrl: '/audio/al_fatihah.mp3',
     ageGroup: '4-8',
     imageAiHint: 'quran open book',
+    imagePath: '/assets/images/quran/verse-surah-al-fatihah-card.png',
+    mainImagePath: '/assets/images/quran/verse-surah-al-fatihah-main.png',
   },
   {
     id: 'surah-al-ikhlas',
@@ -33,6 +38,8 @@ export const dummyQuranVerses: QuranVerse[] = [
     audioUrl: '/audio/al_ikhlas.mp3',
     ageGroup: '4-8',
     imageAiHint: 'islamic pattern unity',
+    imagePath: '/assets/images/quran/verse-surah-al-ikhlas-card.png',
+    mainImagePath: '/assets/images/quran/verse-surah-al-ikhlas-main.png',
   },
   {
     id: 'surah-al-nas',
@@ -44,6 +51,8 @@ export const dummyQuranVerses: QuranVerse[] = [
     audioUrl: '/audio/an_nas.mp3',
     ageGroup: '4-8',
     imageAiHint: 'protection shield light',
+    imagePath: '/assets/images/quran/verse-surah-al-nas-card.png',
+    mainImagePath: '/assets/images/quran/verse-surah-al-nas-main.png',
   },
   {
     id: 'surah-al-falaq',
@@ -55,6 +64,8 @@ export const dummyQuranVerses: QuranVerse[] = [
     audioUrl: '/audio/al_falaq.mp3',
     ageGroup: '4-8',
     imageAiHint: 'daybreak sun rise',
+    imagePath: '/assets/images/quran/verse-surah-al-falaq-card.png',
+    mainImagePath: '/assets/images/quran/verse-surah-al-falaq-main.png',
   },
   {
     id: 'surah-al-asr',
@@ -66,6 +77,8 @@ export const dummyQuranVerses: QuranVerse[] = [
     audioUrl: '/audio/al_asr.mp3',
     ageGroup: '9-16',
     imageAiHint: 'hourglass time path',
+    imagePath: '/assets/images/quran/verse-surah-al-asr-card.png',
+    mainImagePath: '/assets/images/quran/verse-surah-al-asr-main.png',
   },
   {
     id: 'quran-kindness-parents',
@@ -77,6 +90,8 @@ export const dummyQuranVerses: QuranVerse[] = [
     audioUrl: '/audio/kindness_parents.mp3',
     ageGroup: '9-16',
     imageAiHint: 'family loving parents',
+    imagePath: '/assets/images/quran/verse-quran-kindness-parents-card.png',
+    mainImagePath: '/assets/images/quran/verse-quran-kindness-parents-main.png',
   },
   {
     id: 'quran-speak-good-words',
@@ -88,6 +103,8 @@ export const dummyQuranVerses: QuranVerse[] = [
     audioUrl: '/audio/good_words.mp3',
     ageGroup: '4-8',
     imageAiHint: 'children talking nicely',
+    imagePath: '/assets/images/quran/verse-quran-speak-good-words-card.png',
+    mainImagePath: '/assets/images/quran/verse-quran-speak-good-words-main.png',
   },
   {
     id: 'quran-do-not-waste',
@@ -99,6 +116,8 @@ export const dummyQuranVerses: QuranVerse[] = [
     audioUrl: '/audio/do_not_waste.mp3',
     ageGroup: '9-16',
     imageAiHint: 'food balanced meal',
+    imagePath: '/assets/images/quran/verse-quran-do-not-waste-card.png',
+    mainImagePath: '/assets/images/quran/verse-quran-do-not-waste-main.png',
   },
   {
     id: 'quran-patience-prayer',
@@ -110,6 +129,8 @@ export const dummyQuranVerses: QuranVerse[] = [
     audioUrl: '/audio/patience_prayer.mp3',
     ageGroup: '9-16',
     imageAiHint: 'person praying peacefully',
+    imagePath: '/assets/images/quran/verse-quran-patience-prayer-card.png',
+    mainImagePath: '/assets/images/quran/verse-quran-patience-prayer-main.png',
   },
    {
     id: 'quran-creation-diversity',
@@ -121,6 +142,8 @@ export const dummyQuranVerses: QuranVerse[] = [
     audioUrl: '/audio/creation_diversity.mp3',
     ageGroup: '9-16',
     imageAiHint: 'children diverse world',
+    imagePath: '/assets/images/quran/verse-quran-creation-diversity-card.png',
+    mainImagePath: '/assets/images/quran/verse-quran-creation-diversity-main.png',
   },
   {
     id: 'quran-forgiveness',
@@ -132,5 +155,7 @@ export const dummyQuranVerses: QuranVerse[] = [
     audioUrl: '/audio/forgiveness_allah.mp3',
     ageGroup: '9-16',
     imageAiHint: 'hopeful light sky',
+    imagePath: '/assets/images/quran/verse-quran-forgiveness-card.png',
+    mainImagePath: '/assets/images/quran/verse-quran-forgiveness-main.png',
   },
 ];

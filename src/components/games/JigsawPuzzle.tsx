@@ -30,6 +30,9 @@ export default function JigsawPuzzle({ puzzle, onPuzzleComplete }: JigsawPuzzleP
     setShowHint(false);
   }
 
+  const imagePath = puzzle.imageUrl || `/assets/images/games/puzzles/puzzle-${puzzle.id}.png`;
+
+
   return (
     <Card className="w-full max-w-xl mx-auto shadow-xl rounded-xl">
       <CardHeader className="text-center bg-primary/10 p-6 rounded-t-xl">
@@ -41,7 +44,7 @@ export default function JigsawPuzzle({ puzzle, onPuzzleComplete }: JigsawPuzzleP
       <CardContent className="p-6 text-center space-y-6">
         <div className={`relative w-full aspect-[3/2] border-4 ${isSolved ? 'border-green-500' : 'border-primary/20'} rounded-lg overflow-hidden shadow-inner bg-muted/30`}>
           <Image 
-            src={puzzle.imageUrl} 
+            src={imagePath} 
             alt={puzzle.title} 
             layout="fill" 
             objectFit="contain" 
@@ -58,7 +61,7 @@ export default function JigsawPuzzle({ puzzle, onPuzzleComplete }: JigsawPuzzleP
                 </Button>
                 {showHint && 
                     <div className="w-1/2 aspect-[3/2] relative border border-dashed border-primary rounded overflow-hidden">
-                        <Image src={puzzle.imageUrl} alt="Hint" layout="fill" objectFit="contain" data-ai-hint={puzzle.imageAiHint || 'puzzle hint image'}/>
+                        <Image src={imagePath} alt="Hint" layout="fill" objectFit="contain" data-ai-hint={puzzle.imageAiHint || 'puzzle hint image'}/>
                     </div>
                 }
             </div>

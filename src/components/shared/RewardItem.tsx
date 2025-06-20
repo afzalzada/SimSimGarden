@@ -1,8 +1,9 @@
+
 'use client';
 
 import type { Reward } from '@/lib/types';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Award, Star, ShoppingBag, ImageIcon, Gift } from 'lucide-react'; // Added Gift
+import { Award, Star, ShoppingBag, ImageIcon, Gift } from 'lucide-react'; 
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import { useState, useEffect, useRef } from 'react';
@@ -21,29 +22,32 @@ export default function RewardItem({ reward, isUnlocked }: RewardItemProps) {
       setJustUnlocked(true);
       const timer = setTimeout(() => {
         setJustUnlocked(false);
-      }, 1000); // Animation duration + a bit of buffer
+      }, 1000); 
       return () => clearTimeout(timer);
     }
     prevIsUnlocked.current = isUnlocked;
   }, [isUnlocked]);
 
-  let IconComponent = Gift; // Default to Gift for a more celebratory feel
+  let IconComponent = Gift; 
   if (reward.type === 'badge') IconComponent = Award;
   if (reward.type === 'virtual_item') IconComponent = ShoppingBag;
   if (reward.type === 'wallpaper') IconComponent = ImageIcon;
   if (reward.type === 'avatar_accessory') IconComponent = Star;
 
+  const iconPath = reward.iconUrl || `/assets/images/rewards/reward-${reward.id}.png`;
+
+
   return (
     <Card className={cn(
-        "text-center shadow-lg rounded-xl overflow-hidden transition-all duration-300 transform-gpu", // Added transform-gpu for better animation performance
+        "text-center shadow-lg rounded-xl overflow-hidden transition-all duration-300 transform-gpu", 
         isUnlocked ? "bg-accent/20 border-accent" : "bg-card border-border opacity-70 hover:opacity-90",
         justUnlocked && "animate-reward-unlock"
       )}>
       <CardHeader className="p-4 items-center">
-        {reward.iconUrl ? (
+        {iconPath ? (
           <div className="relative w-20 h-20 mx-auto mb-3 rounded-full overflow-hidden border-2 border-primary/20 shadow-inner">
             <Image 
-                src={reward.iconUrl} 
+                src={iconPath} 
                 alt={reward.title} 
                 layout="fill" 
                 objectFit="cover" 
