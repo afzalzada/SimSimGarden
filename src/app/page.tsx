@@ -7,6 +7,17 @@ import { BookOpenText, Sparkles, BookMarked, Gamepad2, Bot, Trophy, ArrowRight }
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
 
+const cardGradientBgs = [
+  'bg-gradient-to-br from-[hsl(var(--primary)/0.5)] via-[hsl(var(--primary)/0.2)] to-[hsl(var(--card)/0.1)]',
+  'bg-gradient-to-tl from-[hsl(var(--secondary)/0.5)] via-[hsl(var(--secondary)/0.2)] to-[hsl(var(--card)/0.1)]',
+  'bg-gradient-to-r from-[hsl(var(--accent)/0.5)] via-[hsl(var(--accent)/0.2)] to-[hsl(var(--card)/0.1)]',
+  'bg-gradient-to-b from-[hsl(var(--chart-4)/0.5)] via-[hsl(var(--chart-4)/0.2)] to-[hsl(var(--card)/0.1)]',
+  'bg-gradient-to-tr from-[hsl(var(--chart-5)/0.5)] via-[hsl(var(--chart-5)/0.2)] to-[hsl(var(--card)/0.1)]',
+  'bg-gradient-to-bl from-[hsl(var(--destructive)/0.4)] via-[hsl(var(--destructive)/0.15)] to-[hsl(var(--card)/0.1)]',
+  'bg-gradient-to-br from-[hsl(var(--primary)/0.3)] via-[hsl(var(--secondary)/0.15)] to-[hsl(var(--card)/0.1)]',
+  'bg-gradient-to-tl from-[hsl(var(--accent)/0.3)] via-[hsl(var(--chart-4)/0.15)] to-[hsl(var(--card)/0.1)]',
+];
+
 const features = [
   {
     title: 'Islamic Stories',
@@ -15,7 +26,7 @@ const features = [
     icon: <BookOpenText className="w-12 h-12 text-primary mb-4" />,
     image: 'https://placehold.co/600x400.png',
     aiHint: 'storybook kids magic',
-    bgColor: 'bg-gradient-to-br from-primary/10 via-background to-secondary/5',
+    bgColor: cardGradientBgs[0],
   },
   {
     title: 'Interactive Duas',
@@ -24,7 +35,7 @@ const features = [
     icon: <Sparkles className="w-12 h-12 text-primary mb-4" />,
     image: 'https://placehold.co/600x400.png',
     aiHint: 'hands praying light',
-    bgColor: 'bg-gradient-to-tl from-secondary/10 via-background to-accent/5',
+    bgColor: cardGradientBgs[1],
   },
   {
     title: 'Quran Verses',
@@ -33,7 +44,7 @@ const features = [
     icon: <BookMarked className="w-12 h-12 text-primary mb-4" />,
     image: 'https://placehold.co/600x400.png',
     aiHint: 'quran open serene',
-    bgColor: 'bg-gradient-to-r from-accent/10 via-background to-primary/5',
+    bgColor: cardGradientBgs[2],
   },
   {
     title: 'Fun Islamic Games',
@@ -42,7 +53,7 @@ const features = [
     icon: <Gamepad2 className="w-12 h-12 text-primary mb-4" />,
     image: 'https://placehold.co/600x400.png',
     aiHint: 'kids playing fun',
-    bgColor: 'bg-gradient-to-bl from-primary/5 via-background to-accent/10',
+    bgColor: cardGradientBgs[3],
   },
   {
     title: 'Chat with Aalim AI',
@@ -51,7 +62,7 @@ const features = [
     icon: <Bot className="w-12 h-12 text-primary mb-4" />,
     image: 'https://placehold.co/600x400.png',
     aiHint: 'friendly robot teacher',
-    bgColor: 'bg-gradient-to-tr from-secondary/5 via-background to-primary/10',
+    bgColor: cardGradientBgs[4],
   },
   {
     title: 'Points & Rewards',
@@ -60,7 +71,7 @@ const features = [
     icon: <Trophy className="w-12 h-12 text-primary mb-4" />,
     image: 'https://placehold.co/600x400.png',
     aiHint: 'trophy stars celebration',
-    bgColor: 'bg-gradient-to-l from-accent/5 via-background to-secondary/10',
+    bgColor: cardGradientBgs[5],
   },
 ];
 
@@ -88,8 +99,8 @@ export default function HomePage() {
             <Card 
               key={feature.title} 
               className={cn(
-                "backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 rounded-xl overflow-hidden flex flex-col group hover:scale-105 hover:animate-subtle-scale-hover", 
-                feature.bgColor || "bg-card/80"
+                "backdrop-blur-md shadow-lg hover:shadow-xl transition-all duration-300 rounded-xl overflow-hidden flex flex-col group hover:scale-105 hover:animate-subtle-scale-hover", 
+                feature.bgColor
               )}
             >
               <CardHeader className="items-center text-center p-6">

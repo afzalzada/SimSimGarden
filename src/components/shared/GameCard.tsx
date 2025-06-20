@@ -24,7 +24,6 @@ const iconComponents: Record<LucideIconName, ElementType> = {
   SpellCheck: SpellCheck,
 };
 
-// Dummy Gamepad2 for fallback to prevent breaking if an icon is missed in the map
 const Gamepad2Icon = ({ className }: { className?: string }) => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
     <line x1="6" y1="11" x2="10" y2="11" />
@@ -36,13 +35,13 @@ const Gamepad2Icon = ({ className }: { className?: string }) => (
 );
 
 
-export default function GameCard({ game, bgColor = "bg-card/80" }: GameCardProps) {
+export default function GameCard({ game, bgColor }: GameCardProps) {
   const IconComponent = game.icon && iconComponents[game.icon] ? iconComponents[game.icon] : Gamepad2Icon;
 
   return (
     <Card className={cn(
-        "flex flex-col h-full overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 backdrop-blur-sm group hover:scale-105 hover:animate-subtle-scale-hover", 
-        bgColor
+        "flex flex-col h-full overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 backdrop-blur-md group hover:scale-105 hover:animate-subtle-scale-hover", 
+        bgColor || "bg-card/80" 
       )}>
       <CardHeader className="p-6 items-center text-center">
         <div className="p-3 rounded-full bg-primary/10 mb-3 transition-transform group-hover:scale-110">

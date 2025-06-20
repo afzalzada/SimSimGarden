@@ -12,11 +12,11 @@ interface QuranVerseCardProps {
   bgColor?: string;
 }
 
-export default function QuranVerseCard({ verse, bgColor = "bg-card/80" }: QuranVerseCardProps) {
+export default function QuranVerseCard({ verse, bgColor }: QuranVerseCardProps) {
   return (
     <Card className={cn(
-        "flex flex-col h-full overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 backdrop-blur-sm group hover:scale-105 hover:animate-subtle-scale-hover", 
-        bgColor
+        "flex flex-col h-full overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 backdrop-blur-md group hover:scale-105 hover:animate-subtle-scale-hover", 
+        bgColor || "bg-card/80"
       )}>
       <CardHeader className="p-6 items-center text-center">
         <div className="p-3 rounded-full bg-primary/10 mb-2 transition-transform group-hover:scale-110">

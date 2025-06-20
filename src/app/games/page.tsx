@@ -4,11 +4,15 @@ import GameCard from '@/components/shared/GameCard';
 import { gameTypes } from './data';
 import { Gamepad2 } from 'lucide-react';
 
-const cardBgColors = [
-  'bg-gradient-to-br from-accent/10 via-background to-primary/5',
-  'bg-gradient-to-tl from-primary/10 via-background to-secondary/5',
-  'bg-gradient-to-r from-secondary/10 via-background to-accent/5',
-  'bg-gradient-to-b from-accent/5 via-background to-primary/10'
+const cardGradientBgs = [
+  'bg-gradient-to-br from-[hsl(var(--primary)/0.5)] via-[hsl(var(--primary)/0.2)] to-[hsl(var(--card)/0.1)]',
+  'bg-gradient-to-tl from-[hsl(var(--secondary)/0.5)] via-[hsl(var(--secondary)/0.2)] to-[hsl(var(--card)/0.1)]',
+  'bg-gradient-to-r from-[hsl(var(--accent)/0.5)] via-[hsl(var(--accent)/0.2)] to-[hsl(var(--card)/0.1)]',
+  'bg-gradient-to-b from-[hsl(var(--chart-4)/0.5)] via-[hsl(var(--chart-4)/0.2)] to-[hsl(var(--card)/0.1)]',
+  'bg-gradient-to-tr from-[hsl(var(--chart-5)/0.5)] via-[hsl(var(--chart-5)/0.2)] to-[hsl(var(--card)/0.1)]',
+  'bg-gradient-to-bl from-[hsl(var(--destructive)/0.4)] via-[hsl(var(--destructive)/0.15)] to-[hsl(var(--card)/0.1)]',
+  'bg-gradient-to-br from-[hsl(var(--primary)/0.3)] via-[hsl(var(--secondary)/0.15)] to-[hsl(var(--card)/0.1)]',
+  'bg-gradient-to-tl from-[hsl(var(--accent)/0.3)] via-[hsl(var(--chart-4)/0.15)] to-[hsl(var(--card)/0.1)]',
 ];
 
 export default function GamesPage() {
@@ -28,7 +32,7 @@ export default function GamesPage() {
           <GameCard 
             key={game.id} 
             game={game} 
-            bgColor={cardBgColors[index % cardBgColors.length]}
+            bgColor={cardGradientBgs[index % cardGradientBgs.length]}
           />
         ))}
       </div>
