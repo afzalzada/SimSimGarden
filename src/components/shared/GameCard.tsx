@@ -6,9 +6,11 @@ import { Button } from '@/components/ui/button';
 import type { Game, LucideIconName } from '@/lib/types';
 import { ArrowRight, Users, HelpCircle, Puzzle as PuzzleIcon, Brain as BrainIcon, BookOpen, Sparkles, Smile, SpellCheck } from 'lucide-react'; 
 import type { ElementType } from 'react';
+import { cn } from '@/lib/utils';
 
 interface GameCardProps {
   game: Game;
+  bgColor?: string;
 }
 
 const iconComponents: Record<LucideIconName, ElementType> = {
@@ -34,11 +36,11 @@ const Gamepad2Icon = ({ className }: { className?: string }) => (
 );
 
 
-export default function GameCard({ game }: GameCardProps) {
+export default function GameCard({ game, bgColor = "bg-card/80" }: GameCardProps) {
   const IconComponent = game.icon && iconComponents[game.icon] ? iconComponents[game.icon] : Gamepad2Icon;
 
   return (
-    <Card className="flex flex-col h-full overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 bg-card/80 backdrop-blur-sm">
+    <Card className={cn("flex flex-col h-full overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 backdrop-blur-sm", bgColor)}>
       <CardHeader className="p-6 items-center text-center">
         <div className="p-3 rounded-full bg-primary/10 mb-3">
           <IconComponent className="w-10 h-10 text-primary" />

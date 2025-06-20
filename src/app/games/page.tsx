@@ -1,7 +1,10 @@
+
 import AppLayout from '@/components/layout/AppLayout';
 import GameCard from '@/components/shared/GameCard';
 import { gameTypes } from './data';
 import { Gamepad2 } from 'lucide-react';
+
+const cardBgColors = ['bg-card/70', 'bg-primary/5', 'bg-secondary/5', 'bg-accent/5'];
 
 export default function GamesPage() {
   return (
@@ -16,8 +19,12 @@ export default function GamesPage() {
         </p>
       </header>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {gameTypes.map((game) => (
-          <GameCard key={game.id} game={game} />
+        {gameTypes.map((game, index) => (
+          <GameCard 
+            key={game.id} 
+            game={game} 
+            bgColor={cardBgColors[index % cardBgColors.length]}
+          />
         ))}
       </div>
     </AppLayout>

@@ -1,7 +1,10 @@
+
 import AppLayout from '@/components/layout/AppLayout';
 import QuranVerseCard from '@/components/shared/QuranVerseCard';
 import { dummyQuranVerses } from './data';
 import { BookMarked } from 'lucide-react';
+
+const cardBgColors = ['bg-accent/5', 'bg-card/70', 'bg-primary/5', 'bg-secondary/5'];
 
 export default function QuranPage() {
   return (
@@ -16,8 +19,12 @@ export default function QuranPage() {
         </p>
       </header>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {dummyQuranVerses.map((verse) => (
-          <QuranVerseCard key={verse.id} verse={verse} />
+        {dummyQuranVerses.map((verse, index) => (
+          <QuranVerseCard 
+            key={verse.id} 
+            verse={verse} 
+            bgColor={cardBgColors[index % cardBgColors.length]}
+          />
         ))}
       </div>
     </AppLayout>

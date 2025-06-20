@@ -1,7 +1,11 @@
+
 import AppLayout from '@/components/layout/AppLayout';
 import DuaCard from '@/components/shared/DuaCard';
 import { dummyDuas } from './data';
 import { Sparkles } from 'lucide-react';
+
+const cardBgColors = ['bg-secondary/5', 'bg-accent/5', 'bg-card/70', 'bg-primary/5'];
+
 
 export default function DuasPage() {
   return (
@@ -16,8 +20,12 @@ export default function DuasPage() {
         </p>
       </header>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {dummyDuas.map((dua) => (
-          <DuaCard key={dua.id} dua={dua} />
+        {dummyDuas.map((dua, index) => (
+          <DuaCard 
+            key={dua.id} 
+            dua={dua} 
+            bgColor={cardBgColors[index % cardBgColors.length]}
+          />
         ))}
       </div>
     </AppLayout>

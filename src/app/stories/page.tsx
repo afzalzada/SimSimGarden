@@ -1,7 +1,10 @@
+
 import AppLayout from '@/components/layout/AppLayout';
 import StoryCard from '@/components/shared/StoryCard';
 import { dummyStories } from './data';
 import { BookOpenText } from 'lucide-react';
+
+const cardBgColors = ['bg-primary/5', 'bg-secondary/5', 'bg-accent/5', 'bg-card/70'];
 
 export default function StoriesPage() {
   return (
@@ -17,8 +20,12 @@ export default function StoriesPage() {
       </header>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {dummyStories.map((story) => (
-          <StoryCard key={story.id} story={story} />
+        {dummyStories.map((story, index) => (
+          <StoryCard 
+            key={story.id} 
+            story={story} 
+            bgColor={cardBgColors[index % cardBgColors.length]}
+          />
         ))}
       </div>
     </AppLayout>

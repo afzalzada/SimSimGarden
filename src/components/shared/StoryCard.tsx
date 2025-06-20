@@ -1,17 +1,20 @@
+
 import Link from 'next/link';
 import Image from 'next/image';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import type { Story } from '@/lib/types';
 import { ArrowRight, Users } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 interface StoryCardProps {
   story: Story;
+  bgColor?: string;
 }
 
-export default function StoryCard({ story }: StoryCardProps) {
+export default function StoryCard({ story, bgColor = "bg-card/80" }: StoryCardProps) {
   return (
-    <Card className="flex flex-col h-full overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 bg-card/80 backdrop-blur-sm">
+    <Card className={cn("flex flex-col h-full overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 backdrop-blur-sm", bgColor)}>
       <CardHeader className="p-0">
         <div className="relative w-full h-48">
           <Image 

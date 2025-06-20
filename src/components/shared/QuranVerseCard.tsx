@@ -1,17 +1,20 @@
+
 import Link from 'next/link';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import type { QuranVerse } from '@/lib/types';
 import { ArrowRight, BookMarked, Users } from 'lucide-react';
 import Image from 'next/image';
+import { cn } from '@/lib/utils';
 
 interface QuranVerseCardProps {
   verse: QuranVerse;
+  bgColor?: string;
 }
 
-export default function QuranVerseCard({ verse }: QuranVerseCardProps) {
+export default function QuranVerseCard({ verse, bgColor = "bg-card/80" }: QuranVerseCardProps) {
   return (
-    <Card className="flex flex-col h-full overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 bg-card/80 backdrop-blur-sm">
+    <Card className={cn("flex flex-col h-full overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 backdrop-blur-sm", bgColor)}>
       <CardHeader className="p-6 items-center text-center">
         <div className="p-3 rounded-full bg-primary/10 mb-2">
             <BookMarked className="w-8 h-8 text-primary" />
