@@ -7,10 +7,11 @@ import AppLayout from '@/components/layout/AppLayout';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useParentalGate } from '@/hooks/use-parental-gate';
-import { Bell, Palette, UserCircle, ShieldCheck } from 'lucide-react';
+import { Bell, Palette, UserCircle, ShieldCheck, Moon, Sun } from 'lucide-react';
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
 import LoadingSpinner from '@/components/shared/LoadingSpinner';
+import { useDarkMode } from '@/hooks/use-dark-mode'; // Import the dark mode hook
 
 function SettingsContent() {
   const router = useRouter();
@@ -20,16 +21,17 @@ function SettingsContent() {
   const [isVerified, setIsVerified] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
+  const [isDarkMode, toggleDarkMode, setDarkMode] = useDarkMode();
+  const [progressNotifications, setProgressNotifications] = useState(true);
+  const [newContentNotifications, setNewContentNotifications] = useState(false);
+
   useEffect(() => {
-    // Check if the gate was passed in this session via URL parameter
     if (searchParams.get('gate_passed_once') === 'true') {
       setIsVerified(true);
     } else {
-      // If not passed via URL, show the gate immediately
-      // The dialog itself will navigate with the param on success
       showParentalGate();
     }
-    const timer = setTimeout(() => setIsLoading(false), 300); // Shorter delay, main check is param
+    const timer = setTimeout(() => setIsLoading(false), 300);
     return () => clearTimeout(timer);
   }, [searchParams, showParentalGate]);
 
@@ -46,8 +48,6 @@ function SettingsContent() {
   }
   
   if (!isVerified) {
-    // This state is reached if the URL param isn't there, and the dialog should be active.
-    // Or if the dialog was closed without passing.
     return (
       <AppLayout>
         <div className="flex flex-col items-center justify-center min-h-[60vh] text-center">
@@ -61,7 +61,6 @@ function SettingsContent() {
     );
   }
 
-  // Gate is passed, show actual settings
   return (
     <AppLayout>
       <div className="max-w-2xl mx-auto">
@@ -75,8 +74,8 @@ function SettingsContent() {
             <CardTitle className="flex items-center gap-2 font-headline text-xl"><UserCircle className="text-primary"/> Account</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            <p className="text-muted-foreground">Parental account settings (e.g., email, password) would go here. For this demo, this section is a placeholder.</p>
-            <Button variant="outline">Manage Account (Dummy)</Button>
+            <p className="text-muted-foreground">User login and account management are planned for a future update. Currently, all content is accessible without an account.</p>
+            <Button variant="outline" disabled>Manage Account (Coming Soon)</Button>
           </CardContent>
         </Card>
 
@@ -87,11 +86,21 @@ function SettingsContent() {
           <CardContent className="space-y-4">
             <div className="flex items-center justify-between">
               <Label htmlFor="progress-notifications" className="text-base">Progress Milestones</Label>
-              <Switch id="progress-notifications" defaultChecked />
+              <Switch 
+                id="progress-notifications" 
+                checked={progressNotifications} 
+                onCheckedChange={setProgressNotifications}
+                aria-label="Toggle progress milestone notifications"
+              />
             </div>
             <div className="flex items-center justify-between">
               <Label htmlFor="new-content-notifications" className="text-base">New Content Alerts</Label>
-              <Switch id="new-content-notifications" />
+              <Switch 
+                id="new-content-notifications" 
+                checked={newContentNotifications}
+                onCheckedChange={setNewContentNotifications}
+                aria-label="Toggle new content alert notifications"
+              />
             </div>
           </CardContent>
         </Card>
@@ -102,10 +111,18 @@ function SettingsContent() {
           </CardHeader>
           <CardContent className="space-y-4">
              <div className="flex items-center justify-between">
-              <Label htmlFor="dark-mode" className="text-base">Dark Mode</Label>
-              <Switch id="dark-mode" disabled/>
+              <Label htmlFor="dark-mode" className="text-base flex items-center">
+                {isDarkMode ? <Moon className="mr-2 h-5 w-5 text-accent" /> : <Sun className="mr-2 h-5 w-5 text-accent" />}
+                Dark Mode
+              </Label>
+              <Switch 
+                id="dark-mode" 
+                checked={isDarkMode}
+                onCheckedChange={setDarkMode} 
+                aria-label="Toggle dark mode"
+              />
             </div>
-            <p className="text-sm text-muted-foreground">Theme customization options (e.g., dark mode, font size) could be added here. Dark mode switch is disabled for demo.</p>
+            <p className="text-sm text-muted-foreground">Toggle between light and dark themes for comfortable viewing.</p>
           </CardContent>
         </Card>
         
@@ -117,7 +134,6 @@ function SettingsContent() {
   );
 }
 
-// Wrap with Suspense because useSearchParams() needs it
 export default function SettingsPage() {
   return (
     <Suspense fallback={<AppLayout><div className="flex justify-center items-center h-screen"><LoadingSpinner size={48} /><p className="ml-2">Loading...</p></div></AppLayout>}>
