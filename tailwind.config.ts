@@ -92,13 +92,29 @@ export default {
         "pulse-subtle": {
           "0%, 100%": { opacity: "1" },
           "50%": { opacity: ".7" }
+        },
+        'tada': {
+          '0%': { transform: 'scale(1)' },
+          '10%, 20%': { transform: 'scale(0.9) rotate(-3deg)' },
+          '30%, 50%, 70%, 90%': { transform: 'scale(1.1) rotate(3deg)' },
+          '40%, 60%, 80%': { transform: 'scale(1.1) rotate(-3deg)' },
+          '100%': { transform: 'scale(1) rotate(0)' },
+        },
+        'reward-unlock': {
+          '0%': { transform: 'scale(1)', opacity: '1', filter: 'brightness(100%)' },
+          '25%': { transform: 'scale(1.05)', filter: 'brightness(120%)' },
+          '50%': { transform: 'scale(1.15) rotate(3deg)', opacity: '0.8', boxShadow: '0 0 25px 8px hsl(var(--accent))', filter: 'brightness(150%)' },
+          '75%': { transform: 'scale(1.05) rotate(-3deg)', filter: 'brightness(120%)' },
+          '100%': { transform: 'scale(1) rotate(0)', opacity: '1', boxShadow: 'none', filter: 'brightness(100%)' },
         }
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
         "shine": "shine 2s linear infinite",
-        "pulse-subtle": "pulse-subtle 2s cubic-bezier(0.4, 0, 0.6, 1) infinite"
+        "pulse-subtle": "pulse-subtle 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        'tada': 'tada 1s ease-in-out',
+        'reward-unlock': 'reward-unlock 0.8s ease-out',
       },
     },
   },

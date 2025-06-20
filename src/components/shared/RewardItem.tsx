@@ -1,8 +1,11 @@
+'use client';
+
 import type { Reward } from '@/lib/types';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Award, Star, ShoppingBag, ImageIcon } from 'lucide-react'; // Added ImageIcon as a fallback
+import { Award, Star, ShoppingBag, ImageIcon, Gift } from 'lucide-react'; // Added Gift
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
+import { useState, useEffect, useRef } from 'react';
 
 interface RewardItemProps {
   reward: Reward;
@@ -10,15 +13,31 @@ interface RewardItemProps {
 }
 
 export default function RewardItem({ reward, isUnlocked }: RewardItemProps) {
-  let IconComponent = Award; // Default
+  const [justUnlocked, setJustUnlocked] = useState(false);
+  const prevIsUnlocked = useRef(isUnlocked);
+
+  useEffect(() => {
+    if (isUnlocked && !prevIsUnlocked.current) {
+      setJustUnlocked(true);
+      const timer = setTimeout(() => {
+        setJustUnlocked(false);
+      }, 1000); // Animation duration + a bit of buffer
+      return () => clearTimeout(timer);
+    }
+    prevIsUnlocked.current = isUnlocked;
+  }, [isUnlocked]);
+
+  let IconComponent = Gift; // Default to Gift for a more celebratory feel
+  if (reward.type === 'badge') IconComponent = Award;
   if (reward.type === 'virtual_item') IconComponent = ShoppingBag;
-  if (reward.type === 'wallpaper') IconComponent = ImageIcon; // Specific for wallpaper
-  if (reward.type === 'avatar_accessory') IconComponent = Star; // Or a custom one
+  if (reward.type === 'wallpaper') IconComponent = ImageIcon;
+  if (reward.type === 'avatar_accessory') IconComponent = Star;
 
   return (
     <Card className={cn(
-        "text-center shadow-lg rounded-xl overflow-hidden transition-all duration-300",
-        isUnlocked ? "bg-accent/20 border-accent" : "bg-muted/50 border-muted opacity-70"
+        "text-center shadow-lg rounded-xl overflow-hidden transition-all duration-300 transform-gpu", // Added transform-gpu for better animation performance
+        isUnlocked ? "bg-accent/20 border-accent" : "bg-card border-border opacity-70 hover:opacity-90",
+        justUnlocked && "animate-reward-unlock"
       )}>
       <CardHeader className="p-4 items-center">
         {reward.iconUrl ? (
@@ -32,14 +51,20 @@ export default function RewardItem({ reward, isUnlocked }: RewardItemProps) {
             />
           </div>
         ) : (
-          <div className={cn("p-4 rounded-full mx-auto mb-3", isUnlocked ? "bg-accent text-accent-foreground" : "bg-muted-foreground/30 text-muted-foreground")}>
+          <div className={cn(
+            "p-4 rounded-full mx-auto mb-3 transition-colors duration-300", 
+            isUnlocked ? "bg-accent text-accent-foreground" : "bg-muted text-muted-foreground"
+          )}>
             <IconComponent className="w-10 h-10" />
           </div>
         )}
-        <CardTitle className={cn("font-headline text-lg", isUnlocked ? "text-accent-foreground" : "text-foreground")}>{reward.title}</CardTitle>
+        <CardTitle className={cn(
+          "font-headline text-lg transition-colors duration-300", 
+          isUnlocked ? "text-accent-foreground" : "text-primary"
+        )}>{reward.title}</CardTitle>
       </CardHeader>
       <CardContent className="p-4 pt-0">
-        <CardDescription className={cn("text-xs", isUnlocked ? "text-accent-foreground/80" : "text-muted-foreground")}>{reward.description}</CardDescription>
+        <CardDescription className={cn("text-xs transition-colors duration-300", isUnlocked ? "text-accent-foreground/80" : "text-muted-foreground")}>{reward.description}</CardDescription>
         {reward.pointsRequired && !isUnlocked && (
           <p className="text-xs mt-2 font-semibold text-primary">
             Unlock at {reward.pointsRequired} points
@@ -47,7 +72,8 @@ export default function RewardItem({ reward, isUnlocked }: RewardItemProps) {
         )}
         {isUnlocked && (
            <div className="mt-2 flex items-center justify-center text-yellow-500">
-                <Star className="w-4 h-4 mr-1 fill-current"/> <span className="text-xs font-semibold">Unlocked!</span>
+                <Star className="w-4 h-4 mr-1 fill-current text-yellow-400"/> 
+                <span className="text-xs font-semibold text-yellow-600">Unlocked!</span>
            </div>
         )}
       </CardContent>

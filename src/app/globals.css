@@ -4,41 +4,41 @@
 
 @layer base {
   :root {
-    --background: 45 100% 96%; /* #FEFDEB - Light Sunny Yellow */
-    --foreground: 215 25% 27%; /* #364254 - Dark Slate Blue */
+    --background: 200 100% 97%; /* Very Light Sky Blue */
+    --foreground: 240 10% 20%; /* Dark Slate Blue/Almost Black */
 
-    --muted: 180 20% 92%; /* #E5ECEC - Very Light Cyan-Gray */
-    --muted-foreground: 210 15% 50%; /* #737C8C - Cool Gray */
+    --muted: 200 60% 92%; /* Lighter Sky Blue */
+    --muted-foreground: 200 20% 50%; /* Soft Blue-Gray */
 
-    --popover: 0 0% 100%; /* #FFFFFF - White */
-    --popover-foreground: 215 25% 27%; /* #364254 - Dark Slate Blue */
+    --popover: 0 0% 100%; /* White */
+    --popover-foreground: 240 10% 20%; /* Dark Slate Blue */
 
-    --card: 0 0% 100%; /* #FFFFFF - White */
-    --card-foreground: 215 25% 27%; /* #364254 - Dark Slate Blue */
+    --card: 0 0% 100%; /* White */
+    --card-foreground: 240 10% 20%; /* Dark Slate Blue */
 
-    --border: 175 30% 80%; /* #B8DBD9 - Light Teal Border */
-    --input: 175 30% 88%; /* #D1E7E6 - Very Light Teal Input BG */
+    --border: 200 50% 85%; /* Light Blue Border */
+    --input: 200 50% 90%; /* Very Light Blue Input BG */
 
-    --primary: 175 70% 45%; /* #26A69A - Bright Teal */
-    --primary-foreground: 0 0% 100%; /* #FFFFFF - White */
+    --primary: 30 100% 60%; /* Bright Orange */
+    --primary-foreground: 0 0% 100%; /* White */
 
-    --secondary: 25 95% 85%; /* #FDD7BC - Light Peach */
-    --secondary-foreground: 20 80% 30%; /* #7F330F - Darker Peach/Brown */
+    --secondary: 130 60% 88%; /* Soft Mint Green */
+    --secondary-foreground: 130 50% 30%; /* Darker Mint */
 
-    --accent: 330 80% 60%; /* #EC407A - Bright Pink */
-    --accent-foreground: 0 0% 100%; /* #FFFFFF - White */
+    --accent: 270 80% 65%; /* Vibrant Purple */
+    --accent-foreground: 0 0% 100%; /* White */
 
-    --destructive: 0 72% 51%; /* #E53935 - Bright Red */
-    --destructive-foreground: 0 0% 98%;
+    --destructive: 0 80% 60%; /* Bright Red */
+    --destructive-foreground: 0 0% 98%; /* Light Gray/White */
 
-    --ring: 330 80% 60%; /* #EC407A - Bright Pink for focus */
+    --ring: 30 100% 60%; /* Bright Orange for focus */
 
     --radius: 0.75rem; /* Slightly more rounded */
 
-    --chart-1: 175 70% 45%; /* Teal */
-    --chart-2: 330 80% 60%; /* Pink */
-    --chart-3: 45 100% 55%; /* Yellow */
-    --chart-4: 25 95% 65%;  /* Orange */
+    --chart-1: 30 100% 60%; /* Orange */
+    --chart-2: 270 80% 65%; /* Purple */
+    --chart-3: 50 100% 55%; /* Yellow */
+    --chart-4: 130 70% 50%; /* Green */
     --chart-5: 200 80% 55%; /* Blue */
   }
 
@@ -59,24 +59,24 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
 
-    --primary: 175 70% 50%; /* #33BHAZ - Adjusted Teal for Dark */
+    --primary: 30 90% 55%; 
     --primary-foreground: 222.2 47.4% 11.2%;
 
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
 
-    --accent: 330 80% 65%; /* #F06292 - Adjusted Pink for Dark */
+    --accent: 270 70% 60%;
     --accent-foreground: 210 40% 98%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
 
-    --ring: 330 80% 65%; /* Adjusted Pink */
+    --ring: 30 90% 55%;
 
-    --chart-1: 175 70% 50%;
-    --chart-2: 330 80% 65%;
-    --chart-3: 45 90% 60%;
-    --chart-4: 25 85% 70%;
+    --chart-1: 30 90% 55%;
+    --chart-2: 270 70% 60%;
+    --chart-3: 50 80% 60%;
+    --chart-4: 130 60% 55%;
     --chart-5: 200 70% 60%;
   }
 }
