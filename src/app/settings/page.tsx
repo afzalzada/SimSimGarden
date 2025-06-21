@@ -25,15 +25,17 @@ function SettingsContent() {
   const [progressNotifications, setProgressNotifications] = useState(true);
   const [newContentNotifications, setNewContentNotifications] = useState(false);
 
+  const gatePassed = searchParams.get('gate_passed_once') === 'true';
+
   useEffect(() => {
-    if (searchParams.get('gate_passed_once') === 'true') {
+    if (gatePassed) {
       setIsVerified(true);
     } else {
       showParentalGate();
     }
     const timer = setTimeout(() => setIsLoading(false), 300);
     return () => clearTimeout(timer);
-  }, [searchParams, showParentalGate]);
+  }, [gatePassed, showParentalGate]);
 
 
   if (isLoading) {
@@ -66,7 +68,7 @@ function SettingsContent() {
       <div className="max-w-2xl mx-auto">
         <header className="mb-8">
           <h1 className="font-headline text-4xl font-bold text-primary">App Settings</h1>
-          <p className="text-muted-foreground mt-2">Manage your Noor Kids app preferences.</p>
+          <p className="text-muted-foreground mt-2">Manage your Little Muslim Stars app preferences.</p>
         </header>
 
         <Card className="mb-6 shadow-lg rounded-xl">
