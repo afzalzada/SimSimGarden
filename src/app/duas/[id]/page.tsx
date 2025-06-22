@@ -2,7 +2,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { useParams, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import AppLayout from '@/components/layout/AppLayout';
 import { dummyDuas } from '../data';
 import type { Dua } from '@/lib/types';
@@ -15,8 +15,7 @@ import { Progress } from '@/components/ui/progress';
 import { useToast } from '@/hooks/use-toast';
 import Image from 'next/image';
 
-export default function SingleDuaPage() {
-  const params = useParams();
+export default function SingleDuaPage({ params }: { params: { id: string } }) {
   const router = useRouter();
   const { toast } = useToast();
   const { addPoints, markLessonCompleted, getLessonProgress, updateLessonProgress } = useUserProgress();
@@ -149,7 +148,7 @@ export default function SingleDuaPage() {
     )
   }
 
-  const imagePath = dua.imagePath || `/assets/images/duas/dua-${dua.id}-main.png`;
+  const imagePath = dua.mainImagePath || `/assets/images/duas/dua-${dua.id}-main.png`;
 
 
   return (
@@ -164,8 +163,8 @@ export default function SingleDuaPage() {
             <Image 
                 src={imagePath} 
                 alt={dua.title} 
-                layout="fill"
-                objectFit="cover"
+                fill
+                className="object-cover"
                 data-ai-hint={dua.imageAiHint || 'dua illustration child'}
             />
         </div>

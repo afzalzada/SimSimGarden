@@ -2,7 +2,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { useParams, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import AppLayout from '@/components/layout/AppLayout';
 import { dummyQuranVerses } from '../data';
 import type { QuranVerse } from '@/lib/types';
@@ -15,8 +15,7 @@ import { Progress } from '@/components/ui/progress';
 import { useToast } from '@/hooks/use-toast';
 import Image from 'next/image';
 
-export default function SingleQuranVersePage() {
-  const params = useParams();
+export default function SingleQuranVersePage({ params }: { params: { id: string } }) {
   const router = useRouter();
   const { toast } = useToast();
   const { addPoints, markLessonCompleted, getLessonProgress, updateLessonProgress } = useUserProgress();
@@ -136,8 +135,8 @@ export default function SingleQuranVersePage() {
             <Image 
                 src={imagePath} 
                 alt={`${verse.surahName} ${verse.verseNumber}`} 
-                layout="fill" 
-                objectFit="cover"
+                fill 
+                className="object-cover"
                 data-ai-hint={verse.imageAiHint || 'quran page beautiful'}
             />
           </div>
@@ -180,7 +179,7 @@ export default function SingleQuranVersePage() {
              <Button onClick={markAsReflected} size="lg" className="bg-green-600 hover:bg-green-700 text-white rounded-lg shadow-md px-8 py-3">
                 <CheckCircle className="mr-2 h-5 w-5"/> Mark as Reflected
              </Button>
-          </div>
+           </div>
         </CardContent>
       </Card>
     </AppLayout>

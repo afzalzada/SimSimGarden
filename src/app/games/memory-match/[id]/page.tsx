@@ -1,7 +1,8 @@
+
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useParams, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import AppLayout from '@/components/layout/AppLayout';
 import { dummyMemoryMatchGames } from '../data';
 import type { MemoryMatchGame } from '@/lib/types';
@@ -11,8 +12,7 @@ import { ArrowLeft, Brain } from 'lucide-react';
 import LoadingSpinner from '@/components/shared/LoadingSpinner';
 import { useUserProgress } from '@/contexts/UserProgressContext';
 
-export default function SingleMemoryMatchPage() {
-  const params = useParams();
+export default function SingleMemoryMatchPage({ params }: { params: { id: string } }) {
   const router = useRouter();
   const { markLessonCompleted } = useUserProgress();
 

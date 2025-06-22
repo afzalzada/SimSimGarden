@@ -1,7 +1,8 @@
+
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useParams, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import AppLayout from '@/components/layout/AppLayout';
 import { dummyPuzzles } from '../data';
 import type { Puzzle } from '@/lib/types';
@@ -11,8 +12,7 @@ import { ArrowLeft, Puzzle as PuzzleIconLucide } from 'lucide-react';
 import LoadingSpinner from '@/components/shared/LoadingSpinner';
 import { useUserProgress } from '@/contexts/UserProgressContext';
 
-export default function SinglePuzzlePage() {
-  const params = useParams();
+export default function SinglePuzzlePage({ params }: { params: { id: string } }) {
   const router = useRouter();
   const { markLessonCompleted } = useUserProgress();
 

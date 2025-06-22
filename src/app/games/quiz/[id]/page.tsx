@@ -1,7 +1,8 @@
+
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useParams, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import AppLayout from '@/components/layout/AppLayout';
 import { dummyQuizzes } from '../data';
 import type { Quiz } from '@/lib/types';
@@ -11,8 +12,7 @@ import { ArrowLeft, HelpCircle } from 'lucide-react';
 import LoadingSpinner from '@/components/shared/LoadingSpinner';
 import { useUserProgress } from '@/contexts/UserProgressContext'; // Import useUserProgress
 
-export default function SingleQuizPage() {
-  const params = useParams();
+export default function SingleQuizPage({ params }: { params: { id: string } }) {
   const router = useRouter();
   const { markLessonCompleted } = useUserProgress(); // Get markLessonCompleted
 

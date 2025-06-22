@@ -2,7 +2,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useParams, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import AppLayout from '@/components/layout/AppLayout';
 import { dummyStories } from '../data';
 import type { Story, StoryContentNode } from '@/lib/types';
@@ -26,8 +26,7 @@ const ArrowRightIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-export default function SingleStoryPage() {
-  const params = useParams();
+export default function SingleStoryPage({ params }: { params: { id: string } }) {
   const router = useRouter();
   const { addPoints, markLessonCompleted, getLessonProgress, updateLessonProgress } = useUserProgress();
   
