@@ -111,7 +111,7 @@ export default function HomePage() {
             <Card 
               key={feature.title} 
               className={cn(
-                "shadow-lg hover:shadow-xl transition-all duration-300 rounded-xl overflow-hidden flex flex-col group hover:scale-105 hover:animate-subtle-scale-hover", 
+                "shadow-xl transition-all duration-300 rounded-xl overflow-hidden flex flex-col group hover:scale-105 hover:animate-subtle-scale-hover", 
                 feature.bgColor || cardGradientBgs[index % cardGradientBgs.length]
               )}
             >
@@ -125,7 +125,7 @@ export default function HomePage() {
               </CardHeader>
               <CardContent className="flex-grow flex flex-col text-center p-6 pt-0">
                 <div className="relative w-full h-40 rounded-lg overflow-hidden mb-4">
-                  <Image src={feature.image} alt={feature.title} layout="fill" objectFit="cover" data-ai-hint={feature.aiHint} className="transition-transform group-hover:scale-105 duration-300"/>
+                  <Image src={feature.image} alt={feature.title} fill className="object-cover transition-transform group-hover:scale-105 duration-300" data-ai-hint={feature.aiHint} />
                 </div>
                 <CardDescription className="text-muted-foreground mb-6 flex-grow">{feature.description}</CardDescription>
                 <Link href={feature.href} className="mt-auto">

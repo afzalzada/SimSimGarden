@@ -39,7 +39,7 @@ export default function RewardItem({ reward, isUnlocked }: RewardItemProps) {
 
   return (
     <Card className={cn(
-        "text-center shadow-lg rounded-xl overflow-hidden transition-all duration-300 transform-gpu", 
+        "text-center shadow-xl rounded-xl overflow-hidden transition-all duration-300 transform-gpu", 
         isUnlocked ? "bg-accent/20 border-accent" : "bg-card border-border opacity-70 hover:opacity-90",
         justUnlocked && "animate-reward-unlock"
       )}>
@@ -49,8 +49,8 @@ export default function RewardItem({ reward, isUnlocked }: RewardItemProps) {
             <Image 
                 src={iconPath} 
                 alt={reward.title} 
-                layout="fill" 
-                objectFit="cover" 
+                fill
+                className="object-cover"
                 data-ai-hint={reward.imageAiHint || (reward.type === 'badge' ? 'badge icon shiny' : 'item icon cool')}
             />
           </div>

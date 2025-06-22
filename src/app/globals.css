@@ -5,13 +5,12 @@
 
 @layer base {
   :root {
-    /* Base Colors - Cheerful & Bright Palette with Light Beige Background */
-    --background: 45 75% 95%; /* Light Beige - NEW */
+    /* Base Colors - Clean White Background */
+    --background: 0 0% 100%; /* White */
     --foreground: 220 40% 15%; /* Dark Cool Gray/Almost Black - for text contrast */
-    --background-texture: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCA1MCA1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMjUgMCBMMjguNSAyMS41IEw1MCAyNSBMMjguNSAyOC41IEwyNSA1MCBMMjEuNSAyOC41IEwwIDI1IEwyMS41IDIxLjUgWiIgZmlsbD0iaHNsKDE0NSwgNjAlLCA0NSUpIiBmaWxsLW9wYWNpdHk9IjAuMDUiIC8+PC9zdmc+');
-
+    
     /* Muted Tones - Soft and supportive */
-    --muted: 45 60% 90%; /* Softer Beige - NEW */
+    --muted: 220 15% 96%; /* Very Light Cool Gray */
     --muted-foreground: 210 30% 45%; /* Muted Blue-Gray for less emphasis text */
 
     /* Card & Popover - Clean and bright */
@@ -22,7 +21,7 @@
 
     /* Borders & Inputs - Clear and defined */
     --border: 145 50% 70%; /* Lighter Green border, from primary */
-    --input: 45 60% 94%; /* Very light beige for input backgrounds - NEW */
+    --input: 220 15% 98%; /* Almost White for input backgrounds */
 
     /* Primary, Secondary & Accent Colors - Main color scheme (as per previous request) */
     --primary: 145 60% 45%; /* Vibrant Green */
@@ -54,7 +53,6 @@
     /* Dark Theme - Adapted for the new color scheme with Dark Warm Beige Background */
     --background: 45 15% 15%; /* Dark Warm Beige/Brown - NEW */
     --foreground: 45 30% 92%; /* Light, slightly warm white - NEW to complement beige */
-    --background-texture: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCA1MCA1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMjUgMCBMMjguNSAyMS41IEw1MCAyNSBMMjguNSAyOC41IEwyNSA1MCBMMjEuNSAyOC41IEwwIDI1IEwyMS41IDIxLjUgWiIgZmlsbD0iaHNsKDE0NSwgNTUlLCA1NSUpIiBmaWxsLW9wYWNpdHk9IjAuMDUiIC8+PC9zdmc+');
 
     --muted: 45 10% 20%; /* Darker Warm Beige - NEW */
     --muted-foreground: 45 20% 70%; /* Soft Warm Gray - NEW */
@@ -98,7 +96,6 @@
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
-    background-image: var(--background-texture);
   }
 }
 

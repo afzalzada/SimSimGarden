@@ -16,7 +16,7 @@ export default function QuranVerseCard({ verse, bgColor }: QuranVerseCardProps) 
   const imagePath = verse.imagePath || `/assets/images/quran/verse-${verse.id}-card.png`;
   return (
     <Card className={cn(
-        "flex flex-col h-full overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 backdrop-blur-md group hover:scale-105 hover:animate-subtle-scale-hover", 
+        "flex flex-col h-full overflow-hidden rounded-xl shadow-xl transition-all duration-300 backdrop-blur-md group hover:scale-105 hover:animate-subtle-scale-hover", 
         bgColor || "bg-card/80"
       )}>
       <CardHeader className="p-6 items-center text-center">
@@ -28,10 +28,9 @@ export default function QuranVerseCard({ verse, bgColor }: QuranVerseCardProps) 
             <Image 
                 src={imagePath}
                 alt={`${verse.surahName} ${verse.verseNumber}`} 
-                layout="fill" 
-                objectFit="cover"
+                fill
+                className="object-cover transition-transform group-hover:scale-105 duration-300"
                 data-ai-hint={verse.imageAiHint || 'quran calligraphy art'}
-                className="transition-transform group-hover:scale-105 duration-300"
             />
         </div>
         <p className="font-['Noto_Naskh_Arabic'] text-lg text-foreground mt-1 truncate_arabic" lang="ar" dir="rtl" style={{maxHeight: '3em', overflow: 'hidden', textOverflow: 'ellipsis', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical'}}>

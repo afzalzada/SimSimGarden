@@ -16,7 +16,7 @@ export default function DuaCard({ dua, bgColor }: DuaCardProps) {
   const imagePath = dua.imagePath || `/assets/images/duas/dua-${dua.id}-card.png`;
   return (
     <Card className={cn(
-        "flex flex-col h-full overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 backdrop-blur-md group hover:scale-105 hover:animate-subtle-scale-hover", 
+        "flex flex-col h-full overflow-hidden rounded-xl shadow-xl transition-all duration-300 backdrop-blur-md group hover:scale-105 hover:animate-subtle-scale-hover", 
         bgColor || "bg-card/80" // Fallback if no bgColor is provided
       )}>
       <CardHeader className="p-6 items-center text-center">
@@ -28,10 +28,9 @@ export default function DuaCard({ dua, bgColor }: DuaCardProps) {
             <Image 
                 src={imagePath}
                 alt={dua.title} 
-                layout="fill" 
-                objectFit="cover"
+                fill
+                className="object-cover transition-transform group-hover:scale-105 duration-300"
                 data-ai-hint={dua.imageAiHint || 'islamic symbol illustration'}
-                className="transition-transform group-hover:scale-105 duration-300"
             />
         </div>
         <p className="text-2xl font-['Noto_Naskh_Arabic'] text-foreground my-2" lang="ar" dir="rtl">{dua.arabic}</p>

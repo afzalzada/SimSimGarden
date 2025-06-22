@@ -41,7 +41,7 @@ export default function GameCard({ game, bgColor }: GameCardProps) {
 
   return (
     <Card className={cn(
-        "flex flex-col h-full overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 backdrop-blur-md group hover:scale-105 hover:animate-subtle-scale-hover", 
+        "flex flex-col h-full overflow-hidden rounded-xl shadow-xl transition-all duration-300 backdrop-blur-md group hover:scale-105 hover:animate-subtle-scale-hover", 
         bgColor || "bg-card/80" 
       )}>
       <CardHeader className="p-6 items-center text-center">
@@ -53,10 +53,9 @@ export default function GameCard({ game, bgColor }: GameCardProps) {
             <Image 
                 src={imagePath}
                 alt={game.title} 
-                layout="fill" 
-                objectFit="cover"
+                fill
+                className="object-cover transition-transform group-hover:scale-105 duration-300"
                 data-ai-hint={game.imageAiHint || 'game fun illustration'}
-                className="transition-transform group-hover:scale-105 duration-300"
             />
         </div>
       </CardHeader>
