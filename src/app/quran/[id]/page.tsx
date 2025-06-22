@@ -14,6 +14,7 @@ import LoadingSpinner from '@/components/shared/LoadingSpinner';
 import { Progress } from '@/components/ui/progress';
 import { useToast } from '@/hooks/use-toast';
 import Image from 'next/image';
+import { textToSpeech } from '@/ai/flows/text-to-speech';
 
 export default function SingleQuranVersePage({ params }: { params: { id: string } }) {
   const router = useRouter();
@@ -25,11 +26,14 @@ export default function SingleQuranVersePage({ params }: { params: { id: string 
   const [isPlaying, setIsPlaying] = useState(false);
   const [playbackProgress, setPlaybackProgress] = useState(0);
   const [isCompleted, setIsCompleted] = useState(false);
+  const [isReciting, setIsReciting] = useState(false);
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const ttsAudioRef = useRef<HTMLAudioElement>(null);
+
 
   useEffect(() => {
-    const verseId = params.id as string; // Cast params.id to string
+    const verseId = params.id;
     if (verseId) {
       const foundVerse = dummyQuranVerses.find((v) => v.id === verseId);
       if (foundVerse) {
@@ -69,7 +73,6 @@ export default function SingleQuranVersePage({ params }: { params: { id: string 
             audioRef.current = null;
         }
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params.id, router, getLessonProgress, updateLessonProgress, toast]);
 
   const togglePlay = () => {
@@ -91,6 +94,26 @@ export default function SingleQuranVersePage({ params }: { params: { id: string 
         markLessonCompleted(verse.id);
         setIsCompleted(true);
         toast({ title: "Verse Reflected Upon!", description: `You've learned about "${verse.surahName} ${verse.verseNumber}" and earned 7 points!`, className: "bg-green-500 text-white" });
+    }
+  };
+  
+  const handleReciteVerse = async () => {
+    if (!verse || isReciting) return;
+    setIsReciting(true);
+    try {
+      const response = await textToSpeech(verse.arabic);
+      if (ttsAudioRef.current) {
+        ttsAudioRef.current.src = response.media;
+        ttsAudioRef.current.play();
+      }
+    } catch (error) {
+      console.error("TTS Error:", error);
+      toast({
+        variant: "destructive",
+        title: "Recitation Failed",
+        description: "Could not generate audio for this verse.",
+      });
+      setIsReciting(false);
     }
   };
 
@@ -140,14 +163,26 @@ export default function SingleQuranVersePage({ params }: { params: { id: string 
                 data-ai-hint={verse.imageAiHint || 'quran page beautiful'}
             />
           </div>
-          <p className="font-['Noto_Naskh_Arabic'] text-3xl md:text-4xl text-foreground mt-2 leading-relaxed" lang="ar" dir="rtl">
-            {verse.arabic}
-          </p>
+          <div className="relative">
+            <p className="font-['Noto_Naskh_Arabic'] text-3xl md:text-4xl text-foreground mt-2 leading-relaxed pr-12" lang="ar" dir="rtl">
+              {verse.arabic}
+            </p>
+             <Button
+                onClick={handleReciteVerse}
+                variant="ghost"
+                size="icon"
+                className="absolute top-1/2 right-0 -translate-y-1/2 text-primary hover:bg-primary/10"
+                disabled={isReciting}
+                aria-label="Recite Verse"
+            >
+                {isReciting ? <LoadingSpinner size={24} /> : <Volume2 className="h-6 w-6" />}
+            </Button>
+          </div>
         </CardHeader>
         <CardContent className="p-6 md:p-8 space-y-6">
           {verse.audioUrl && (
             <div className="space-y-3 pb-4 border-b">
-              <h3 className="font-semibold text-lg text-primary mb-2">Listen to Recitation:</h3>
+              <h3 className="font-semibold text-lg text-primary mb-2">Listen to Recitation (Pre-recorded):</h3>
               <div className="flex items-center gap-4">
                 <Button onClick={togglePlay} variant="outline" size="lg" aria-label={isPlaying ? 'Pause Recitation' : 'Play Recitation'}>
                   {isPlaying ? <Volume2 className="h-6 w-6 mr-2" /> : <PlayCircle className="h-6 w-6 mr-2" />}
@@ -182,6 +217,7 @@ export default function SingleQuranVersePage({ params }: { params: { id: string 
            </div>
         </CardContent>
       </Card>
+      <audio ref={ttsAudioRef} onEnded={() => setIsReciting(false)} className="hidden" />
     </AppLayout>
   );
 }

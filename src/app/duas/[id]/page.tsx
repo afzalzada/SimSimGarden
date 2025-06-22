@@ -14,6 +14,7 @@ import LoadingSpinner from '@/components/shared/LoadingSpinner';
 import { Progress } from '@/components/ui/progress';
 import { useToast } from '@/hooks/use-toast';
 import Image from 'next/image';
+import { textToSpeech } from '@/ai/flows/text-to-speech';
 
 export default function SingleDuaPage({ params }: { params: { id: string } }) {
   const router = useRouter();
@@ -26,20 +27,20 @@ export default function SingleDuaPage({ params }: { params: { id: string } }) {
   const [isRecording, setIsRecording] = useState(false);
   const [playbackProgress, setPlaybackProgress] = useState(0);
   const [isCompleted, setIsCompleted] = useState(false);
+  const [isReciting, setIsReciting] = useState(false);
   
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const ttsAudioRef = useRef<HTMLAudioElement>(null);
 
   useEffect(() => {
-    const duaId = params.id as string; // Cast params.id to string if you are sure it exists
+    const duaId = params.id;
     if (duaId) {
       const foundDua = dummyDuas.find((d) => d.id === duaId);
       if (foundDua) {
         setDua(foundDua);
         if (foundDua.audioUrl) {
             audioRef.current = new Audio(foundDua.audioUrl);
-            audioRef.current.onloadedmetadata = () => {
-                 // Audio loaded
-            };
+            audioRef.current.onloadedmetadata = () => {};
             audioRef.current.ontimeupdate = () => {
                 if (audioRef.current) {
                     setPlaybackProgress((audioRef.current.currentTime / audioRef.current.duration) * 100);
@@ -57,7 +58,6 @@ export default function SingleDuaPage({ params }: { params: { id: string } }) {
             };
             currentAudio.addEventListener('ended', onEndedListener);
 
-            // Cleanup function
             return () => {
                 if (currentAudio) {
                     currentAudio.removeEventListener('ended', onEndedListener);
@@ -82,7 +82,6 @@ export default function SingleDuaPage({ params }: { params: { id: string } }) {
             audioRef.current = null;
         }
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params.id, router, getLessonProgress, updateLessonProgress, toast, isRecording]);
 
   const togglePlay = () => {
@@ -120,6 +119,27 @@ export default function SingleDuaPage({ params }: { params: { id: string } }) {
         toast({ title: "Dua Learned!", description: `You've successfully learned "${dua.title}" and earned 5 points!`, className: "bg-green-500 text-white" });
     }
   };
+
+  const handleReciteDua = async () => {
+    if (!dua || isReciting) return;
+    setIsReciting(true);
+    try {
+      const response = await textToSpeech(dua.arabic);
+      if (ttsAudioRef.current) {
+        ttsAudioRef.current.src = response.media;
+        ttsAudioRef.current.play();
+      }
+    } catch (error) {
+      console.error("TTS Error:", error);
+      toast({
+        variant: "destructive",
+        title: "Recitation Failed",
+        description: "Could not generate audio for this dua.",
+      });
+      setIsReciting(false);
+    }
+  };
+
 
   if (isLoading || !dua) {
     return <AppLayout><div className="flex justify-center items-center h-screen"><LoadingSpinner size={48}/></div></AppLayout>;
@@ -168,9 +188,21 @@ export default function SingleDuaPage({ params }: { params: { id: string } }) {
                 data-ai-hint={dua.imageAiHint || 'dua illustration child'}
             />
         </div>
-          <p className="font-['Noto_Naskh_Arabic'] text-4xl md:text-5xl text-foreground mt-2" lang="ar" dir="rtl">
-            {dua.arabic}
-          </p>
+          <div className="relative">
+             <p className="font-['Noto_Naskh_Arabic'] text-4xl md:text-5xl text-foreground mt-2 pr-12" lang="ar" dir="rtl">
+                {dua.arabic}
+              </p>
+              <Button
+                  onClick={handleReciteDua}
+                  variant="ghost"
+                  size="icon"
+                  className="absolute top-1/2 right-0 -translate-y-1/2 text-primary hover:bg-primary/10"
+                  disabled={isReciting}
+                  aria-label="Recite Dua"
+              >
+                  {isReciting ? <LoadingSpinner size={24} /> : <Volume2 className="h-6 w-6" />}
+              </Button>
+          </div>
         </CardHeader>
         <CardContent className="p-6 md:p-8 space-y-6">
           <div>
@@ -188,7 +220,7 @@ export default function SingleDuaPage({ params }: { params: { id: string } }) {
 
           {dua.audioUrl && (
             <div className="space-y-3 pt-4 border-t">
-              <h3 className="font-semibold text-lg text-primary">Listen & Repeat:</h3>
+              <h3 className="font-semibold text-lg text-primary">Listen & Repeat (Pre-recorded):</h3>
               <div className="flex items-center gap-4">
                 <Button onClick={togglePlay} variant="outline" size="lg" aria-label={isPlaying ? 'Pause' : 'Play'}>
                   {isPlaying ? <Volume2 className="h-6 w-6 mr-2" /> : <PlayCircle className="h-6 w-6 mr-2" />}
@@ -212,6 +244,7 @@ export default function SingleDuaPage({ params }: { params: { id: string } }) {
           </div>
         </CardContent>
       </Card>
+      <audio ref={ttsAudioRef} onEnded={() => setIsReciting(false)} className="hidden" />
     </AppLayout>
   );
 }
