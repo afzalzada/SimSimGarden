@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -25,8 +26,7 @@ const ArrowRightIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-export default function SingleStoryPage({ params }: { params: { id: string } }) {
-  const { id } = params;
+export default function SingleStoryPage({ params: { id } }: { params: { id: string } }) {
   const router = useRouter();
   const { addPoints, markLessonCompleted, getLessonProgress, updateLessonProgress } = useUserProgress();
   

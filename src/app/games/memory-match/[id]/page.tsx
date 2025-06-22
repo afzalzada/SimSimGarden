@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -11,8 +12,7 @@ import { ArrowLeft, Brain } from 'lucide-react';
 import LoadingSpinner from '@/components/shared/LoadingSpinner';
 import { useUserProgress } from '@/contexts/UserProgressContext';
 
-export default function SingleMemoryMatchPage({ params }: { params: { id: string } }) {
-  const { id } = params;
+export default function SingleMemoryMatchPage({ params: { id } }: { params: { id: string } }) {
   const router = useRouter();
   const { markLessonCompleted } = useUserProgress();
 
