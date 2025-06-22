@@ -2,7 +2,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Menu, Settings, X, LogIn, LogOut, UserCircle } from 'lucide-react';
+import { Menu, Settings, X, LogIn, LogOut, UserCircle, Palette, Heart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetClose, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import { useParentalGate } from '@/hooks/use-parental-gate';
@@ -27,8 +27,10 @@ const navLinks = [
   { href: '/duas', label: 'DUAS' },
   { href: '/quran', label: 'QURAN' },
   { href: '/games', label: 'GAMES' },
+  { href: '/coloring', label: 'COLORING' },
   { href: '/aalim', label: 'AALIM AI' },
   { href: '/rewards', label: 'REWARDS' },
+  { href: '/donate', label: 'SUPPORT US' },
 ];
 
 export default function Header() {

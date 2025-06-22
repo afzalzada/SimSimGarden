@@ -5,10 +5,10 @@ import AppLayout from '@/components/layout/AppLayout';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { BookOpenText, Sparkles, BookMarked, Gamepad2, Bot, Trophy, ArrowRight } from 'lucide-react';
+import { BookOpenText, Sparkles, BookMarked, Gamepad2, Bot, Trophy, ArrowRight, Palette, Heart, LogIn } from 'lucide-react';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
-import { useUserProgress } from '@/contexts/UserProgressContext'; // Import useUserProgress
+import { useUserProgress } from '@/contexts/UserProgressContext'; 
 
 const cardGradientBgs = [
   'bg-gradient-to-br from-[hsl(var(--primary)/0.5)] via-[hsl(var(--primary)/0.2)] to-[hsl(var(--card)/0.1)] backdrop-blur-md',
@@ -60,6 +60,15 @@ const features = [
     bgColor: cardGradientBgs[3],
   },
   {
+    title: 'Coloring Fun',
+    description: 'Printable coloring pages with Islamic themes.',
+    href: '/coloring',
+    icon: <Palette className="w-12 h-12 text-primary mb-4" />,
+    image: '/assets/images/features/home-feature-coloring-fun.png',
+    aiHint: 'kids coloring islamic art',
+    bgColor: cardGradientBgs[6],
+  },
+  {
     title: 'Chat with Aalim AI',
     description: 'Your personal AI tutor for Islamic ethics.',
     href: '/aalim',
@@ -76,6 +85,15 @@ const features = [
     image: '/assets/images/features/home-feature-points-rewards.png',
     aiHint: 'trophy stars celebration',
     bgColor: cardGradientBgs[5],
+  },
+  {
+    title: 'Support Us',
+    description: 'Help us continue our mission of providing quality Islamic content.',
+    href: '/donate',
+    icon: <Heart className="w-12 h-12 text-primary mb-4" />,
+    image: '/assets/images/features/home-feature-support-us.png',
+    aiHint: 'heart hands community charity',
+    bgColor: cardGradientBgs[7],
   },
 ];
 
@@ -103,6 +121,18 @@ export default function HomePage() {
             </Button>
         </Link>
       </section>
+
+      {!isLoggedIn && (
+        <section className="text-center py-6 my-8 bg-primary/10 rounded-xl">
+          <h2 className="font-headline text-2xl font-semibold text-primary mb-3">Want to save your progress?</h2>
+          <p className="text-muted-foreground mb-4">Log in to track your points and unlocked rewards!</p>
+          <Link href="/login">
+            <Button size="lg" variant="default">
+              <LogIn className="mr-2 h-5 w-5" /> Login Now
+            </Button>
+          </Link>
+        </section>
+      )}
 
       <section className="py-12">
         <h2 className="font-headline text-3xl font-semibold text-center text-primary mb-10">Explore Our Features</h2>

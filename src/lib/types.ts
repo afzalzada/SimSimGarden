@@ -121,3 +121,12 @@ export interface AalimMessage {
   evaluation?: string;
   prize?: string;
 }
+
+export interface ColoringPage {
+  id: string;
+  title: string;
+  description: string;
+  imageUrl: string;
+  imageAiHint: string;
+  tags: string[];
+}
