@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -13,6 +12,7 @@ import LoadingSpinner from '@/components/shared/LoadingSpinner';
 import { useUserProgress } from '@/contexts/UserProgressContext';
 
 export default function SinglePuzzlePage({ params }: { params: { id: string } }) {
+  const { id } = params;
   const router = useRouter();
   const { markLessonCompleted } = useUserProgress();
 
@@ -20,8 +20,8 @@ export default function SinglePuzzlePage({ params }: { params: { id: string } })
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    if (params.id) {
-      const foundPuzzle = dummyPuzzles.find((p) => p.id === params.id);
+    if (id) {
+      const foundPuzzle = dummyPuzzles.find((p) => p.id === id);
       if (foundPuzzle) {
         setPuzzle(foundPuzzle);
       } else {
@@ -29,7 +29,7 @@ export default function SinglePuzzlePage({ params }: { params: { id: string } })
       }
       setIsLoading(false);
     }
-  }, [params.id, router]);
+  }, [id, router]);
 
   const handlePuzzleComplete = () => {
     if (puzzle) {

@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -13,6 +12,7 @@ import LoadingSpinner from '@/components/shared/LoadingSpinner';
 import { useUserProgress } from '@/contexts/UserProgressContext';
 
 export default function SingleMemoryMatchPage({ params }: { params: { id: string } }) {
+  const { id } = params;
   const router = useRouter();
   const { markLessonCompleted } = useUserProgress();
 
@@ -20,8 +20,8 @@ export default function SingleMemoryMatchPage({ params }: { params: { id: string
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    if (params.id) {
-      const foundGame = dummyMemoryMatchGames.find((g) => g.id === params.id);
+    if (id) {
+      const foundGame = dummyMemoryMatchGames.find((g) => g.id === id);
       if (foundGame) {
         setGame(foundGame);
       } else {
@@ -29,7 +29,7 @@ export default function SingleMemoryMatchPage({ params }: { params: { id: string
       }
       setIsLoading(false);
     }
-  }, [params.id, router]);
+  }, [id, router]);
 
   const handleGameComplete = () => {
     if (game) {

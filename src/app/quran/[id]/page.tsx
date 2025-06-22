@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
@@ -17,6 +16,7 @@ import Image from 'next/image';
 import { textToSpeech } from '@/ai/flows/text-to-speech';
 
 export default function SingleQuranVersePage({ params }: { params: { id: string } }) {
+  const { id: verseId } = params;
   const router = useRouter();
   const { toast } = useToast();
   const { addPoints, markLessonCompleted, getLessonProgress, updateLessonProgress } = useUserProgress();
@@ -33,7 +33,6 @@ export default function SingleQuranVersePage({ params }: { params: { id: string 
 
 
   useEffect(() => {
-    const verseId = params.id;
     if (verseId) {
       const foundVerse = dummyQuranVerses.find((v) => v.id === verseId);
       if (foundVerse) {
@@ -73,7 +72,7 @@ export default function SingleQuranVersePage({ params }: { params: { id: string 
             audioRef.current = null;
         }
     };
-  }, [params.id, router, getLessonProgress, updateLessonProgress, toast]);
+  }, [verseId, router, getLessonProgress, updateLessonProgress, toast]);
 
   const togglePlay = () => {
      if (!audioRef.current) {

@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -27,6 +26,7 @@ const ArrowRightIcon = ({ className }: { className?: string }) => (
 );
 
 export default function SingleStoryPage({ params }: { params: { id: string } }) {
+  const { id } = params;
   const router = useRouter();
   const { addPoints, markLessonCompleted, getLessonProgress, updateLessonProgress } = useUserProgress();
   
@@ -36,8 +36,8 @@ export default function SingleStoryPage({ params }: { params: { id: string } }) 
   const [isCompleted, setIsCompleted] = useState(false);
 
   useEffect(() => {
-    if (params.id) {
-      const foundStory = dummyStories.find((s) => s.id === params.id);
+    if (id) {
+      const foundStory = dummyStories.find((s) => s.id === id);
       if (foundStory) {
         setStory(foundStory);
         const progress = getLessonProgress(foundStory.id);
@@ -52,7 +52,7 @@ export default function SingleStoryPage({ params }: { params: { id: string } }) 
       }
       setIsLoading(false);
     }
-  }, [params.id, router, getLessonProgress]);
+  }, [id, router, getLessonProgress]);
 
   useEffect(() => {
     if (story && !isCompleted && currentNodeIndex < story.content.length) { // Ensure not to update if story is finished

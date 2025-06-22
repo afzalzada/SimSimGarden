@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
@@ -17,6 +16,7 @@ import Image from 'next/image';
 import { textToSpeech } from '@/ai/flows/text-to-speech';
 
 export default function SingleDuaPage({ params }: { params: { id: string } }) {
+  const { id: duaId } = params;
   const router = useRouter();
   const { toast } = useToast();
   const { addPoints, markLessonCompleted, getLessonProgress, updateLessonProgress } = useUserProgress();
@@ -33,7 +33,6 @@ export default function SingleDuaPage({ params }: { params: { id: string } }) {
   const ttsAudioRef = useRef<HTMLAudioElement>(null);
 
   useEffect(() => {
-    const duaId = params.id;
     if (duaId) {
       const foundDua = dummyDuas.find((d) => d.id === duaId);
       if (foundDua) {
@@ -82,7 +81,7 @@ export default function SingleDuaPage({ params }: { params: { id: string } }) {
             audioRef.current = null;
         }
     };
-  }, [params.id, router, getLessonProgress, updateLessonProgress, toast, isRecording]);
+  }, [duaId, router, getLessonProgress, updateLessonProgress, toast, isRecording]);
 
   const togglePlay = () => {
     if (!audioRef.current) {

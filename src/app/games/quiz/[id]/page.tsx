@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -13,6 +12,7 @@ import LoadingSpinner from '@/components/shared/LoadingSpinner';
 import { useUserProgress } from '@/contexts/UserProgressContext'; // Import useUserProgress
 
 export default function SingleQuizPage({ params }: { params: { id: string } }) {
+  const { id } = params;
   const router = useRouter();
   const { markLessonCompleted } = useUserProgress(); // Get markLessonCompleted
 
@@ -20,8 +20,8 @@ export default function SingleQuizPage({ params }: { params: { id: string } }) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    if (params.id) {
-      const foundQuiz = dummyQuizzes.find((q) => q.id === params.id);
+    if (id) {
+      const foundQuiz = dummyQuizzes.find((q) => q.id === id);
       if (foundQuiz) {
         setQuiz(foundQuiz);
       } else {
@@ -29,7 +29,7 @@ export default function SingleQuizPage({ params }: { params: { id: string } }) {
       }
       setIsLoading(false);
     }
-  }, [params.id, router]);
+  }, [id, router]);
 
   const handleQuizComplete = (score: number, totalQuestions: number) => {
     // Mark quiz as completed using its ID when quiz is finished
