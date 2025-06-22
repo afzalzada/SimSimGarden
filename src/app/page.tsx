@@ -95,7 +95,7 @@ export default function HomePage() {
           </h1>
         )}
         <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-          Embark on a fun and enriching journey to learn about Islamic morality and ethics.
+          Embark on a fun journey to learn about Islamic morality and ethics.
         </p>
         <Link href="/stories">
             <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground rounded-lg text-lg px-8 py-6 shadow-md transition-transform hover:scale-105">
