@@ -94,7 +94,7 @@ export interface MemoryMatchCard {
 }
 
 export interface MemoryMatchGame {
-  id: string;
+  id:string;
   title: string;
   description: string;
   cards: MemoryMatchCard[]; 
@@ -126,7 +126,9 @@ export interface ColoringPage {
   id: string;
   title: string;
   description: string;
-  imageUrl: string;
+  imageUrl: string; // Outline version
+  coloredImageUrl: string; // Fully colored version for hint
   imageAiHint: string;
+  coloredImageAiHint: string;
   tags: string[];
 }

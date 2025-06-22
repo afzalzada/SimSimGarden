@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import type { ColoringPage } from '@/lib/types';
-import { Download, Palette } from 'lucide-react';
+import { Palette } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
 
@@ -21,6 +21,7 @@ export default function ColoringCard({ page, bgColor }: ColoringCardProps) {
       )}>
       <CardHeader className="p-0">
         <div className="relative w-full h-64 bg-white border-b">
+          {/* Big outline image */}
           <Image
             src={page.imageUrl}
             alt={page.title}
@@ -28,6 +29,16 @@ export default function ColoringCard({ page, bgColor }: ColoringCardProps) {
             className="object-contain p-4 transition-transform group-hover:scale-110 duration-300"
             data-ai-hint={page.imageAiHint}
           />
+           {/* Small colored hint image */}
+          <div className="absolute top-2 right-2 w-16 h-16 border-2 border-white rounded-md shadow-lg overflow-hidden transition-transform group-hover:scale-110">
+            <Image 
+                src={page.coloredImageUrl} 
+                alt={`${page.title} (colored)`} 
+                fill 
+                className="object-cover"
+                data-ai-hint={page.coloredImageAiHint}
+            />
+          </div>
         </div>
       </CardHeader>
       <CardContent className="p-6 flex-grow">
@@ -40,11 +51,11 @@ export default function ColoringCard({ page, bgColor }: ColoringCardProps) {
         </div>
       </CardContent>
       <CardFooter className="p-6 pt-0">
-        <a href={page.imageUrl} download={`${page.id}.png`} target="_blank" rel="noopener noreferrer" className="w-full">
+        <Link href={`/coloring/${page.id}`} className="w-full">
           <Button variant="default" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg group-hover:bg-accent group-hover:text-accent-foreground transition-colors">
-            <Download className="mr-2 h-4 w-4" /> Download
+            <Palette className="mr-2 h-4 w-4" /> Start Coloring
           </Button>
-        </a>
+        </Link>
       </CardFooter>
     </Card>
   );

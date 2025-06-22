@@ -20,12 +20,12 @@ export default function ColoringPage() {
         <div className="inline-flex items-center justify-center p-3 bg-primary/10 rounded-full mb-4">
            <Palette className="w-12 h-12 text-primary" />
         </div>
-        <h1 className="font-headline text-4xl md:text-5xl font-bold text-primary mb-3">Coloring Fun</h1>
+        <h1 className="font-headline text-4xl md:text-5xl font-bold text-primary mb-3">Digital Coloring Fun</h1>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          Unleash your creativity! Download and print these Islamic-themed coloring pages for hours of fun.
+          Unleash your creativity! Choose a picture and color it digitally, then get it scored by our AI art teacher.
         </p>
         <p className="text-sm text-muted-foreground max-w-2xl mx-auto mt-4">
-          Parents: You can purchase more coloring books from our affiliates to support us. (Affiliate links will be added here later).
+          Parents: You can also purchase physical coloring books from our affiliates to support us. (Affiliate links will be added here later).
         </p>
       </header>
 
