@@ -23,7 +23,7 @@ export default function LoginPage() {
       login(name.trim());
       toast({
         title: 'Logged In!',
-        description: `Salaam ${name.trim()}, welcome!`,
+        description: `Salam ${name.trim()}, welcome!`,
       });
       router.push('/');
     } else {
