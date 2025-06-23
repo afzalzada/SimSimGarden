@@ -68,7 +68,7 @@ function SettingsContent() {
       <div className="max-w-2xl mx-auto">
         <header className="mb-8">
           <h1 className="font-headline text-4xl font-bold text-primary">App Settings</h1>
-          <p className="text-muted-foreground mt-2">Manage your Little Muslim Stars app preferences.</p>
+          <p className="text-muted-foreground mt-2">Manage your SimSim Garden app preferences.</p>
         </header>
 
         <Card className="mb-6 shadow-lg rounded-xl">

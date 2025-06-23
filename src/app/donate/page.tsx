@@ -15,7 +15,7 @@ export default function DonatePage() {
             <div className="inline-flex items-center justify-center p-3 bg-primary/10 rounded-full mb-4 mx-auto w-16 h-16">
                 <Heart className="w-8 h-8 text-primary" />
             </div>
-            <CardTitle className="font-headline text-3xl md:text-4xl text-primary">Support Little Muslim Stars</CardTitle>
+            <CardTitle className="font-headline text-3xl md:text-4xl text-primary">Support SimSim Garden</CardTitle>
             <CardDescription className="text-muted-foreground pt-2 max-w-lg mx-auto">
               Your generous contribution helps us create more engaging and educational Islamic content for children everywhere.
             </CardDescription>

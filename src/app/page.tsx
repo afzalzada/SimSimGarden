@@ -109,7 +109,7 @@ export default function HomePage() {
           </h1>
         ) : (
           <h1 className="font-headline text-5xl font-bold text-primary mb-4 animate-shine bg-clip-text text-transparent bg-[linear-gradient(110deg,hsl(var(--primary)),45%,hsl(var(--accent)),55%,hsl(var(--primary)))] bg-[length:250%_100%]" >
-            Welcome to Little Muslim Stars!
+            Welcome to SimSim Garden!
           </h1>
         )}
         <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">

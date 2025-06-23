@@ -13,7 +13,7 @@ export default function AppLayout({ children }: AppLayoutProps) {
         {children}
       </main>
       <footer className="py-6 text-center text-muted-foreground">
-        <p>&copy; {new Date().getFullYear()} Little Muslim Stars. All rights reserved.</p>
+        <p>&copy; {new Date().getFullYear()} SimSim Garden. All rights reserved.</p>
       </footer>
     </div>
   );
