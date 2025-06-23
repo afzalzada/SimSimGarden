@@ -1,4 +1,3 @@
-
 'use client';
 
 import AppLayout from '@/components/layout/AppLayout';
@@ -115,11 +114,6 @@ export default function HomePage() {
         <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
           Embark on a fun journey to learn about Islamic morality and ethics.
         </p>
-        <Link href="/stories">
-            <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground rounded-lg text-lg px-8 py-6 shadow-md transition-transform hover:scale-105">
-                Start Learning Now <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-        </Link>
       </section>
 
       {!isLoggedIn && (
