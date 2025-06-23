@@ -12,7 +12,7 @@ export const dummyDuas: Dua[] = [
     explanation: 'Recite this dua before starting your meal to seek blessings from Allah.',
     ageGroup: '4-8',
     imageAiHint: 'food plate kids',
-    imagePath: '/assets/images/duas/dua-before-eating-card.png',
+    imagePath: 'https://images.unsplash.com/photo-1576867757603-05b134ebc379?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxsdW5jaHxlbnwwfHx8fDE3NTA2NzY4NTh8MA&ixlib=rb-4.1.0&q=80&w=1080',
     mainImagePath: '/assets/images/duas/dua-before-eating-main.png',
   },
   {
