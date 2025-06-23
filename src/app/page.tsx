@@ -93,27 +93,27 @@ export default function HomePage() {
 
   return (
     <AppLayout>
-      <section className="text-center py-12 px-6 bg-gradient-to-br from-primary/80 to-primary rounded-xl shadow-lg text-primary-foreground mb-8">
+      <section className="text-center py-8 px-6 bg-gradient-to-br from-primary/80 to-primary rounded-xl shadow-lg text-primary-foreground mb-8">
         {isLoggedIn && userName ? (
           <>
-            <h1 className="font-headline text-5xl font-bold mb-4 drop-shadow-md">
+            <h1 className="font-headline text-4xl font-bold mb-4 drop-shadow-md transition-transform duration-300 hover:scale-105 cursor-pointer">
               Salaam and welcome dear {userName}!
             </h1>
-            <p className="text-xl text-primary-foreground/90 max-w-2xl mx-auto drop-shadow-sm">
+            <p className="text-lg text-primary-foreground/90 max-w-2xl mx-auto drop-shadow-sm">
               Embark on a fun journey to learn about Islamic morality and ethics.
             </p>
           </>
         ) : (
           <>
-            <h1 className="font-headline text-5xl font-bold mb-4 drop-shadow-md">
+            <h1 className="font-headline text-4xl font-bold mb-4 drop-shadow-md transition-transform duration-300 hover:scale-105 cursor-pointer">
               Welcome to SimSim Garden!
             </h1>
-            <p className="text-xl text-primary-foreground/90 mb-6 max-w-2xl mx-auto drop-shadow-sm">
+            <p className="text-lg text-primary-foreground/90 mb-6 max-w-2xl mx-auto drop-shadow-sm">
               Embark on a fun journey to learn about Islamic morality and ethics.
             </p>
-            <div className="bg-background/20 backdrop-blur-sm p-6 rounded-lg inline-block mt-4">
-              <h2 className="font-headline text-2xl font-semibold mb-3">Want to save your progress?</h2>
-              <p className="text-primary-foreground/80 mb-4">Log in to track your points and unlocked rewards!</p>
+            <div className="bg-background/20 backdrop-blur-sm p-4 rounded-lg inline-block mt-4">
+              <h2 className="font-headline text-xl font-semibold mb-3">Want to save your progress?</h2>
+              <p className="text-primary-foreground/80 mb-4 text-sm">Log in to track your points and unlocked rewards!</p>
               <Link href="/login">
                 <Button size="lg" variant="secondary" className="shadow-lg hover:scale-105 transition-transform">
                   <LogIn className="mr-2 h-5 w-5" /> Login Now
