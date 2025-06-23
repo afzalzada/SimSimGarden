@@ -1,3 +1,4 @@
+
 'use client';
 
 import type { Quiz, QuizQuestion } from '@/lib/types';
