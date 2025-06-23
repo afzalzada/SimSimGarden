@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
@@ -31,6 +32,11 @@ export default function SingleDuaPage({ params }: { params: { id: string } }) {
   
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const ttsAudioRef = useRef<HTMLAudioElement>(null);
+  const isRecordingRef = useRef(isRecording);
+
+  useEffect(() => {
+    isRecordingRef.current = isRecording;
+  }, [isRecording]);
 
   useEffect(() => {
     if (duaId) {
@@ -50,7 +56,7 @@ export default function SingleDuaPage({ params }: { params: { id: string } }) {
             const onEndedListener = () => {
                 setIsPlaying(false);
                 setPlaybackProgress(100);
-                 if (currentDuaForListener && getLessonProgress(currentDuaForListener.id) !== 'Completed' && !isRecording) { 
+                 if (currentDuaForListener && getLessonProgress(currentDuaForListener.id) !== 'Completed' && !isRecordingRef.current) { 
                     updateLessonProgress(currentDuaForListener.id, 'Practiced');
                     toast({ title: "Practice Complete!", description: "You listened to the Dua." });
                  }
@@ -81,7 +87,7 @@ export default function SingleDuaPage({ params }: { params: { id: string } }) {
             audioRef.current = null;
         }
     };
-  }, [duaId, router, getLessonProgress, updateLessonProgress, toast, isRecording]);
+  }, [duaId, router, getLessonProgress, updateLessonProgress, toast]);
 
   const togglePlay = () => {
     if (!audioRef.current) {

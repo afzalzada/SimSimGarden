@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
@@ -21,7 +22,7 @@ export default function AalimPage() {
   const [isLoading, setIsLoading] = useState(false);
   const { points, completedLessons, awardPrize, getLessonProgress } = useUserProgress();
   const { toast } = useToast();
-  const scrollAreaRef = useRef<HTMLDivElement>(null);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
 
   // Initial greeting from Aalim
   useEffect(() => {
@@ -35,14 +36,9 @@ export default function AalimPage() {
     ]);
   }, []);
   
-   // Auto-scroll to bottom
+  // Auto-scroll to bottom of messages
   useEffect(() => {
-    if (scrollAreaRef.current) {
-        const scrollElement = scrollAreaRef.current.querySelector('div > div'); // Adjust selector if ScrollArea structure changes
-        if(scrollElement) {
-             scrollElement.scrollTop = scrollElement.scrollHeight;
-        }
-    }
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
 
@@ -142,7 +138,7 @@ export default function AalimPage() {
       </header>
 
       <div className="max-w-2xl mx-auto bg-card p-4 sm:p-6 rounded-xl shadow-2xl flex flex-col h-[70vh]">
-        <ScrollArea className="flex-grow mb-4 pr-3" ref={scrollAreaRef}>
+        <ScrollArea className="flex-grow mb-4 pr-3">
           <div className="space-y-4">
             {messages.map((msg) => (
               <ChatMessage key={msg.id} message={msg} />
@@ -156,6 +152,7 @@ export default function AalimPage() {
                   </div>
               </div>
             )}
+            <div ref={messagesEndRef} />
           </div>
         </ScrollArea>
         <form onSubmit={handleSendMessage} className="flex items-center gap-3 border-t pt-4 border-border">

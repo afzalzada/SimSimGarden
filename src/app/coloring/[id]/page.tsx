@@ -16,6 +16,24 @@ import Image from 'next/image';
 import { scoreColoring, type ScoreColoringOutput } from '@/ai/flows/score-coloring-flow';
 import { Progress } from '@/components/ui/progress';
 
+const themeColors = [
+    'hsl(var(--primary))',
+    'hsl(var(--secondary))',
+    'hsl(var(--accent))',
+    'hsl(var(--destructive))',
+    'hsl(var(--chart-1))',
+    'hsl(var(--chart-2))',
+    'hsl(var(--chart-3))',
+    'hsl(var(--chart-4))',
+    'hsl(var(--chart-5))',
+    'hsl(var(--foreground))',
+    'hsl(var(--muted-foreground))',
+    'hsl(var(--card-foreground))',
+    'hsl(var(--primary)/0.5)',
+    'hsl(var(--secondary)/0.5)',
+    'hsl(var(--accent)/0.5)',
+];
+
 export default function SingleColoringPage({ params }: { params: { id: string } }) {
   const router = useRouter();
   const { addPoints, markLessonCompleted } = useUserProgress();
@@ -142,8 +160,8 @@ export default function SingleColoringPage({ params }: { params: { id: string } 
                 </CardHeader>
                  <CardContent>
                     <div className="grid grid-cols-5 gap-2">
-                        {['#e6194B', '#3cb44b', '#ffe119', '#4363d8', '#f58231', '#911eb4', '#42d4f4', '#f032e6', '#bfef45', '#fabed4', '#469990', '#dcbeff', '#9A6324', '#fffac8', '#800000', '#aaffc3', '#808000', '#ffd8b1', '#000075', '#a9a9a9'].map(color => (
-                            <div key={color} className="w-full aspect-square rounded-full shadow-inner" style={{backgroundColor: color}}></div>
+                        {themeColors.map(color => (
+                            <div key={color} className="w-full aspect-square rounded-full shadow-inner border" style={{backgroundColor: color}}></div>
                         ))}
                     </div>
                     <p className="text-xs text-muted-foreground mt-3 text-center">(This is a simulated color palette)</p>

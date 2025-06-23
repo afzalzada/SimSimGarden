@@ -40,7 +40,6 @@ export default function QuizComponent({ quiz, onQuizComplete }: QuizComponentPro
     setIsAnswerSubmitted(true);
     const isCorrect = selectedAnswers[currentQuestion.id] === currentQuestion.correctOptionId;
     if (isCorrect) {
-      setScore(prev => prev + 1);
       setAnimateCorrect(true);
       setTimeout(() => setAnimateCorrect(false), 1000); // Duration of 'tada' animation
     }
@@ -52,28 +51,19 @@ export default function QuizComponent({ quiz, onQuizComplete }: QuizComponentPro
     if (currentQuestionIndex < quiz.questions.length - 1) {
       setCurrentQuestionIndex(prev => prev + 1);
     } else {
-      setShowResults(true);
-      // Ensure score is the final score before calling onQuizComplete
-      // The score state might not update immediately before this call.
-      // So, we calculate the final score directly.
+      // Calculate final score here to avoid state update delays
       let finalScore = 0;
-      quiz.questions.forEach((q, idx) => {
-        // Recalculate based on selectedAnswers, assuming current question was just processed
-        const answerForQ = selectedAnswers[q.id];
-        if (answerForQ === q.correctOptionId) {
+      quiz.questions.forEach((q) => {
+        if (selectedAnswers[q.id] === q.correctOptionId) {
           finalScore++;
         }
       });
-      // If the last answer submitted was correct and score hasn't updated yet.
-      if (selectedAnswers[currentQuestion.id] === currentQuestion.correctOptionId && score < finalScore) {
-         onQuizComplete(finalScore, quiz.questions.length);
-         const pointsEarned = Math.round((finalScore / quiz.questions.length) * 10);
-         addPoints(pointsEarned);
-      } else {
-         onQuizComplete(score, quiz.questions.length);
-         const pointsEarned = Math.round((score / quiz.questions.length) * 10);
-         addPoints(pointsEarned);
-      }
+      
+      setScore(finalScore);
+      setShowResults(true);
+      onQuizComplete(finalScore, quiz.questions.length);
+      const pointsEarned = Math.round((finalScore / quiz.questions.length) * 10);
+      addPoints(pointsEarned);
     }
   };
   
