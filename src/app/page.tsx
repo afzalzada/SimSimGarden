@@ -91,7 +91,7 @@ const features = [
     description: 'Help us continue our mission of providing quality Islamic content.',
     href: '/donate',
     icon: <Heart className="w-12 h-12 text-primary mb-4" />,
-    image: '/assets/images/features/home-feature-support-us.png',
+    image: 'https://images.unsplash.com/photo-1579621970588-a35d0e7ab9b6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxnaXZpbmd8ZW58MHx8fHwxNzUwNjc3NjUxfDA&ixlib=rb-4.1.0&q=80&w=1080',
     aiHint: 'heart hands community charity',
     bgColor: cardGradientBgs[7],
   },

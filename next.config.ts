@@ -11,7 +11,10 @@ const nextConfig: NextConfig = {
   },
   images: {
     remotePatterns: [
-      // placehold.co is removed as images are now local
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
     ],
   },
 };
