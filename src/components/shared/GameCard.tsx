@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import type { Game, LucideIconName } from '@/lib/types';
-import { ArrowRight, Users, HelpCircle, Puzzle as PuzzleIcon, Brain as BrainIcon, BookOpen, Sparkles, Smile, SpellCheck } from 'lucide-react'; 
+import { ArrowRight, Users, HelpCircle, Puzzle as PuzzleIcon, Brain as BrainIcon, BookOpen, Sparkles, Smile, SpellCheck, Palette } from 'lucide-react'; 
 import type { ElementType } from 'react';
 import { cn } from '@/lib/utils';
 
@@ -22,6 +22,7 @@ const iconComponents: Record<LucideIconName, ElementType> = {
   Users: Users,
   Smile: Smile,
   SpellCheck: SpellCheck,
+  Palette: Palette,
 };
 
 const Gamepad2Icon = ({ className }: { className?: string }) => (

@@ -44,7 +44,7 @@ export interface QuranVerse {
   mainImagePath?: string; // For detail page image
 }
 
-export type LucideIconName = 'HelpCircle' | 'Puzzle' | 'Brain' | 'BookOpen' | 'Sparkles' | 'Users' | 'Smile' | 'SpellCheck';
+export type LucideIconName = 'HelpCircle' | 'Puzzle' | 'Brain' | 'BookOpen' | 'Sparkles' | 'Users' | 'Smile' | 'SpellCheck' | 'Palette';
 
 
 export interface Game {

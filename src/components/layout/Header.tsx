@@ -27,7 +27,6 @@ const navLinks = [
   { href: '/duas', label: 'DUAS' },
   { href: '/quran', label: 'QURAN' },
   { href: '/games', label: 'GAMES' },
-  { href: '/coloring', label: 'COLORING' },
   { href: '/aalim', label: 'AALIM AI' },
   { href: '/rewards', label: 'REWARDS' },
   { href: '/donate', label: 'SUPPORT US' },

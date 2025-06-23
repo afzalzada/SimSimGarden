@@ -51,21 +51,12 @@ const features = [
   },
   {
     title: 'Fun Islamic Games',
-    description: 'Reinforce teachings with quizzes and puzzles.',
+    description: 'Reinforce teachings with quizzes, coloring and puzzles.',
     href: '/games',
     icon: <Gamepad2 className="w-12 h-12 text-primary mb-4" />,
     image: '/assets/images/features/home-feature-fun-islamic-games.png',
     aiHint: 'kids playing fun',
     bgColor: cardGradientBgs[3],
-  },
-  {
-    title: 'Coloring Fun',
-    description: 'Printable coloring pages with Islamic themes.',
-    href: '/coloring',
-    icon: <Palette className="w-12 h-12 text-primary mb-4" />,
-    image: '/assets/images/features/home-feature-coloring-fun.png',
-    aiHint: 'kids coloring islamic art',
-    bgColor: cardGradientBgs[6],
   },
   {
     title: 'Chat with Aalim AI',

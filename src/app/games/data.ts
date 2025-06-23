@@ -35,6 +35,17 @@ export const gameTypes: Game[] = [
     imageAiHint: 'memory game cards',
     imagePath: '/assets/images/games/cards/game-ethics-memory-match-card.png',
   },
+  {
+    id: 'coloring-fun',
+    title: 'Digital Coloring',
+    description: 'Unleash your creativity and get your artwork scored by an AI teacher.',
+    type: 'coloring',
+    href: '/coloring',
+    icon: 'Palette',
+    ageGroup: '4-8',
+    imageAiHint: 'kids coloring islamic art',
+    imagePath: '/assets/images/features/home-feature-coloring-fun.png',
+  },
    {
     id: 'advanced-fiqh-quiz',
     title: 'Advanced Fiqh Quiz',
