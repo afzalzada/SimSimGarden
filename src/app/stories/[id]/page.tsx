@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -26,7 +25,8 @@ const ArrowRightIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-export default function SingleStoryPage({ params: { id } }: { params: { id: string } }) {
+export default function SingleStoryPage({ params }: { params: { id: string } }) {
+  const { id } = params;
   const router = useRouter();
   const { addPoints, markLessonCompleted, getLessonProgress, updateLessonProgress } = useUserProgress();
   
@@ -73,7 +73,7 @@ export default function SingleStoryPage({ params: { id } }: { params: { id: stri
   };
 
   const handleNext = () => {
-    if (story && currentNodeIndex < story.content.length -1) {
+    if (story && currentNodeIndex < story.content.length - 1) {
       setCurrentNodeIndex(prev => prev + 1);
     } else {
       completeStory();

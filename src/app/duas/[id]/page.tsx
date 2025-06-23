@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
@@ -16,7 +15,8 @@ import { useToast } from '@/hooks/use-toast';
 import Image from 'next/image';
 import { textToSpeech } from '@/ai/flows/text-to-speech';
 
-export default function SingleDuaPage({ params: { id: duaId } }: { params: { id: string } }) {
+export default function SingleDuaPage({ params }: { params: { id: string } }) {
+  const duaId = params.id;
   const router = useRouter();
   const { toast } = useToast();
   const { addPoints, markLessonCompleted, getLessonProgress, updateLessonProgress } = useUserProgress();

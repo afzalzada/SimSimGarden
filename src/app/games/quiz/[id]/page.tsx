@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -12,7 +11,8 @@ import { ArrowLeft, HelpCircle } from 'lucide-react';
 import LoadingSpinner from '@/components/shared/LoadingSpinner';
 import { useUserProgress } from '@/contexts/UserProgressContext'; // Import useUserProgress
 
-export default function SingleQuizPage({ params: { id } }: { params: { id: string } }) {
+export default function SingleQuizPage({ params }: { params: { id: string } }) {
+  const { id } = params;
   const router = useRouter();
   const { markLessonCompleted } = useUserProgress(); // Get markLessonCompleted
 
