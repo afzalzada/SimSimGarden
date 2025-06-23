@@ -1,3 +1,4 @@
+
 'use client';
 
 import AppLayout from '@/components/layout/AppLayout';
@@ -92,32 +93,36 @@ export default function HomePage() {
 
   return (
     <AppLayout>
-      <section className="text-center py-10 bg-gradient-to-br from-primary/5 via-background to-accent/5 rounded-xl shadow-sm">
+      <section className="text-center py-12 px-6 bg-gradient-to-br from-primary/80 to-primary rounded-xl shadow-lg text-primary-foreground mb-8">
         {isLoggedIn && userName ? (
-          <h1 className="font-headline text-5xl font-bold text-primary mb-4 animate-shine bg-clip-text text-transparent bg-[linear-gradient(110deg,hsl(var(--primary)),45%,hsl(var(--accent)),55%,hsl(var(--primary)))] bg-[length:250%_100%]" >
-            Salaam and welcome dear {userName}!
-          </h1>
+          <>
+            <h1 className="font-headline text-5xl font-bold mb-4 drop-shadow-md">
+              Salaam and welcome dear {userName}!
+            </h1>
+            <p className="text-xl text-primary-foreground/90 max-w-2xl mx-auto drop-shadow-sm">
+              Embark on a fun journey to learn about Islamic morality and ethics.
+            </p>
+          </>
         ) : (
-          <h1 className="font-headline text-5xl font-bold text-primary mb-4 animate-shine bg-clip-text text-transparent bg-[linear-gradient(110deg,hsl(var(--primary)),45%,hsl(var(--accent)),55%,hsl(var(--primary)))] bg-[length:250%_100%]" >
-            Welcome to SimSim Garden!
-          </h1>
+          <>
+            <h1 className="font-headline text-5xl font-bold mb-4 drop-shadow-md">
+              Welcome to SimSim Garden!
+            </h1>
+            <p className="text-xl text-primary-foreground/90 mb-6 max-w-2xl mx-auto drop-shadow-sm">
+              Embark on a fun journey to learn about Islamic morality and ethics.
+            </p>
+            <div className="bg-background/20 backdrop-blur-sm p-6 rounded-lg inline-block mt-4">
+              <h2 className="font-headline text-2xl font-semibold mb-3">Want to save your progress?</h2>
+              <p className="text-primary-foreground/80 mb-4">Log in to track your points and unlocked rewards!</p>
+              <Link href="/login">
+                <Button size="lg" variant="secondary" className="shadow-lg hover:scale-105 transition-transform">
+                  <LogIn className="mr-2 h-5 w-5" /> Login Now
+                </Button>
+              </Link>
+            </div>
+          </>
         )}
-        <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-          Embark on a fun journey to learn about Islamic morality and ethics.
-        </p>
       </section>
-
-      {!isLoggedIn && (
-        <section className="text-center py-6 my-8 bg-primary/10 rounded-xl">
-          <h2 className="font-headline text-2xl font-semibold text-primary mb-3">Want to save your progress?</h2>
-          <p className="text-muted-foreground mb-4">Log in to track your points and unlocked rewards!</p>
-          <Link href="/login">
-            <Button size="lg" variant="default">
-              <LogIn className="mr-2 h-5 w-5" /> Login Now
-            </Button>
-          </Link>
-        </section>
-      )}
 
       <section className="py-12">
         <h2 className="font-headline text-3xl font-semibold text-center text-primary mb-10">Explore Our Features</h2>
