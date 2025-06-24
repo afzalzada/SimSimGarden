@@ -1,4 +1,3 @@
-
 import type {Config} from 'tailwindcss';
 
 export default {
@@ -111,7 +110,11 @@ export default {
         'subtle-scale': {
           '0%, 100%': { transform: 'scale(1)' },
           '50%': { transform: 'scale(1.03)' },
-        }
+        },
+        'float-subtle': {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-4px)' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
@@ -121,6 +124,7 @@ export default {
         'tada': 'tada 1s ease-in-out',
         'reward-unlock': 'reward-unlock 0.8s ease-out',
         'subtle-scale-hover': 'subtle-scale 0.3s ease-in-out',
+        'float-subtle': 'float-subtle 3s ease-in-out infinite',
       },
     },
   },
