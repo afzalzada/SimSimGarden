@@ -35,6 +35,7 @@ const themeColors = [
 ];
 
 export default function SingleColoringPage({ params }: { params: { id: string } }) {
+  const { id } = params;
   const router = useRouter();
   const { addPoints, markLessonCompleted } = useUserProgress();
   const { toast } = useToast();
@@ -45,8 +46,8 @@ export default function SingleColoringPage({ params }: { params: { id: string } 
   const [result, setResult] = useState<ScoreColoringOutput | null>(null);
 
   useEffect(() => {
-    if (params.id) {
-      const foundPage = coloringPagesData.find((p) => p.id === params.id);
+    if (id) {
+      const foundPage = coloringPagesData.find((p) => p.id === id);
       if (foundPage) {
         setPageData(foundPage);
       } else {
@@ -54,7 +55,7 @@ export default function SingleColoringPage({ params }: { params: { id: string } 
       }
       setIsLoading(false);
     }
-  }, [params.id, router]);
+  }, [id, router]);
   
   const handleScore = async () => {
     if (!pageData) return;

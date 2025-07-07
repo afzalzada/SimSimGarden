@@ -133,7 +133,7 @@ export default function AalimPage() {
         </div>
         <h1 className="font-headline text-4xl md:text-5xl font-bold text-primary mb-3">Chat with Aalim AI</h1>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          Your friendly AI tutor for learning Islamic morality and ethics. Current Topic: <strong className="text-primary">{LESSON_TOPIC_AALIM}</strong>
+          Your friendly AI tutor for learning Islamic values and ethics. Current Topic: <strong className="text-primary">{LESSON_TOPIC_AALIM}</strong>
         </p>
       </header>
 

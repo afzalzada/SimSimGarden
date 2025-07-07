@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
@@ -16,7 +17,7 @@ import Image from 'next/image';
 import { textToSpeech } from '@/ai/flows/text-to-speech';
 
 export default function SingleQuranVersePage({ params }: { params: { id: string } }) {
-  const verseId = params.id;
+  const { id: verseId } = params;
   const router = useRouter();
   const { toast } = useToast();
   const { addPoints, markLessonCompleted, getLessonProgress, updateLessonProgress } = useUserProgress();

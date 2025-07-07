@@ -17,7 +17,7 @@ import Image from 'next/image';
 import { textToSpeech } from '@/ai/flows/text-to-speech';
 
 export default function SingleDuaPage({ params }: { params: { id: string } }) {
-  const duaId = params.id;
+  const { id: duaId } = params;
   const router = useRouter();
   const { toast } = useToast();
   const { addPoints, markLessonCompleted, getLessonProgress, updateLessonProgress } = useUserProgress();
